@@ -378,7 +378,7 @@ const setting = [
           en: "Mega Offer",
           de: "Mega Angebot",
         },
-        coupon_code: ["SUMMER26", "WINTER25", "SUMMER24", "AUGUST24"],
+        coupon_code: ["SUMMER10", "WINTER15", "AUTUMN20", "SPRING25"],
       },
       privacy_policy: {
         status: true,
