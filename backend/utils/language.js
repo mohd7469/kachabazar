@@ -1,12 +1,6 @@
 const language = [
   {
     status: "show",
-    name: "Bangla",
-    iso_code: "bn",
-    flag: "BD",
-  },
-  {
-    status: "show",
     name: "English",
     iso_code: "en",
     flag: "US",
@@ -22,18 +16,6 @@ const language = [
     name: "Arabic",
     iso_code: "ar",
     flag: "SA",
-  },
-  {
-    status: "show",
-    name: "Hindi",
-    iso_code: "hi",
-    flag: "IN",
-  },
-  {
-    status: "show",
-    name: "Urdu",
-    iso_code: "ur",
-    flag: "PK",
   },
 ];
 

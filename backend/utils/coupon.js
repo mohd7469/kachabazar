@@ -4,12 +4,7 @@ const coupons = [
     title: {
       en: "Summer Gift Voucher",
       de: "sommer geschenkgutschein",
-      hy: "ամառային նվեր - վաուչեր",
-      af: "somer geskenkbewys",
-      cs: "letní dárkový poukaz",
-      bn: "গ্রীষ্মের উপহার ভাউচার",
-      az: "yay hədiyyə vauçeri",
-      ln: "sanza ya Zomi na Mibale",
+      ar: "AR translation"
     },
     couponCode: "SUMMER26",
     endTime: "2026-10-18T20:38:00.000Z",
@@ -26,10 +21,7 @@ const coupons = [
     title: {
       en: "Winter Gift Voucher",
       de: "wintergeschenkgutschein",
-      az: "qış hədiyyə vauçeri",
-      ln: "zima Mpho Mpho Mpho",
-      ar: "قسيمة هدايا الشتاء",
-      pt: "voucher de presente de inverno",
+      ar: "AR translation"
     },
     couponCode: "WINTER25",
     endTime: "2025-05-31T20:19:00.000Z",
@@ -46,6 +38,7 @@ const coupons = [
     title: {
       en: "Summer Gift Voucher",
       de: "sommer geschenkgutschein",
+      ar: "AR translation"
     },
     couponCode: "SUMMER24",
     endTime: "2024-12-20T00:56:00.000Z",
@@ -62,13 +55,7 @@ const coupons = [
     title: {
       en: "August Gift Voucher",
       de: "august geschenkgutschein",
-      hy: "օգոստոսյան նվեր վաուչեր",
-      af: "augustus geskenkbewys",
-      cs: "augustový dárkový poukaz",
-      az: "avqust hədiyyə vauçeri",
-      ln: "sánzá ya zómi na mɔ̌kɔ́",
-      ar: "قسيمة هدايا أغسطس",
-      pt: "voucher presente agosto",
+      ar: "AR translation"
     },
     couponCode: "AUGUST24",
     endTime: "2024-10-31T08:30:00.000Z",
