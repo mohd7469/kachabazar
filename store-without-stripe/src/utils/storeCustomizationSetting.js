@@ -8,7 +8,7 @@ export const storeCustomization = {
     privacy_policy_status: true,
     faq_status: true,
     help_text: {
-      en: "We are available 24/7, Need help?",
+      en: "We're available 24/7, Need help?",
       de: "Wir sind erreichbar 24/7, Brauchen Sie Hilfe?",
     },
     categories: {
