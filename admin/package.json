@@ -1,6 +1,6 @@
 {
   "name": "kachabazar-admin",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "this is Kachabazar-admin built with react.js and tailwindcss",
   "private": true,
   "type": "module",
