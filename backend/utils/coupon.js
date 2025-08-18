@@ -21,7 +21,7 @@ const coupons = [
     title: {
       en: "Winter Gift Voucher",
       de: "wintergeschenkgutschein",
-      ar: "قسيمة هدية شتوية"
+      ar: "قسيمة شتوية للهدايا"
     },
     couponCode: "WINTER15",
     endTime: "2025-05-31T20:19:00.000Z",
@@ -36,9 +36,9 @@ const coupons = [
   {
     status: "show",
     title: {
-      en: "Summer Gift Voucher",
-      de: "sommer geschenkgutschein",
-      ar: "قسيمة هدية صيفية"
+      en: "Autumn Gift Voucher",
+      de: "autumn geschenkgutschein",
+      ar: "قسيمة هدية الخريف"
     },
     couponCode: "AUTUMN20",
     endTime: "2024-12-20T00:56:00.000Z",
@@ -53,9 +53,9 @@ const coupons = [
   {
     status: "show",
     title: {
-      en: "August Gift Voucher",
-      de: "august geschenkgutschein",
-      ar: "قسيمة هدية أغسطس"
+      en: "Spring Gift Voucher",
+      de: "spring geschenkgutschein",
+      ar: "قسيمة هدية الربيع"
     },
     couponCode: "SPRING25",
     endTime: "2024-10-31T08:30:00.000Z",
