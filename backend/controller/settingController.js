@@ -74,6 +74,7 @@ const addStoreSetting = async (req, res) => {
 const getStoreSetting = async (req, res) => {
   try {
     // console.log("getStoreSetting");
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  3');
 
     const storeSetting = await Setting.findOne({ name: "storeSetting" });
     res.send(storeSetting.setting);

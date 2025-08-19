@@ -20,6 +20,7 @@ const SettingServices = {
   },
 
   getStoreSetting: async () => {
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  2');
     return requests.get("/setting/store-setting/all");
   },
 
