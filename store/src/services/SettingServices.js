@@ -3,7 +3,6 @@ import requests from "./httpServices";
 const SettingServices = {
   //store setting all function
   getStoreSetting: async () => {
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  1');
     return requests.get("/setting/store-setting/all");
   },
 
