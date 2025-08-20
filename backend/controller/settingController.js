@@ -132,8 +132,7 @@ const addStoreCustomizationSetting = async (req, res) => {
 const getStoreCustomizationSetting = async (req, res) => {
   try {
     const { key, keyTwo } = req.query;
-    console.log("getStoreCustomizationSetting");
-    console.log("req query", req.query, "key", key, "keyTwo", keyTwo);
+    // console.log("req query", req.query, "key", key, "keyTwo", keyTwo);
 
     let projection = {};
     if (key) {
@@ -152,7 +151,10 @@ const getStoreCustomizationSetting = async (req, res) => {
       { name: "storeCustomizationSetting" },
       projection
     );
-
+    
+    console.log("storeCustomizationSetting: ", storeCustomizationSetting);
+    console.log("projection: ", projection);
+    
     if (!storeCustomizationSetting) {
       return res.status(404).send({ message: "Settings not found" });
     }
