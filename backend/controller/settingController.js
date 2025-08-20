@@ -146,14 +146,15 @@ const getStoreCustomizationSetting = async (req, res) => {
     if (!key && !keyTwo) {
       projection = { setting: 1 };
     }
-
+    
+    console.log("projection: ", projection);
+    
     const storeCustomizationSetting = await Setting.findOne(
       { name: "storeCustomizationSetting" },
       projection
     );
     
     console.log("storeCustomizationSetting: ", storeCustomizationSetting);
-    console.log("projection: ", projection);
     
     if (!storeCustomizationSetting) {
       return res.status(404).send({ message: "Settings not found" });
