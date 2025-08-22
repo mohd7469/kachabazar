@@ -6,11 +6,40 @@ import { useQuery } from "@tanstack/react-query";
 //internal imports
 import SettingServices from "@services/SettingServices";
 
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { notifyError } from "@utils/toast";
+import { useSearchParams } from "next/navigation";
+
 const BottomNavigation = ({ or, route, desc, pageName, loginTitle }) => {
+  const router = useRouter();
+  const redirectUrl = useSearchParams().get("redirectUrl");
+  const [ loading, setLoading ] = useState(false);
+ 
   const buttonStyles = `
     text-sm inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center rounded-md focus:outline-none shadow-sm
     px-3 py-4 h-12 w-full mb-6 mr-2
   `;
+  
+  const handleGuest = async () => {
+    // You can pass extra options here, like callbackUrl
+    const result = await signIn("guest", {
+      redirect: false,
+    });
+    
+    console.log("result:", result);
+    
+    if (result?.error) {
+      notifyError(result?.error);
+      console.error("Error during sign-in:", result.error);
+      setLoading(false);
+    } else if (result?.ok) {
+      const url = redirectUrl ? redirectUrl : "/";
+      router.push(url);
+      setLoading(false);
+      closeCartDrawer();
+    }
+  };
 
   const {
     error,
@@ -32,6 +61,14 @@ const BottomNavigation = ({ or, route, desc, pageName, loginTitle }) => {
 
       {!error && !isLoading && (
         <div className="flex flex-col mb-4">
+          <button
+            disabled={loading}
+            onClick={handleGuest}
+            className="w-full text-center py-3 rounded mb-4 bg-gray-700 text-white transition-all focus:outline-none my-1"
+          >
+            Continue as Guest
+          </button>
+          
           {storeSetting?.google_login_status && (
             <button
               onClick={() =>

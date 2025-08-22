@@ -5,6 +5,9 @@ import GitHub from "next-auth/providers/github";
 import Facebook from "next-auth/providers/facebook";
 import Credentials from "next-auth/providers/credentials";
 
+import moment from "moment";
+import jsonwebtoken from "jsonwebtoken";
+
 import SettingServices from "@services/SettingServices";
 import CustomerServices from "@services/CustomerServices";
 
@@ -58,12 +61,46 @@ export const getDynamicAuthOptions = async () => {
         }
       },
     }),
+    // ⭐ guest provider
+    Credentials({
+      id: "guest",
+      name: "guest",
+      credentials: {},
+      authorize: async () => {
+        const guestId = moment().format("DDMMYYYY-Hms");
+        const guestPayload = {
+          _id: `guest-${guestId}`,
+          name: "Guest User",
+          email: `guest-${guestId}@storeName.com`,
+          role: "guest",
+        };
+        
+        // ✅ Generate a real signed JWT for guest
+        const token = jsonwebtoken.sign(
+          {
+            id: guestPayload._id,
+            role: guestPayload.role,
+            exp: Math.floor(Date.now() / 1000) + 60 * 60, // 1h expiry
+          },
+          process.env.NEXTAUTH_SECRET
+        );
+        
+        return {
+          ...guestPayload,
+          token,
+        };
+      },
+    }),
   ];
 
   const authOptions = {
     providers,
     callbacks: {
       async signIn({ user, account }) {
+        // ⭐ skip backend call for guest
+        if (account.provider === "guest") {
+          return true;
+        }
         if (account.provider !== "credentials") {
           try {
             const res = await CustomerServices.signUpWithOauthProvider(user);
@@ -99,6 +136,8 @@ export const getDynamicAuthOptions = async () => {
           token.phone = user.phone;
           token.image = user.image;
           token.token = user.token;
+          // ⭐ preserve role
+          token.role = user.role || "user";
         }
 
         if (trigger === "update" && session) {
@@ -118,7 +157,8 @@ export const getDynamicAuthOptions = async () => {
         session.user.phone = token.phone;
         session.user.image = token.image;
         session.user.token = token.token;
-
+        // ⭐ expose role
+        session.user.role = token.role;
         return session;
       },
       async redirect({ url, baseUrl }) {

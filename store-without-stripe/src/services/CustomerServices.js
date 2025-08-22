@@ -41,6 +41,13 @@ const CustomerServices = {
   },
 
   getShippingAddress: async ({ userId = "" }) => {
+    if (userId.includes("guest")) {
+      return {
+        success: true,
+        data: null,
+        message: "Guest user, no shipping address available",
+      };
+    }
     return requests.get(`/customer/shipping/address/${userId}`);
   },
 

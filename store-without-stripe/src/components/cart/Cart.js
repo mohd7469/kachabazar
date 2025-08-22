@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useCart } from "react-use-cart";
 import { IoBagCheckOutline, IoClose, IoBagHandle } from "react-icons/io5";
 
@@ -9,15 +9,42 @@ import CartItem from "@components/cart/CartItem";
 import { SidebarContext } from "@context/SidebarContext";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
+import { signIn } from "next-auth/react";
+import { notifyError } from "@utils/toast";
+import { useSearchParams } from "next/navigation";
+
 const Cart = () => {
   const router = useRouter();
   const { isEmpty, items, cartTotal } = useCart();
   const { closeCartDrawer } = useContext(SidebarContext);
   const { currency } = useUtilsFunction();
   const userInfo = getUserSession();
+ 
+  const redirectUrl = useSearchParams().get("redirectUrl");
+  const [ loading, setLoading ] = useState(false);
 
   // console.log("userInfo", userInfo);
-
+  
+  const handleGuest = async () => {
+    // You can pass extra options here, like callbackUrl
+    const result = await signIn("guest", {
+      redirect: false,
+    });
+    
+    console.log("result:", result);
+    
+    if (result?.error) {
+      notifyError(result?.error);
+      console.error("Error during sign-in:", result.error);
+      setLoading(false);
+    } else if (result?.ok) {
+      const url = redirectUrl ? redirectUrl : "/checkout";
+      router.push(url);
+      setLoading(false);
+      closeCartDrawer();
+    }
+  };
+  
   const handleCheckout = () => {
     if (items?.length <= 0) {
       closeCartDrawer();
@@ -80,6 +107,19 @@ const Cart = () => {
           ))}
         </div>
         <div className="mx-5 my-3">
+          <button
+            onClick={handleGuest}
+            className="w-full py-3 px-3 rounded-lg bg-gray-700 mb-4 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
+          >
+            <span className="align-middle font-medium">
+              Continue as Guest
+            </span>
+            <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
+              {currency}
+              {cartTotal.toFixed(2)}
+            </span>
+          </button>
+          
           <button
             onClick={handleCheckout}
             className="w-full py-3 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
