@@ -30,7 +30,7 @@ const SignUp = () => {
                 </div>
                 <form
                   onSubmit={handleSubmit(submitHandler)}
-                  className="flex flex-col justify-center mb-6"
+                  className="flex flex-col justify-center"
                 >
                   <div className="grid grid-cols-1 gap-5">
                     <div className="form-group">
