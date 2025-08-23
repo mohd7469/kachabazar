@@ -29,59 +29,60 @@ const useLoginSubmit = () => {
     // console.log("submitHandler", phone);
 
     try {
-      if (router.pathname === "/auth/signup") {
-        // Custom sign-up method
-        // console.log("Need to use custom sign-up method");
-
-        // Call the sign-up API which also handles sending the email verification
-        const res = await CustomerServices.verifyEmailAddress({
-          name,
-          email,
-          password,
-        });
-
-        // console.log("res", res);
-        notifySuccess(res.message);
-        return setLoading(false);
-      } else if (router.pathname === "/auth/forget-password") {
-        // Call the forget password API for reset password
-        const res = await CustomerServices.forgetPassword({
-          email,
-        });
-
-        // console.log("res", res);
-        notifySuccess(res.message);
-        return setLoading(false);
-      } else if (router.pathname === "/auth/phone-signup") {
-        const res = await CustomerServices.verifyPhoneNumber({
-          phone,
-        });
-        notifySuccess(res.message);
-        // console.log("sing up with phone", phone, "result", res);
-        return setLoading(false);
-      } else {
-        // Login logic (no changes)
-        const result = await signIn("credentials", {
-          redirect: false,
-          email,
-          password,
-          callbackUrl: "/user/dashboard",
-        });
-
-        // console.log("result", result);
-
-        if (result?.error) {
-          notifyError(result?.error);
-          console.error("Error during sign-in:", result.error);
-          setLoading(false);
-        } else if (result?.ok) {
-          const url = redirectUrl ? "/checkout" : result.url;
-          router.push(url);
-          setLoading(false);
+      switch (router.pathname) {
+        case "/auth/signup": {
+          // Call the sign-up API which also handles sending the email verification
+          const res = await CustomerServices.verifyEmailAddress({
+            name,
+            email,
+            password,
+          });
+          // console.log("res", res);
+          notifySuccess(res.message);
+          return setLoading(false);
+        }
+        
+        case "/auth/forget-password": {
+          // Call the forget password API for reset password
+          const res = await CustomerServices.forgetPassword({
+            email,
+          });
+          // console.log("res", res);
+          notifySuccess(res.message);
+          return setLoading(false);
+        }
+        
+        case "/auth/phone-signup": {
+          const res = await CustomerServices.verifyPhoneNumber({
+            phone,
+          });
+          // console.log("res", res);
+          notifySuccess(res.message);
+          return setLoading(false);
+        }
+        
+        default: {
+          // Login logic (no changes)
+          const res = await signIn("credentials", {
+            redirect: false,
+            email,
+            password,
+            callbackUrl: "/user/dashboard",
+          });
+          // console.log("res", res);
+          if (res?.error) {
+            notifyError(res?.error);
+            console.error("Error during sign-in:", res.error);
+            setLoading(false);
+          } else if (res?.ok) {
+            const url = redirectUrl ? "/checkout" : res.url;
+            router.push(url);
+            setLoading(false);
+          }
         }
       }
     } catch (error) {
-      // Catch any unexpected errors here (e.g., network issues, unexpected API failures)
+      // Catch any unexpected errors here
       console.error(
         "Error in submitHandler:",
         error?.response?.data?.message || error?.message
