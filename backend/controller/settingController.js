@@ -73,6 +73,8 @@ const addStoreSetting = async (req, res) => {
 
 const getStoreSetting = async (req, res) => {
   try {
+    // console.log("getStoreSetting");
+
     const storeSetting = await Setting.findOne({ name: "storeSetting" });
     console.log("storeSetting:", storeSetting);
     res.send(storeSetting.setting);
@@ -130,6 +132,8 @@ const addStoreCustomizationSetting = async (req, res) => {
 const getStoreCustomizationSetting = async (req, res) => {
   try {
     const { key, keyTwo } = req.query;
+    // console.log("getStoreCustomizationSetting");
+
     // console.log("req query", req.query, "key", key, "keyTwo", keyTwo);
 
     let projection = {};
@@ -144,9 +148,7 @@ const getStoreCustomizationSetting = async (req, res) => {
     if (!key && !keyTwo) {
       projection = { setting: 1 };
     }
-    
-    console.log("projection: ", projection);
-    
+
     const storeCustomizationSetting = await Setting.findOne(
       { name: "storeCustomizationSetting" },
       projection
