@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FiLock, FiMail } from "react-icons/fi";
 
-//internal  import
+//internal import
 import Layout from "@layout/Layout";
 import Error from "@components/form/Error";
 import useLoginSubmit from "@hooks/useLoginSubmit";
@@ -11,7 +11,9 @@ import BottomNavigation from "@components/login/BottomNavigation";
 const Login = () => {
   const { handleSubmit, submitHandler, register, errors, loading } =
     useLoginSubmit();
-
+  
+  // console.log("errors", errors);
+  
   return (
     <Layout title="Login" description="This is login page">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
