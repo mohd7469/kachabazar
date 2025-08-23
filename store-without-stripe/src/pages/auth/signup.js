@@ -15,7 +15,7 @@ const SignUp = () => {
   // console.log("errors", errors);
 
   return (
-    <Layout title="Signup" description="this is sign up page">
+    <Layout title="Signup" description="this is signup page">
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
         <div className="py-4 flex flex-col lg:flex-row w-full">
           <div className="w-full sm:p-5 lg:p-8">
