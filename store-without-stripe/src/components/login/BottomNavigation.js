@@ -9,9 +9,11 @@ import SettingServices from "@services/SettingServices";
 import useLoginSubmit from "@hooks/useLoginSubmit";
 
 import moment from "moment";
+import { useSearchParams } from "next/navigation";
 
 const BottomNavigation = ({ or, route, desc, pageName, loginTitle }) => {
   const router = useRouter();
+  const redirectUrl = useSearchParams().get("redirectUrl");
   const { guestSignup, loading } = useLoginSubmit();
   const guestId = 'Guest-' + moment().format("DDMMYY-Hms");
  
@@ -23,7 +25,8 @@ const BottomNavigation = ({ or, route, desc, pageName, loginTitle }) => {
   const handleGuest = async () => {
     const res = await guestSignup(guestId);
     if (res?.success) {
-      router.push('/');
+      const url = redirectUrl ? `/${redirectUrl}` : '/';
+      router.push(url);
     }
   };
 

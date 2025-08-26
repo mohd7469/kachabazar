@@ -74,7 +74,7 @@ const useLoginSubmit = () => {
             console.error("Error during sign-in:", res.error);
             setLoading(false);
           } else if (res?.ok) {
-            const url = redirectUrl ? redirectUrl : res.url;
+            const url = redirectUrl ? `/${redirectUrl}` : res.url;
             router.push(url);
             setLoading(false);
           }
