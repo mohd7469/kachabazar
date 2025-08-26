@@ -12,31 +12,62 @@ const {
 } = require("../lib/email-sender/templates/forget-password");
 const { sendVerificationCode } = require("../lib/phone-verification/sender");
 
+const fetch = require("node-fetch");
+
 const verifyEmailAddress = async (req, res) => {
   const isAdded = await Customer.findOne({ email: req.body.email });
   if (isAdded) {
-    return res.status(403).send({
-      message: "This Email already Added!",
-    });
-  } else {
-    const token = tokenForVerify(req.body);
-    const option = {
-      name: req.body.name,
-      email: req.body.email,
-      token: token,
-    };
-    const body = {
-      from: process.env.EMAIL_USER,
-      // from: "info@demomailtrap.com",
-      to: `${req.body.email}`,
-      subject: "Email Activation",
-      subject: "Verify Your Email",
-      html: customerRegisterBody(option),
-    };
-
-    const message = "Please check your email to verify your account!";
-    sendEmail(body, res, message);
+    return res.status(403).send({ message: "This email already exists!" });
   }
+  
+  const { isGuest = false } = req.body;
+  // start auto verification for guest
+  if (isGuest) {
+    try {
+      const guestToken = tokenForVerify(req.body);
+      const autoVerificationUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/customer/register/${guestToken}`;
+      
+      const response = await fetch(autoVerificationUrl, { method: "POST" });
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Guest auto-verification failed:", response.status, errorText);
+        return res.status(response.status).send({
+          message: "Guest auto-verification failed",
+          details: errorText,
+        });
+      }
+      
+      const data = await response.json();
+      return res.status(200).send({
+        message: "Guest auto-verified",
+        data,
+      });
+    } catch (err) {
+      console.error("Guest auto-verification error:", err);
+      return res.status(500).json({
+        message: "Internal server error during guest auto-verification",
+        error: err.message,
+      });
+    }
+  }
+  
+  // send verification email
+  const token = tokenForVerify(req.body);
+  const option = {
+    name: req.body.name,
+    email: req.body.email,
+    token: token,
+  };
+  const body = {
+    from: process.env.EMAIL_USER,
+    // from: "info@demomailtrap.com",
+    to: `${req.body.email}`,
+    subject: "Verify Your Email",
+    html: customerRegisterBody(option),
+  };
+  
+  const message = "Please check your email to verify your account!";
+  sendEmail(body, res, message);
 };
 
 const verifyPhoneNumber = async (req, res) => {
@@ -127,8 +158,6 @@ const registerCustomer = async (req, res) => {
 
           // Create a new user only if not already registered
           const existingUser = await Customer.findOne({ email });
-          console.log("existingUser");
-
           if (existingUser) {
             return res.status(400).send({ message: "User already exists!" });
           } else {
