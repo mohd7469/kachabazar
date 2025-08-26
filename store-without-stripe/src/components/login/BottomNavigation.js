@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { ImFacebook, ImGithub, ImGoogle } from "react-icons/im";
 import { signIn } from "next-auth/react";
@@ -5,16 +6,14 @@ import { useQuery } from "@tanstack/react-query";
 
 //internal imports
 import SettingServices from "@services/SettingServices";
+import useLoginSubmit from "@hooks/useLoginSubmit";
 
-import { useState } from "react";
-import { useRouter } from "next/router";
-import { notifyError } from "@utils/toast";
-import { useSearchParams } from "next/navigation";
+import moment from "moment";
 
 const BottomNavigation = ({ or, route, desc, pageName, loginTitle }) => {
   const router = useRouter();
-  const redirectUrl = useSearchParams().get("redirectUrl");
-  const [ loading, setLoading ] = useState(false);
+  const { guestSignup, loading } = useLoginSubmit();
+  const guestId = 'Guest-' + moment().format("DDMMYY-Hms");
  
   const buttonStyles = `
     text-sm inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold text-center justify-center rounded-md focus:outline-none shadow-sm
@@ -22,22 +21,9 @@ const BottomNavigation = ({ or, route, desc, pageName, loginTitle }) => {
   `;
   
   const handleGuest = async () => {
-    // You can pass extra options here, like callbackUrl
-    const result = await signIn("guest", {
-      redirect: false,
-    });
-    
-    console.log("result:", result);
-    
-    if (result?.error) {
-      notifyError(result?.error);
-      console.error("Error during sign-in:", result.error);
-      setLoading(false);
-    } else if (result?.ok) {
-      const url = redirectUrl ? redirectUrl : "/";
-      router.push(url);
-      setLoading(false);
-      closeCartDrawer();
+    const res = await guestSignup(guestId);
+    if (res?.success) {
+      router.push('/');
     }
   };
 
@@ -53,21 +39,39 @@ const BottomNavigation = ({ or, route, desc, pageName, loginTitle }) => {
 
   return (
     <>
-      {or && (
-        <div className="my-4 text-center font-medium">
-          <div className="after:bg-gray-100 before:bg-gray-100">OR</div>
+      {/*{or && (*/}
+      {(
+        <div className="my-2 text-center font-medium">
+          <div className="after:bg-gray-100 before:bg-gray-100 text-xs">OR</div>
         </div>
       )}
 
       {!error && !isLoading && (
         <div className="flex flex-col mb-4">
-          <button
-            disabled={loading}
-            onClick={handleGuest}
-            className="w-full text-center py-3 rounded mb-4 bg-gray-700 text-white transition-all focus:outline-none my-1"
-          >
-            Continue as Guest
-          </button>
+          {loading ? (
+            <button
+              // disabled={loading}
+              className="md:text-sm leading-5 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md placeholder-white focus-visible:outline-none focus:outline-none bg-gray-700 text-white px-5 md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white hover:bg-emerald-600 h-12 mt-1 text-sm lg:text-sm w-full sm:w-auto"
+            >
+              <img
+                src="/loader/spinner.gif"
+                alt="Loading"
+                width={20}
+                height={10}
+              />
+              <span className="font-serif ml-2 font-light">
+                Processing
+              </span>
+            </button>
+          ) : (
+            <button
+              disabled={loading}
+              onClick={handleGuest}
+              className="w-full text-center py-3 rounded mb-4 bg-gray-700 text-white transition-all focus:outline-none my-1"
+            >
+              Continue as Guest
+            </button>
+          )}
           
           {storeSetting?.google_login_status && (
             <button
