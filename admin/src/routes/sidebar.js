@@ -103,7 +103,7 @@ const sidebar = [
     ],
   },
 
-  {
+  /*{
     icon: FiSlack,
     name: "Pages",
     routes: [
@@ -118,7 +118,7 @@ const sidebar = [
         name: "Coming Soon",
       },
     ],
-  },
+  },*/
 ];
 
 export default sidebar;
