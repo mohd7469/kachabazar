@@ -4,8 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 
-//internal import
-
+//internal imports
 import { notifyError, notifySuccess } from "@utils/toast";
 import CustomerServices from "@services/CustomerServices";
 
@@ -75,7 +74,7 @@ const useLoginSubmit = () => {
             console.error("Error during sign-in:", res.error);
             setLoading(false);
           } else if (res?.ok) {
-            const url = redirectUrl ? "/checkout" : res.url;
+            const url = redirectUrl ? redirectUrl : res.url;
             router.push(url);
             setLoading(false);
           }
@@ -91,13 +90,69 @@ const useLoginSubmit = () => {
       notifyError(error?.response?.data?.message || error?.message);
     }
   };
-
+  
+  const guestSignup = async (guestId) => {
+    setLoading(true);
+    
+    // console.log("guestId", guestId);
+    
+    try {
+      const name = `${guestId}`;
+      const email = `${guestId}@mailinator.com`;
+      const password = `Hello123!`;
+      
+      // guest registration process
+      const res = await CustomerServices.verifyEmailAddress(  {
+        name,
+        email,
+        password,
+        isGuest: true, // default as false
+      });
+      
+      if(res?.success) {
+        console.log('Guest registered', res.data);
+        
+        // guest login process
+        const login = await signIn("credentials", {
+          redirect: false,
+          email,
+          password,
+        });
+        
+        if (login?.ok) {
+          setLoading(false);
+          return { success: true };
+        }
+        
+        console.error("Error during guest sign-in:", login.error);
+        setLoading(false);
+        notifyError(login?.error);
+        return { success: false };
+      }
+      
+      console.error("Error during guest signup:", res?.error);
+      setLoading(false);
+      notifyError(login?.error);
+      return { success: false };
+    } catch (error) {
+      // Catch any unexpected errors here
+      console.error(
+        "Error in guestSignup:",
+        error?.response?.data?.message || error?.message
+      );
+      setLoading(false);
+      notifyError(error?.response?.data?.message || error?.message);
+      return { success: false };
+    }
+  }
+  
   return {
     register,
     errors,
     loading,
     control,
     handleSubmit,
+    guestSignup,
     submitHandler,
   };
 };
