@@ -150,6 +150,7 @@ const useLoginSubmit = () => {
     register,
     errors,
     loading,
+    setLoading, // exposed for cart
     control,
     handleSubmit,
     guestSignup,

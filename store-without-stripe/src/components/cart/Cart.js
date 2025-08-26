@@ -19,31 +19,35 @@ const Cart = () => {
   const { currency } = useUtilsFunction();
   const userInfo = getUserSession();
   const guestId = 'Guest-' + moment().format("DDMMYY-Hms");
-  const { guestSignup, loading } = useLoginSubmit();
+  const { guestSignup, setLoading, loading } = useLoginSubmit();
   
   // console.log("userInfo", userInfo);
   
   const handleGuest = async () => {
     const res = await guestSignup(guestId);
     if (res?.success) {
-      router.push('/checkout');
+      await router.push('/checkout');
       closeCartDrawer();
     }
   };
   
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
+    setLoading(true);
     if (items?.length <= 0) {
       closeCartDrawer();
+      setLoading(false);
     } else {
       if (!userInfo) {
         // console.log("userInfo::", userInfo, "history");
 
         // Redirect to login page with returnUrl query parameter
-        router.push(`/auth/login?redirectUrl=checkout`);
+        await router.push(`/auth/login?redirectUrl=checkout`);
         closeCartDrawer();
+        setLoading(false);
       } else {
-        router.push("/checkout");
+        await router.push("/checkout");
         closeCartDrawer();
+        setLoading(false);
       }
     }
   };
@@ -52,14 +56,14 @@ const Cart = () => {
     <>
       <div className="flex flex-col w-full h-full justify-between items-middle bg-white rounded cursor-pointer">
         <div className="w-full flex justify-between items-center relative px-5 py-4 border-b bg-indigo-50 border-gray-100">
-          <h2 className="font-semibold font-serif text-lg m-0 text-heading flex items-center">
+          <h2 className="font-serif text-lg m-0 text-heading flex items-center">
             <span className="text-xl mr-2 mb-1">
               {loading ? (
                 <img
                   src="/loader/spinner.gif"
                   alt="Loading"
                   width={30}
-                  height={10}
+                  height={30}
                 />
               ) : (
                 <IoBagCheckOutline />
@@ -101,35 +105,50 @@ const Cart = () => {
             <CartItem key={i + 1} item={item} />
           ))}
         </div>
-        <div className="mx-5 my-3">
-          {!userInfo && (
-          <button
-            disabled={loading}
-            onClick={handleGuest}
-            className="w-full py-5 px-3 rounded-lg bg-gray-700 mb-4 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
-          >
-            <span className="align-middle font-medium">
-              Continue as Guest
-            </span>
-            {/*<span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
-              {guestId}
-            </span>*/}
-          </button>
-          )}
-          
-          <button
-            onClick={handleCheckout}
-            className="w-full py-3 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
-          >
-            <span className="align-middle font-medium">
-              {!userInfo ? 'Register' : 'Proceed'} To Checkout
-            </span>
-            <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
-              {currency}
-              {cartTotal.toFixed(2)}
-            </span>
-          </button>
-        </div>
+        
+        {items?.length > 0 && (
+          loading ? (
+            <div className="w-full flex justify-center items-center my-4">
+              <img
+                src="/loader/spinner.gif"
+                alt="Loading"
+                width={50}
+                height={50}
+              />
+            </div>
+          ) : (
+            <div className="mx-5 my-3">
+              {!userInfo && (
+                <button
+                  disabled={loading}
+                  onClick={handleGuest}
+                  className="w-full py-5 px-3 rounded-lg bg-gray-700 mb-4 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
+                >
+                  <span className="align-middle font-medium">
+                    Continue as Guest
+                  </span>
+                  {/*<span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
+                  {guestId}
+                </span>*/}
+                </button>
+              )}
+              
+              <button
+                onClick={handleCheckout}
+                className="w-full py-3 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
+              >
+              <span className="align-middle font-medium">
+                {!userInfo ? 'Register' : 'Proceed'} To Checkout
+              </span>
+                <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
+                {currency}
+                  {cartTotal.toFixed(2)}
+              </span>
+              </button>
+            </div>
+          )
+        )}
+        
       </div>
     </>
   );
