@@ -32,6 +32,7 @@ const verifyEmailAddress = async (req, res) => {
         const errorText = await response.text();
         console.error("Guest auto-verification failed:", response.status, errorText);
         return res.status(response.status).send({
+          success: false,
           message: "Guest auto-verification failed",
           details: errorText,
         });
@@ -39,12 +40,14 @@ const verifyEmailAddress = async (req, res) => {
       
       const data = await response.json();
       return res.status(200).send({
+        success: true,
         message: "Guest auto-verified",
         data,
       });
     } catch (err) {
       console.error("Guest auto-verification error:", err);
       return res.status(500).json({
+        success: false,
         message: "Internal server error during guest auto-verification",
         error: err.message,
       });
