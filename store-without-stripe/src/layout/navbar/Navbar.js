@@ -58,6 +58,10 @@ const Navbar = () => {
           <div className="top-bar h-16 lg:h-auto flex items-center justify-between py-4 mx-auto">
             <Link
               href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/";
+              }}
               className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
             >
               <div className="relative w-32 h-10">
