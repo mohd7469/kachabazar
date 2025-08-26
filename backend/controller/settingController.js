@@ -76,7 +76,7 @@ const getStoreSetting = async (req, res) => {
     // console.log("getStoreSetting");
 
     const storeSetting = await Setting.findOne({ name: "storeSetting" });
-    console.log("storeSetting:", storeSetting);
+    // console.log("storeSetting:", storeSetting);
     res.send(storeSetting.setting);
   } catch (err) {
     res.status(500).send({
