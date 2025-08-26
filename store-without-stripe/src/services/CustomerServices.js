@@ -8,6 +8,7 @@ const CustomerServices = {
   verifyEmailAddress: async (body) => {
     return requests.post("/customer/verify-email", body);
   },
+  
   verifyPhoneNumber: async (body) => {
     return requests.post("/customer/verify-phone", body);
   },
@@ -41,13 +42,13 @@ const CustomerServices = {
   },
 
   getShippingAddress: async ({ userId = "" }) => {
-    if (userId.includes("guest")) {
+    /*if (userId.includes("guest")) {
       return {
         success: true,
         data: null,
         message: "Guest user, no shipping address available",
       };
-    }
+    }*/
     return requests.get(`/customer/shipping/address/${userId}`);
   },
 
