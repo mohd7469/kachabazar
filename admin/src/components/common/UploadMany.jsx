@@ -249,7 +249,7 @@ const UploadMany = ({
         <>
           <div className="w-full my-2 lg:my-0 md:my-0 flex">
             <div className="h-10 border border-dashed border-emerald-500 rounded-md">
-              <label className="w-full rounded-lg h-10 flex justify-center items-center text-xs dark:text-gray-400 leading-none">
+              <label className="ps-2 pe-3 w-full rounded-lg h-10 flex justify-center items-center text-xs dark:text-gray-400 leading-none">
                 <Input
                   disabled={isDisabled}
                   type="file"
