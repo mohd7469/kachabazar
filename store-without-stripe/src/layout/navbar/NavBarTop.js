@@ -81,6 +81,18 @@ const NavBarTop = () => {
                 </a>
                 <span className="mx-2">|</span>
               </div>
+              
+              <div>
+                <Link
+                  href="/user/my-account"
+                  className="font-medium hover:text-emerald-600"
+                >
+                  {showingTranslateValue(
+                    storeCustomizationSetting?.navbar?.my_account
+                  )}
+                </Link>
+                <span className="mx-2">|</span>
+              </div>
 
               {userInfo?.email ? (
                 <button
