@@ -64,7 +64,7 @@ const Navbar = () => {
               }}
               className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
             >
-              <div className="relative w-32 h-10">
+              <div className="">{/*relative w-32 h-10*/}
                 <Image
                   width="0"
                   height="0"
