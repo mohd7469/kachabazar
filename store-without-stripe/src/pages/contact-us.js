@@ -28,7 +28,7 @@ const ContactUs = () => {
 
   const submitHandler = () => {
     notifySuccess(
-      "your message sent successfully. We will contact you shortly."
+      "Your message sent successfully. We will contact you shortly."
     );
   };
 
@@ -156,7 +156,7 @@ const ContactUs = () => {
                 width={874}
                 height={874}
                 src={
-                  storeCustomizationSetting?.contact_us?.midLeft_col_img ||
+                  storeCustomizationSetting?.contact_us?.left_col_img ||
                   "/contact-us.png"
                 }
                 alt="logo"
