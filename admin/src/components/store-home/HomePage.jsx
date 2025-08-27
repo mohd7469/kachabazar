@@ -195,6 +195,7 @@ const HomePage = ({
                   setImageUrl={setHeaderLogo}
                   targetWidth={87}
                   targetHeight={25}
+                  folder="firzy/assets"
                 />
               </div>
             </div>

@@ -54,56 +54,34 @@ const NavBarTop = () => {
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
           <div className="text-gray-700 py-2 font-sans text-xs font-medium border-b flex justify-between items-center">
             <span className="flex items-center">
-              <FiPhoneCall className="mr-2" />
+              <i className="fa-brands fa-whatsapp mr-1 text-emerald-500"></i>
               {showingTranslateValue(
                 storeCustomizationSetting?.navbar?.help_text
               )}
               <a
                 href={`tel:${
-                  storeCustomizationSetting?.navbar?.phone || "+099949343"
+                  storeCustomizationSetting?.navbar?.phone || "+971*****"
                 }`}
                 className="font-bold text-emerald-500 ml-1"
               >
-                {storeCustomizationSetting?.navbar?.phone || "+099949343"}
+                {storeCustomizationSetting?.navbar?.phone || "+971*****"}
               </a>
             </span>
 
             <div className="lg:text-right flex items-center navBar">
-              {storeCustomizationSetting?.navbar?.about_menu_status && (
-                <div>
-                  <Link
-                    href="/about-us"
-                    className="font-medium hover:text-emerald-600"
-                  >
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.navbar?.about_us
-                    )}
-                  </Link>
-                  <span className="mx-2">|</span>
-                </div>
-              )}
-              {storeCustomizationSetting?.navbar?.contact_menu_status && (
-                <div>
-                  <Link
-                    href="/contact-us"
-                    className="font-medium hover:text-emerald-600"
-                  >
-                    {showingTranslateValue(
-                      storeCustomizationSetting?.navbar?.contact_us
-                    )}
-                  </Link>
-                  <span className="mx-2">|</span>
-                </div>
-              )}
-              <Link
-                href="/user/my-account"
-                className="font-medium hover:text-emerald-600"
-              >
-                {showingTranslateValue(
-                  storeCustomizationSetting?.navbar?.my_account
-                )}
-              </Link>
-              <span className="mx-2">|</span>
+              <div>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=support@firzy.com&su=General%20Inquiry&body=Hello%2C%20I%20have%20a%20inquiry."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-emerald-500"
+                >
+                  <i className="fa-solid fa-envelope mr-1"></i>
+                  support@firzy.com
+                </a>
+                <span className="mx-2">|</span>
+              </div>
+
               {userInfo?.email ? (
                 <button
                   onClick={handleLogOut}

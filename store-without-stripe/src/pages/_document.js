@@ -49,6 +49,11 @@ class MyDocument extends Document {
               "https://res.cloudinary.com/ahossain/image/upload/v1636729752/facebook-page_j7alju.png"
             }
           />
+          <script
+            src="https://kit.fontawesome.com/ca95471c09.js"
+            crossOrigin="anonymous"
+            async
+          ></script>
         </Head>
         <body>
           <Main />
