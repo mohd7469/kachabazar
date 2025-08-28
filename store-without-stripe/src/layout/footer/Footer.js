@@ -16,6 +16,8 @@ import useGetSetting from "@hooks/useGetSetting";
 import CMSkeleton from "@components/preloader/CMSkeleton";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
+import moment from "moment";
+
 const Footer = () => {
   const { t } = useTranslation();
   const userInfo = getUserSession();
@@ -276,7 +278,9 @@ const Footer = () => {
                 className="mr-3 lg:mr-12 xl:mr-12"
                 rel="noreferrer"
               >
-                <div className="relative w-32 h-10">
+                <div className="relative w-100 h-10">{/*relative w-32 h-10*/}
+                  <img src="https://placehold.co/450x100/white/008000?text=Pharmelow&font=" alt=""/>
+                  {/*
                   <Image
                     // width={110}
                     // height={40}
@@ -290,9 +294,11 @@ const Footer = () => {
                     }
                     alt="logo"
                   />
+                  */}
                 </div>
               </Link>
               <p className="leading-7 font-sans text-sm text-gray-600 mt-3">
+                <i className="fa-solid fa-location-dot mr-2"></i>
                 <CMSkeleton
                   count={1}
                   height={10}
@@ -302,12 +308,14 @@ const Footer = () => {
                 <br />
                 <span>
                   {" "}
-                  Tel : {storeCustomizationSetting?.footer?.block4_phone}
+                  <i className="fa-solid fa-phone mr-2"></i>
+                  {storeCustomizationSetting?.footer?.block4_phone}
                 </span>
                 <br />
                 <span>
                   {" "}
-                  Email : {storeCustomizationSetting?.footer?.block4_email}
+                  <i className="fa-solid fa-envelope mr-2"></i>
+                  {storeCustomizationSetting?.footer?.block4_email}
                 </span>
               </p>
             </div>
@@ -437,16 +445,7 @@ const Footer = () => {
 
       <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 flex justify-center py-4">
         <p className="text-sm text-gray-500 leading-6">
-          Copyright 2024 @{" "}
-          <Link
-            href="https://themeforest.net/user/htmllover"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-emerald-500"
-          >
-            HtmlLover
-          </Link>
-          , All rights reserved.
+          Copyright <b>© {moment().format("YYYY")}</b> All rights reserved.
         </p>
       </div>
     </div>
