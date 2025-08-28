@@ -4,7 +4,7 @@ const PageHeader = ({ title, description, headerBg }) => {
   return (
     <div
       // style={{ backgroundImage: `url(${headerBg || "/page-header-bg.jpg"})` }}
-      className={`flex justify-center py-10 lg:py-20 w-full bg-cover bg-no-repeat bg-bottom bg-amber-100`}
+      className={`flex justify-center py-10 lg:py-20 w-full bg-cover bg-no-repeat bg-bottom bg-gray-100`}
     >
       <div className="flex mx-auto w-full max-w-screen-2xl px-3 sm:px-10">
         <div className="w-full flex justify-center flex-col relative">
