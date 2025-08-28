@@ -39,9 +39,9 @@ const ContactUs = () => {
         title={showingTranslateValue(
           storeCustomizationSetting?.contact_us?.title
         )}
-        description={showingTranslateValue(
+        description={
           storeCustomizationSetting?.contact_us?.description || "For inquiries about orders, shipping, returns, or product information, please contact us using the details below or by submitting the form."
-        )}
+        }
       />
 
       <div className="bg-white">
