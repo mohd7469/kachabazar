@@ -19,7 +19,7 @@ const NavBarTop = () => {
   const router = useRouter();
 
   const { storeCustomizationSetting } = useGetSetting();
-  const { showingTranslateValue } = useUtilsFunction();
+  const { showingTranslateValue, globalSetting } = useUtilsFunction();
 
   const handleLogOut = () => {
     signOut();
@@ -77,7 +77,7 @@ const NavBarTop = () => {
                   className="font-semibold text-emerald-500"
                 >
                   <i className="fa-solid fa-envelope mr-1"></i>
-                  support@firzy.com
+                  { globalSetting?.email || "support@****.com"}
                 </a>
                 <span className="mx-2">|</span>
               </div>
