@@ -278,7 +278,7 @@ const Footer = () => {
                 className="mr-3 lg:mr-12 xl:mr-12"
                 rel="noreferrer"
               >
-                <div className="relative w-100 h-10">{/*relative w-32 h-10*/}
+                <div className="relative w-100 border-2 rounded">{/*relative w-32 h-10*/}
                   <img src="https://placehold.co/450x100/white/008000?text=Pharmelow&font=" alt=""/>
                   {/*
                   <Image
@@ -297,7 +297,7 @@ const Footer = () => {
                   */}
                 </div>
               </Link>
-              <p className="leading-7 font-sans text-sm text-gray-600 mt-3">
+              <p className="leading-7 font-sans text-sm text-gray-600">
                 <i className="fa-solid fa-location-dot mr-2"></i>
                 <CMSkeleton
                   count={1}
