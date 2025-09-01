@@ -1,3 +1,4 @@
+/*
 const categories = [
   {
     _id: "62c827b5a427b63741da9175",
@@ -6,7 +7,7 @@ const categories = [
       en: "Home",
     },
     id: "Root",
-    parentName: "Home",
+    parentName: "",
     description: {
       en: "This is Home Category",
     },
@@ -866,5 +867,150 @@ const categories = [
     icon: "",
   },
 ];
+*/
+
+const categories = [
+  {
+    "id": "Root",
+    "status": "show",
+    "name": { "en": "Home" },
+    "description": { "en": "This is Home Category" },
+    "parentName": "",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "For Men" },
+    "description": { "en": "Products specially formulated for men’s grooming and wellness." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Chocolates" },
+    "description": { "en": "Edible chocolate items and cocoa-based products." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Creams" },
+    "description": { "en": "Skin or body creams for hydration, care, or treatment." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Sprays" },
+    "description": { "en": "Spray-based personal care or medicinal products." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Gels" },
+    "description": { "en": "Gel-based products for topical application or styling." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Pumps" },
+    "description": { "en": "Pump-packaged items for easy dispensing." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Honey" },
+    "description": { "en": "Natural honey and honey-infused products." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Tablets" },
+    "description": { "en": "Tablet-form supplements or medications." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Wipes" },
+    "description": { "en": "Disposable wipes for hygiene and skincare." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Capsules" },
+    "description": { "en": "Capsule-form supplements or medicines." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Oils" },
+    "description": { "en": "Essential oils, massage oils, or treatment oils." },
+    "parentName": "For Men",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "For Women" },
+    "description": { "en": "Products designed for women’s care and beauty." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "For Hip & Breast" },
+    "description": { "en": "Targeted creams and gels for hip & breast enhancement or care." },
+    "parentName": "For Women",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "For Weight" },
+    "description": { "en": "Weight management or slimming products." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Gel" },
+    "description": { "en": "Standalone gel products for skincare or relief." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Healing" },
+    "description": { "en": "Products aimed at soothing, repairing, or healing skin." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Spray" },
+    "description": { "en": "Standalone spray items for application convenience." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Teeth" },
+    "description": { "en": "Oral care and teeth-whitening products." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  },
+  {
+    "status": "show",
+    "name": { "en": "Uncategorized" },
+    "description": { "en": "Miscellaneous products not assigned to a category." },
+    "parentName": "Home",
+    "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756580979/category/c0mkuulze91zuhch7ecn.png"
+  }
+]
 
 module.exports = categories;

@@ -31,7 +31,11 @@ const attributeData = require("../utils/attributes");
 const Setting = require("../models/Setting");
 const settingData = require("../utils/settings");
 
+// links parent child helper function
+const linkParents = require("../utils/linkParents");
+
 connectDB();
+
 const importData = async () => {
   try {
     await Language.deleteMany();
@@ -51,6 +55,7 @@ const importData = async () => {
 
     await Category.deleteMany();
     await Category.insertMany(categoryData);
+    await linkParents(Category);
 
     await Product.deleteMany();
     await Product.insertMany(productData);
