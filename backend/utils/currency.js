@@ -1,7 +1,7 @@
 const currency = [
   {
     name: "United Arab Emirates Dirham",
-    symbol: "AED",
+    symbol: "د.إ AED",
     status: "show",
   },
   /*
