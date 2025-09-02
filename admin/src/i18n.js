@@ -3,7 +3,6 @@ import Cookies from "js-cookie";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 import en from "@/utils/translation/en.json";
-import de from "@/utils/translation/de.json";
 import ar from "@/utils/translation/ar.json";
 
 // Get default language from global settings or fallback to 'en'
@@ -15,7 +14,6 @@ i18n
   .init({
     resources: {
       en: { translation: en },
-      de: { translation: de },
       ar: { translation: ar },
     },
     debug: true,
