@@ -62,12 +62,12 @@ const Coupon = ({ couponInHome }) => {
                   <h6 className="pl-1 text-base font-medium text-gray-600">
                     <span className="text-lg md:text-xl lg:text-xl text-red-500 font-bold">
                       {coupon?.discountType?.type === "fixed" ? (
-                        <span>${coupon?.discountType?.value}</span>
+                        <span>{currency}{coupon?.discountType?.value}</span>
                       ) : (
                         <span>{coupon?.discountType?.value}%</span>
                       )}
-                    </span>{" "}
-                    Off
+                      {" OFF"}
+                    </span>
                   </h6>
                   <div className="ml-2">
                     {dayjs().isAfter(dayjs(coupon.endTime)) ? (

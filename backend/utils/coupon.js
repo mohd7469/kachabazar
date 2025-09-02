@@ -1,3 +1,4 @@
+/*
 const coupons = [
   {
     status: "show",
@@ -68,4 +69,73 @@ const coupons = [
     },
   },
 ];
+*/
+
+const coupons = [
+  {
+    status: "show",
+    title: {
+      en: "Exclusive Discount – OFF10",
+      ar: "خصم حصري – OFF10"
+    },
+    couponCode: "OFF10",
+    endTime: "2025-11-10T00:00:00.000Z",
+    minimumAmount: 100,
+    productType: "Grocery",
+    logo: "https://placehold.co/200.png?text=OFF10",
+    discountType: {
+      type: "fixed",
+      value: 10,
+    },
+  },
+  {
+    status: "show",
+    title: {
+      en: "Exclusive Discount – OFF15",
+      ar: "خصم حصري – OFF15"
+    },
+    couponCode: "OFF15",
+    endTime: "2025-11-15T00:00:00.000Z",
+    minimumAmount: 150,
+    productType: "Grocery",
+    logo: "https://placehold.co/200.png?text=OFF15",
+    discountType: {
+      type: "fixed",
+      value: 15,
+    },
+  },
+  {
+    status: "show",
+    title: {
+      en: "Exclusive Discount – OFF20",
+      ar: "خصم حصري – OFF20"
+    },
+    couponCode: "OFF20",
+    endTime: "2025-11-20T00:00:00.000Z",
+    minimumAmount: 200,
+    productType: "Cloths",
+    logo: "https://placehold.co/200.png?text=OFF20",
+    discountType: {
+      type: "fixed",
+      value: 20,
+    },
+  },
+  {
+    status: "show",
+    title: {
+      en: "Exclusive Discount – OFF25",
+      ar: "خصم حصري – OFF25"
+    },
+    couponCode: "OFF25",
+    endTime: "2025-11-25T00:00:00.000Z",
+    minimumAmount: 250,
+    productType: "Grocery",
+    logo: "https://placehold.co/200.png?text=OFF25",
+    discountType: {
+      type: "fixed",
+      value: 25,
+    },
+  },
+];
+
 module.exports = coupons;
