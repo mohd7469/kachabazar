@@ -139,11 +139,10 @@ const Coupon = ({ couponInHome }) => {
                       </CopyToClipboard>
                     </div>
                   </div>
-                  <p className="text-xs leading-4 text-gray-500 mt-2">
-                    * This coupon apply when shopping more then{" "}
+                  <p className="text-xs leading-4 text-gray-500 mt-2 text-center">
+                    * Orders above{" "}
                     <span className="font-bold">
-                      {currency}
-                      {coupon.minimumAmount}
+                      {`${currency}${coupon.minimumAmount}`}
                     </span>{" "}
                   </p>
                 </div>
