@@ -4,6 +4,7 @@ const currency = [
     symbol: "AED",
     status: "show",
   },
+  /*
   {
     name: "Dollar",
     symbol: "$",
@@ -14,6 +15,7 @@ const currency = [
     symbol: "£",
     status: "show",
   },
+  */
 ];
 
 module.exports = currency;
