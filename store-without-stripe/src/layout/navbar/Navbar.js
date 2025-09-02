@@ -16,6 +16,8 @@ import NavbarPromo from "@layout/navbar/NavbarPromo";
 import CartDrawer from "@components/drawer/CartDrawer";
 import { SidebarContext } from "@context/SidebarContext";
 
+import NProgress from 'nprogress';
+
 const Navbar = () => {
   const { t, lang } = useTranslation("common");
   const [searchText, setSearchText] = useState("");
@@ -60,6 +62,7 @@ const Navbar = () => {
               href="/"
               onClick={(e) => {
                 e.preventDefault();
+                NProgress.start();
                 window.location.href = "/";
               }}
               className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"

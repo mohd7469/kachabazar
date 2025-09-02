@@ -16,6 +16,8 @@ import useGetSetting from "@hooks/useGetSetting";
 import CMSkeleton from "@components/preloader/CMSkeleton";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
+import NProgress from 'nprogress';
+
 import moment from "moment";
 
 const Footer = () => {
@@ -275,10 +277,15 @@ const Footer = () => {
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
               <Link
                 href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  NProgress.start();
+                  window.location.href = "/";
+                }}
                 className="mr-3 lg:mr-12 xl:mr-12"
                 rel="noreferrer"
               >
-                <div className="relative w-100 border-2 rounded">{/*relative w-32 h-10*/}
+                <div className="relative w-100 border p-2 rounded-lg">{/*relative w-32 h-10*/}
                   <img src="https://placehold.co/450x100/white/008000?text=Pharmelow&font=" alt=""/>
                   {/*
                   <Image
