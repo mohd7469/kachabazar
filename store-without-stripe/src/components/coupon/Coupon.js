@@ -201,12 +201,12 @@ const Coupon = ({ couponInHome }) => {
                 <h2 className="pl-1 text-base font-medium text-gray-600">
                   <span className="text-lg md:text-xl lg:text-xl text-red-500 font-bold">
                     {coupon?.discountType?.type === "fixed" ? (
-                      <span>${coupon?.discountType?.value}</span>
+                      <span>{currency}{coupon?.discountType?.value}</span>
                     ) : (
                       <span>{coupon?.discountType?.value}%</span>
                     )}
-                  </span>{" "}
-                  Off
+                    {" OFF"}
+                  </span>
                 </h2>
               </div>
             </div>
@@ -249,10 +249,9 @@ const Coupon = ({ couponInHome }) => {
                     </div>
                   </div>
                   <p className="text-xs leading-5 text-gray-500 mt-2">
-                    * This coupon code will apply on when you shopping more then{" "}
+                    * Applies on orders above{" "}
                     <span className="font-bold text-gray-700">
-                      {currency}
-                      {coupon.minimumAmount}
+                      {`${currency}${coupon.minimumAmount}`}
                     </span>{" "}
                   </p>
                 </div>
