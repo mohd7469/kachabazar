@@ -44,6 +44,7 @@
     "next-seo": "^4.28.1",
     "next-translate": "^2.6.2",
     "npm": "^11.0.0",
+    "nprogress": "^0.2.0",
     "phone": "^3.1.57",
     "rc-drawer": "^4.4.2",
     "react": "^18.2.0",

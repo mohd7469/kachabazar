@@ -20,7 +20,19 @@ import DefaultSeo from "@components/common/DefaultSeo";
 import { SidebarProvider } from "@context/SidebarContext";
 import SettingServices from "@services/SettingServices";
 
+import NProgress from 'nprogress';
+import "nprogress/nprogress.css";
+NProgress.configure({
+  showSpinner: false
+});
+
 let persistor = persistStore(store);
+if (typeof window !== 'undefined') {
+  NProgress.start();
+  window.addEventListener("load", () => {
+    NProgress.done();
+  });
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,6 +72,21 @@ function MyApp({ Component, pageProps }) {
             router.events.off("routeChangeComplete", handleRouteChange);
           };
         }
+        
+        // ✅ Loader with NProgress
+        const handleStart = () => NProgress.start();
+        const handleStop = () => NProgress.done();
+        
+        router.events.on("routeChangeStart", handleStart);
+        router.events.on("routeChangeComplete", handleStop);
+        router.events.on("routeChangeError", handleStop);
+        
+        // cleanup loader events
+        return () => {
+          router.events.off("routeChangeStart", handleStart);
+          router.events.off("routeChangeComplete", handleStop);
+          router.events.off("routeChangeError", handleStop);
+        };
       } catch (error) {
         console.error("Failed to fetch store settings:", error);
       }
