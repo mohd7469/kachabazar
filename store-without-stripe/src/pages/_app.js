@@ -1,4 +1,6 @@
 import "@styles/custom.css";
+import "@styles/index.scss";
+
 import { CartProvider } from "react-use-cart";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";

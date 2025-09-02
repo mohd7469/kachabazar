@@ -106,6 +106,7 @@ const MainCarousel = () => {
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
+        // autoplay={false}
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
@@ -124,7 +125,7 @@ const MainCarousel = () => {
           }
         }
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className="main-slider"
       >
         {sliderData?.map((item, i) => (
           <SwiperSlide
