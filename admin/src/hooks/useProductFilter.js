@@ -152,7 +152,8 @@ const useProductFilter = (data) => {
     if (handleDisableForDemo()) {
       return; // Exit the function if the feature is disabled
     }
-    if (selectedFile.length > 1) {
+
+    if (selectedFile.length >= 1) {
       setLoading(true);
       let productDataValidation = selectedFile.map((value) =>
         ajv.validate(schema, value)
@@ -168,6 +169,7 @@ const useProductFilter = (data) => {
             setIsUpdate(true);
             setLoading(false);
             notifySuccess(res.message);
+            window.location.reload();
           })
           .catch((err) => {
             setLoading(false);
