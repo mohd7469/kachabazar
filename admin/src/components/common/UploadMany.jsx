@@ -249,7 +249,7 @@ const UploadMany = ({
       {isImportBoxShown && (
         <>
           <div className="w-full my-2 lg:my-0 md:my-0 flex">
-            <div className="h-12 border border-dashed border-gray-300 rounded-md flex items-center justify-between px-3 text-xs dark:text-gray-400">
+            <div className="h-12 border border-dashed border-gray-300 rounded-md flex items-center justify-between px-3 text-xs dark:text-gray-400 hover:border-gray-400">
               <label className="flex items-center gap-2 cursor-pointer">
                 <Input
                   disabled={isDisabled}
