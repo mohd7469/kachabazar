@@ -177,6 +177,7 @@ const UploadMany = ({
                 setDropDown(!dropDown);
               }}
               className="border flex justify-center items-center border-gray-300 hover:border-emerald-400 hover:text-emerald-400  dark:text-gray-300 cursor-pointer h-10 w-20 rounded-md focus:outline-none"
+              data-no-control={totalDoc < 1 ? true : null}
             >
               {/* <BsPlus className="text-4xl" /> */}
               <FiUpload className="mr-2" />
