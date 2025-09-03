@@ -1,2 +1,7 @@
+.no-control, [data-no-control] {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+}
+
 .main-slider {
 }
