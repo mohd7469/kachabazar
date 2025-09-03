@@ -4,7 +4,9 @@
 }
 
 .main-slider {
-  img {
-    width: 100vw;
+  .swiper-wrapper {
+    img {
+      width: 100vw;
+    }
   }
 }
