@@ -43,10 +43,10 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             <div className="bg-white">
               <div className="mx-auto py-5 max-w-screen-2xl px-3 sm:px-10">
                 <div className="flex w-full">
-                  <div className={`flex-shrink-0 xl:pr-6 lg:block shadow rounded-lg w-full ${storeCustomizationSetting?.home?.slider_width_status ? "" : "lg:w-3/5" }`}>
+                  <div className={`flex-shrink-0 lg:block shadow rounded-lg w-full ${storeCustomizationSetting?.home?.slider_width_status ? "" : "lg:w-3/5" }`}>
                     <MainCarousel />
                   </div>
-                  <div className={`w-full hidden ${storeCustomizationSetting?.home?.coupon_status ? "lg:flex" : "" }`}>
+                  <div className={`w-full xl:ml-6 hidden ${storeCustomizationSetting?.home?.coupon_status ? "lg:flex" : "" }`}>
                     <OfferCard />
                   </div>
                 </div>
