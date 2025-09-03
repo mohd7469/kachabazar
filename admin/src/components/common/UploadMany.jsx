@@ -292,6 +292,7 @@ const UploadMany = ({
                 <Button
                   onClick={handleUploadMultiple}
                   className="h-10 ml-2 px-2"
+                  data-no-control={!isDisabled ? true : null}
                 >
                   <span className="">
                     <FiPlus />
