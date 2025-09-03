@@ -111,17 +111,20 @@ const Products = () => {
               onSubmit={handleSubmitForAll}
               className="py-3 md:pb-0 grid gap-4 lg:gap-6 xl:gap-6 xl:flex"
             >
-              <div className="flex-grow-0 sm:flex-grow md:flex-grow lg:flex-grow xl:flex-grow">
-                <UploadMany
-                  title="Products"
-                  filename={filename}
-                  isDisabled={isDisabled}
-                  totalDoc={data?.totalDoc}
-                  handleSelectFile={handleSelectFile}
-                  handleUploadMultiple={handleUploadMultiple}
-                  handleRemoveSelectFile={handleRemoveSelectFile}
-                />
+              <div className="flex flex-grow items-center">
+                <div className="flex-grow-0 sm:flex-grow md:flex-grow lg:flex-grow xl:flex-grow">
+                  <UploadMany
+                    title="Products"
+                    filename={filename}
+                    isDisabled={isDisabled}
+                    totalDoc={data?.totalDoc}
+                    handleSelectFile={handleSelectFile}
+                    handleUploadMultiple={handleUploadMultiple}
+                    handleRemoveSelectFile={handleRemoveSelectFile}
+                  />
+                </div>
               </div>
+              
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
                   <Button

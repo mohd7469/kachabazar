@@ -176,12 +176,12 @@ const UploadMany = ({
               onClick={() => {
                 setDropDown(!dropDown);
               }}
-              className="border flex justify-center items-center border-gray-300 hover:border-emerald-400 hover:text-emerald-400  dark:text-gray-300 cursor-pointer h-10 w-20 rounded-md focus:outline-none"
+              className="border px-4 flex justify-center items-center border-gray-300 hover:border-emerald-400 hover:text-emerald-400  dark:text-gray-300 cursor-pointer h-12 rounded-md focus:outline-none"
               data-no-control={totalDoc < 1 ? true : null}
             >
               {/* <BsPlus className="text-4xl" /> */}
-              <FiUpload className="mr-2" />
-              <span className="text-xs">{t("Export")}</span>
+              <i className="fa fa-upload me-2"></i>
+              <span className="text-sm">{t("Export")}</span>
             </button>
           )}
           {dropDown && (
@@ -238,10 +238,10 @@ const UploadMany = ({
         <div className="lg:flex-1 md:flex-1 mr-3  sm:flex-none">
           <button
             onClick={() => setIsImportBoxShown(!isImportBoxShown)}
-            className="border flex justify-center items-center h-10 w-20 hover:text-yellow-400  border-gray-300 dark:text-gray-300 cursor-pointer  py-2 hover:border-yellow-400 rounded-md focus:outline-none"
+            className="border px-4 flex justify-center items-center h-12 hover:text-yellow-400  border-gray-300 dark:text-gray-300 cursor-pointer py-2 hover:border-yellow-400 rounded-md focus:outline-none"
           >
-            <FiDownload className="mr-2" />
-            <span className="text-xs">Import</span>
+            <i className="fa fa-download me-2"></i>
+            <span className="text-sm">Import</span>
           </button>
         </div>
       </div>
@@ -249,8 +249,8 @@ const UploadMany = ({
       {isImportBoxShown && (
         <>
           <div className="w-full my-2 lg:my-0 md:my-0 flex">
-            <div className="h-10 border border-dashed border-emerald-500 rounded-md">
-              <label className="ps-2 pe-3 w-full rounded-lg h-10 flex justify-center items-center text-xs dark:text-gray-400 leading-none">
+            <div className="h-12 border border-dashed border-emerald-500 rounded-md flex items-center justify-between px-3 text-xs dark:text-gray-400">
+              <label className="flex items-center gap-2 cursor-pointer">
                 <Input
                   disabled={isDisabled}
                   type="file"
@@ -261,7 +261,7 @@ const UploadMany = ({
                   filename
                 ) : (
                   <>
-                    <FiUploadCloud className="mx-2 text-emerald-500 text-lg dark:text-gray-400" />{" "}
+                    <FiUploadCloud className="text-emerald-500 text-lg dark:text-gray-400" />{" "}
                     {t("SelectYourJSON")} {title} {t("File")}
                   </>
                 )}
@@ -269,9 +269,9 @@ const UploadMany = ({
                   <span
                     onClick={handleRemoveSelectFile}
                     type="button"
-                    className="text-red-500 focus:outline-none mx-4 text-lg"
+                    className="focus:outline-none"
                   >
-                    <FiXCircle />
+                    <i className="fa fa-times text-orange-500"></i>
                   </span>
                 )}
               </label>
@@ -279,7 +279,7 @@ const UploadMany = ({
 
             <div className="flex">
               {loading ? (
-                <Button className="ml-2 h-10">
+                <Button className="ml-2 h-12">
                   <img
                     src={spinnerLoadingImage}
                     alt="Loading"
@@ -291,13 +291,13 @@ const UploadMany = ({
               ) : (
                 <Button
                   onClick={handleUploadMultiple}
-                  className="h-10 ml-2 px-2"
+                  className="h-12 ml-2 px-2"
                   data-no-control={!isDisabled ? true : null}
                 >
                   <span className="">
                     <FiPlus />
                   </span>
-                  <span className="text-sx w-20">{t("ImportNow")}</span>
+                  <span className="text-sm w-10">{t("Save")}</span>
                 </Button>
               )}
             </div>
