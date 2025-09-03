@@ -176,7 +176,7 @@ const UploadMany = ({
               onClick={() => {
                 setDropDown(!dropDown);
               }}
-              className="border px-4 flex justify-center items-center border-gray-300 hover:border-emerald-400 hover:text-emerald-400  dark:text-gray-300 cursor-pointer h-12 rounded-md focus:outline-none"
+              className="border px-4 flex justify-center items-center h-12 hover:text-black-400 border-gray-300 dark:text-gray-300 cursor-pointer py-2 hover:border-gray-400 rounded-md focus:outline-none"
               data-no-control={totalDoc < 1 ? true : null}
             >
               {/* <BsPlus className="text-4xl" /> */}
@@ -238,7 +238,7 @@ const UploadMany = ({
         <div className="lg:flex-1 md:flex-1 mr-3  sm:flex-none">
           <button
             onClick={() => setIsImportBoxShown(!isImportBoxShown)}
-            className="border px-4 flex justify-center items-center h-12 hover:text-orange-400  border-gray-300 dark:text-gray-300 cursor-pointer py-2 hover:border-orange-400 rounded-md focus:outline-none"
+            className="border px-4 flex justify-center items-center h-12 hover:text-black-400 border-gray-300 dark:text-gray-300 cursor-pointer py-2 hover:border-gray-400 rounded-md focus:outline-none"
           >
             <i className="fa fa-download me-2"></i>
             <span className="text-sm">Import</span>
@@ -249,7 +249,7 @@ const UploadMany = ({
       {isImportBoxShown && (
         <>
           <div className="w-full my-2 lg:my-0 md:my-0 flex">
-            <div className="h-12 border border-dashed border-emerald-500 rounded-md flex items-center justify-between px-3 text-xs dark:text-gray-400">
+            <div className="h-12 border border-dashed border-gray-300 rounded-md flex items-center justify-between px-3 text-xs dark:text-gray-400">
               <label className="flex items-center gap-2 cursor-pointer">
                 <Input
                   disabled={isDisabled}
