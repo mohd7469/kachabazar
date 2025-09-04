@@ -7,6 +7,7 @@ const adminData = require("../utils/admin");
 const Customer = require("../models/Customer");
 const customerData = require("../utils/customers");
 
+// done
 const Coupon = require("../models/Coupon");
 const couponData = require("../utils/coupon");
 
@@ -35,43 +36,63 @@ const Setting = require("../models/Setting");
 const settingData = require("../utils/settings");
 
 // links parent child helper function
-const linkParents = require("../utils/linkParents");
+const { handleCategoriesAndProducts } = require("../utils/_helper");
 
 connectDB();
 
 const importData = async () => {
   try {
+    // done
     await Language.deleteMany();
     await Language.insertMany(languageData);
-
+    
+    
+    // done
     await Currency.deleteMany();
     await Currency.insertMany(currencyData);
-
+    
+    
+    // in-progress
     await Attribute.deleteMany();
-    await Attribute.insertMany(attributeData);
-
-    // await Customer.deleteMany();
+    // await Attribute.insertMany(attributeData);
+    
+    
+    // in-progress
+    await Customer.deleteMany();
     // await Customer.insertMany(customerData);
+    
 
+    // done
     await Admin.deleteMany();
     await Admin.insertMany(adminData);
+    
 
+    // done
     await Category.deleteMany();
     await Category.insertMany(categoryData);
-    await linkParents(Category);
-
+    
+    
+    // in-progress
     await Product.deleteMany();
     await Product.insertMany(productData);
+    
 
+    // done
     await Coupon.deleteMany();
     await Coupon.insertMany(couponData);
-
-    // await Order.deleteMany();
+    
+    
+    // in-progress
+    await Order.deleteMany();
     // await Order.insertMany(orderData);
-
+    
+    
+    // in-progress
     // await Setting.deleteMany();
     // await Setting.insertMany(settingData);
 
+
+    console.log("\n");
     console.log("data inserted successfully!");
     process.exit();
   } catch (error) {
