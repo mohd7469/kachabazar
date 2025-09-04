@@ -1,4 +1,5 @@
 import axios from "axios";
+import NProgress from "nprogress";
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -8,6 +9,30 @@ const instance = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+if (typeof window !== "undefined") {
+  instance.interceptors.request.use(
+    (config) => {
+      NProgress.start();
+      return config;
+    },
+    (error) => {
+      NProgress.done();
+      return Promise.reject(error);
+    }
+  );
+  
+  instance.interceptors.response.use(
+    (response) => {
+      NProgress.done();
+      return response;
+    },
+    (error) => {
+      NProgress.done();
+      return Promise.reject(error);
+    }
+  );
+}
 
 export const setToken = (token) => {
   // console.log("token", token);
