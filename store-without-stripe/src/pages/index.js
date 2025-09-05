@@ -62,7 +62,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {storeCustomizationSetting?.home?.featured_status && (
               <div className="bg-gray-100 lg:py-16 py-10">
                 <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
-                  <div className="mb-10 flex justify-center">
+                  <div className="mb-10 flex justify-center" data-aos="fade-up">
                     <div className="text-center w-full lg:w-2/5">
                       <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
                         <CMSkeleton
@@ -94,7 +94,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* popular products */}
             {storeCustomizationSetting?.home?.popular_products_status && (
               <div className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
-                <div className="mb-10 flex justify-center">
+                <div className="mb-10 flex justify-center" data-aos="fade-up">
                   <div className="text-center w-full lg:w-2/5">
                     <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
                       <CMSkeleton
@@ -150,7 +150,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
 
             {/* promotional banner card */}
             {storeCustomizationSetting?.home?.delivery_status && (
-              <div className="block mx-auto max-w-screen-2xl">
+              <div className="block mx-auto max-w-screen-2xl" data-aos="fade-up">
                 <div className="mx-auto max-w-screen-2xl px-4 sm:px-10">
                   <div className="lg:p-16 p-6 bg-orange-100 shadow-sm rounded-lg">
                     <CardTwo />
@@ -166,7 +166,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                   id="discount"
                   className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10"
                 >
-                  <div className="mb-10 flex justify-center">
+                  <div className="mb-10 flex justify-center" data-aos="fade-up">
                     <div className="text-center w-full lg:w-2/5">
                       <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
                         <CMSkeleton
