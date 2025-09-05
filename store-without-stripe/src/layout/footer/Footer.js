@@ -30,7 +30,8 @@ const Footer = () => {
   return (
     <div className="pb-16 lg:pb-0 xl:pb-0 bg-white">
       <div className="mx-auto max-w-screen-2xl px-4 sm:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-7 xl:grid-cols-12 gap-5 sm:gap-9 lg:gap-11 xl:gap-7 py-10 lg:py-16 justify-between">
+        {/* grid-cols-2 */}
+        <div className="grid md:grid-cols-7 xl:grid-cols-12 gap-5 sm:gap-9 lg:gap-11 xl:gap-7 py-10 lg:py-16 justify-between">
           {storeCustomizationSetting?.footer?.block1_status && (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
               <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
@@ -183,7 +184,7 @@ const Footer = () => {
               </ul>
             </div>
           )}
-          {storeCustomizationSetting?.footer?.block3_status && (
+          {storeCustomizationSetting?.footer?.block3_status ? (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
               <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
                 <CMSkeleton
@@ -271,6 +272,12 @@ const Footer = () => {
                   </Link>
                 </li>
               </ul>
+            </div>
+          ) : (
+            <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
+              <div className="flex justify-center items-center md:block">
+                <img src="https://cdn-icons-png.flaticon.com/512/10423/10423290.png" width={160} alt="Hurry Up!"/>
+              </div>
             </div>
           )}
           {storeCustomizationSetting?.footer?.block4_status && (
