@@ -1093,8 +1093,8 @@ const useStoreHomeSubmit = () => {
         setIsUpdate(true);
         setIsSubmitting(false);
 
-        // window.location.reload();
         notifySuccess(res.message);
+        // window.location.reload();
       } else {
         const res = await SettingServices.addStoreCustomizationSetting(
           storeCustomizationSettingData
@@ -1106,9 +1106,9 @@ const useStoreHomeSubmit = () => {
 
         setIsUpdate(true);
         setIsSubmitting(false);
-
-        // window.location.reload();
+        
         notifySuccess(res.message);
+        // window.location.reload();
       }
     } catch (err) {
       notifyError(err ? err?.response?.data?.message : err?.message);

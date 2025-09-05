@@ -77,14 +77,14 @@ const useStoreSettingSubmit = (id) => {
         const res = await SettingServices.updateStoreSetting(settingData);
         setIsUpdate(true);
         setIsSubmitting(false);
-        // window.location.reload();
         notifySuccess(res.message);
+        // window.location.reload();
       } else {
         const res = await SettingServices.addStoreSetting(settingData);
         setIsUpdate(true);
         setIsSubmitting(false);
-        // window.location.reload();
         notifySuccess(res.message);
+        // window.location.reload();
       }
     } catch (err) {
       // console.log("err", err);

@@ -230,6 +230,11 @@ const DeleteModal = ({ id, ids, setIsCheck, category, title, useParamId }) => {
           setIsSubmitting(false);
         }
       }
+      
+      console.log('reloading..');
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (err) {
       notifyError(err ? err?.response?.data?.message : err?.message);
       setServiceId();

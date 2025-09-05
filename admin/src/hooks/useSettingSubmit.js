@@ -68,9 +68,8 @@ const useSettingSubmit = (id) => {
         if (res) {
           setIsUpdate(true);
           setIsSubmitting(false);
-
-          window.location.reload();
           notifySuccess(res.message);
+          window.location.reload();
         }
       } else {
         const res = await SettingServices.addGlobalSetting(settingData);
@@ -80,9 +79,8 @@ const useSettingSubmit = (id) => {
         // });
         setIsUpdate(true);
         setIsSubmitting(false);
-
-        window.location.reload();
         notifySuccess(res.message);
+        window.location.reload();
       }
     } catch (err) {
       // console.log("err", err);
