@@ -54,7 +54,7 @@ const ProductCard = ({ product, attributes }) => {
   };
 
   return (
-    <>
+    <div data-aos="fade-up">
       {modalOpen && (
         <ProductModal
           modalOpen={modalOpen}
@@ -177,7 +177,7 @@ const ProductCard = ({ product, attributes }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

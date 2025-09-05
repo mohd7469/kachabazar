@@ -9,11 +9,27 @@ NProgress.configure({
   showSpinner: false,
 });
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 if (typeof window !== "undefined") {
   NProgress.start();
+  
+  if (!window.__AOS_INITIALIZED__) {
+    AOS.init({
+      duration: 500,
+      once: true,
+      offset: 200, // optional
+      // easing: "ease-in-out", // optional
+    });
+    window.__AOS_INITIALIZED__ = true;
+  }
 
   const handleStart = () => NProgress.start();
-  const handleStop = () => NProgress.done();
+  const handleStop = () => {
+    NProgress.done();
+    AOS.refresh?.(); // Ensure AOS recalculates after page transitions
+  };
   
   window.addEventListener("load", handleStop);
   
@@ -21,7 +37,7 @@ if (typeof window !== "undefined") {
   Router.events.on("routeChangeComplete", handleStop);
   Router.events.on("routeChangeError", handleStop);
   
-  if (module.hot) {
+  if (module?.hot) {
     module.hot.dispose(() => {
       Router.events.off("routeChangeStart", handleStart);
       Router.events.off("routeChangeComplete", handleStop);
