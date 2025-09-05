@@ -1,5 +1,5 @@
 import "@styles/custom.css";
-import "@styles/index.scss";
+import "@styles/_index.scss";
 
 import Router from "next/router";
 import NProgress from "nprogress";
