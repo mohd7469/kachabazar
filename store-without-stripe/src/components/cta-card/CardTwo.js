@@ -12,7 +12,7 @@ const CardTwo = () => {
   const { showingTranslateValue } = useUtilsFunction();
 
   return (
-    <>
+    <div data-aos="fade-up">
       <div className="w-full bg-white shadow-sm lg:px-10 lg:py-5 p-6 rounded-lg">
         <div className="flex justify-between items-center">
           <div className="lg:w-3/5">
@@ -69,7 +69,7 @@ const CardTwo = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
