@@ -30,12 +30,13 @@ const Category = () => {
         <div className="w-full flex justify-between items-center h-16 px-6 py-4 bg-emerald-500 text-white border-b border-gray-100">
           <h2 className="font-semibold font-serif text-lg m-0 text-heading flex align-center">
             <Link href="/" className="mr-10">
-              <Image
+              {/*<Image
                 width={100}
                 height={38}
                 src="/logo/logo-color.svg"
                 alt="logo"
-              />
+              />*/}
+              <img src="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg" width={200} alt="Logo"/>
             </Link>
           </h2>
           <button

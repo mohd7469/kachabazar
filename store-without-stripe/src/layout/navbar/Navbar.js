@@ -68,7 +68,7 @@ const Navbar = () => {
               className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
             >
               <div className="">{/*relative w-32 h-10*/}
-                <Image
+                {/*<Image
                   width="0"
                   height="0"
                   sizes="100vw"
@@ -79,7 +79,8 @@ const Navbar = () => {
                     "/logo/logo-light.svg"
                   }
                   alt="logo"
-                />
+                />*/}
+                <img src="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg" width={200} alt="Logo"/>
               </div>
             </Link>
             <div className="w-full transition-all duration-200 ease-in-out lg:flex lg:max-w-[520px] xl:max-w-[750px] 2xl:max-w-[900px] md:mx-12 lg:mx-4 xl:mx-0">
