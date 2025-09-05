@@ -275,13 +275,13 @@ const Footer = () => {
             </div>
           ) : (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
-              <div className="flex justify-center items-center md:block">
+              <div className="flex justify-center items-center md:block" data-aos="fade-up">
                 <img src="https://cdn-icons-png.flaticon.com/512/10423/10423290.png" width={160} alt="Hurry Up!"/>
               </div>
             </div>
           )}
           {storeCustomizationSetting?.footer?.block4_status && (
-            <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3">
+            <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3" data-aos="fade-up">
               <Link
                 href="/"
                 onClick={(e) => {
