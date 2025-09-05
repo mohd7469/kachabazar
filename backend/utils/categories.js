@@ -873,8 +873,8 @@ const categories = [
   {
     "id": "Root",
     "status": "show",
-    "name": { "en": "Home" },
-    "description": { "en": "This is Home Category" },
+    "name": { "en": "Root" },
+    "description": { "en": "This is the Parent/Root Category." },
     "parentName": "",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
@@ -882,7 +882,7 @@ const categories = [
     "status": "show",
     "name": { "en": "For Men" },
     "description": { "en": "Products specially formulated for men’s grooming and wellness." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
   {
@@ -959,7 +959,7 @@ const categories = [
     "status": "show",
     "name": { "en": "For Women" },
     "description": { "en": "Products designed for women’s care and beauty." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
   {
@@ -973,42 +973,42 @@ const categories = [
     "status": "show",
     "name": { "en": "For Weight" },
     "description": { "en": "Weight management or slimming products." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
   {
     "status": "show",
     "name": { "en": "Gel" },
     "description": { "en": "Standalone gel products for skincare or relief." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
   {
     "status": "show",
     "name": { "en": "Healing" },
     "description": { "en": "Products aimed at soothing, repairing, or healing skin." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
   {
     "status": "show",
     "name": { "en": "Spray" },
     "description": { "en": "Standalone spray items for application convenience." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
   {
     "status": "show",
     "name": { "en": "Teeth" },
     "description": { "en": "Oral care and teeth-whitening products." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   },
   {
     "status": "show",
     "name": { "en": "Uncategorized" },
     "description": { "en": "Miscellaneous products not assigned to a category." },
-    "parentName": "Home",
+    "parentName": "Root",
     "icon": "https://res.cloudinary.com/kachabazarcloud/image/upload/v1756751424/qusgoi2udkgekqtpdojm.jpg"
   }
 ]
