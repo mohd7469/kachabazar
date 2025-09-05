@@ -12,7 +12,7 @@ import "rc-tree/assets/index.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import "@/assets/css/custom.css";
 import "@/assets/css/tailwind.css";
-import "@/assets/style/index.scss";
+import "@/assets/style/_index.scss";
 
 import App from "@/App";
 import myTheme from "@/assets/theme/myTheme";
