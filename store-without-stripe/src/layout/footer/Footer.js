@@ -292,8 +292,8 @@ const Footer = () => {
                 className="mr-3 lg:mr-12 xl:mr-12"
                 rel="noreferrer"
               >
-                <div className="relative w-100 border p-2 rounded-lg">{/*relative w-32 h-10*/}
-                  <img src="https://placehold.co/450x100/white/008000?text=Pharmelow&font=" alt=""/>
+                <div className="relative w-100 border border-emerald-500 p-2 rounded-lg flex justify-center items-center">{/*relative w-32 h-10*/}
+                  <img src="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg" width={200} alt="Logo"/>
                   {/*
                   <Image
                     // width={110}
