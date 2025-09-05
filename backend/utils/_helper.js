@@ -9,7 +9,6 @@ const linkParents = require("./linkParents");
 async function handleCategoriesAndProducts() {
   await handleCategories();
   await handleProducts();
-  // const products;
 }
 
 async function handleCategories() {
