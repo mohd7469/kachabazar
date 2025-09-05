@@ -292,7 +292,7 @@ const Footer = () => {
                 className="mr-3 lg:mr-12 xl:mr-12"
                 rel="noreferrer"
               >
-                <div className="relative w-100 border border-emerald-500 p-2 rounded-lg flex justify-center items-center">{/*relative w-32 h-10*/}
+                <div className="relative w-100 bg-emerald-500 z-20 p-2 rounded-lg flex justify-center items-center">{/*relative w-32 h-10*/}
                   <img src="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg" width={200} alt="Logo"/>
                   {/*
                   <Image
