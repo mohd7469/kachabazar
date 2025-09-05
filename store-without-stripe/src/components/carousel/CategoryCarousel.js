@@ -52,6 +52,15 @@ const CategoryCarousel = () => {
           swiper.params.navigation.nextEl = nextRef.current;
           swiper.navigation.init();
           swiper.navigation.update();
+          setTimeout(()=>{
+            swiper.slideTo(1);
+            console.log('sliding..');
+            
+            const slider = document.querySelector(".category-slider .swiper-wrapper");
+            if (slider) {
+              slider.classList.add("flex", "justify-center", "items-center");
+            }
+          }, 1000);
         }}
         autoplay={{
           delay: 5000,
@@ -59,38 +68,31 @@ const CategoryCarousel = () => {
         }}
         spaceBetween={8}
         navigation={true}
-        allowTouchMove={false}
+        centeredSlides={false}
+        allowTouchMove={true}
         loop={true}
         breakpoints={{
-          // when window width is >= 640px
           375: {
             width: 375,
             slidesPerView: 2,
           },
-          // when window width is >= 768px
           414: {
             width: 414,
             slidesPerView: 3,
           },
-          // when window width is >= 768px
           660: {
             width: 660,
             slidesPerView: 4,
           },
-
-          // when window width is >= 768px
           768: {
             width: 768,
             slidesPerView: 6,
           },
-
-          // when window width is >= 768px
           991: {
             width: 991,
             slidesPerView: 8,
           },
-
-          // when window width is >= 768px
+          /*
           1140: {
             width: 1140,
             slidesPerView: 9,
@@ -102,7 +104,7 @@ const CategoryCarousel = () => {
           1920: {
             width: 1920,
             slidesPerView: 10,
-          },
+          },*/
         }}
         modules={[Autoplay, Navigation, Pagination, Controller]}
         className="mySwiper category-slider my-10"
