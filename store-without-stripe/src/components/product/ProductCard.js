@@ -144,7 +144,7 @@ const ProductCard = ({ product, attributes }) => {
                             <IoRemove />
                           </span>
                         </button>
-                        <p className="text-sm text-dark px-1 font-serif font-semibold">
+                        <p className="text-sm text-dark px-1 py-1 font-serif font-semibold">
                           {item.quantity}
                         </p>
                         <button
