@@ -278,7 +278,7 @@ const Checkout = () => {
                       {storeSetting?.cod_status && (
                         <div className="">
                           <InputPayment
-                            defaultChecked={true}
+                            defaultChecked={false}
                             description={'Pay on order arrives.'}
                             setShowCard={setShowCard}
                             register={register}
@@ -293,6 +293,7 @@ const Checkout = () => {
                      {storeSetting?.razorpay_status && (
                       <div className="">
                         <InputPayment
+                          defaultChecked={false}
                           setShowCard={setShowCard}
                           register={register}
                           name="RazorPay"
