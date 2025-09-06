@@ -278,6 +278,8 @@ const Checkout = () => {
                       {storeSetting?.cod_status && (
                         <div className="">
                           <InputPayment
+                            defaultChecked={true}
+                            description={'Pay on order arrives.'}
                             setShowCard={setShowCard}
                             register={register}
                             name={t("common:cashOnDelivery")}
@@ -288,7 +290,7 @@ const Checkout = () => {
                         </div>
                       )}
 
-                      {/* {storeSetting?.razorpay_status && ( */}
+                     {storeSetting?.razorpay_status && (
                       <div className="">
                         <InputPayment
                           setShowCard={setShowCard}
@@ -299,7 +301,7 @@ const Checkout = () => {
                         />
                         <Error errorMessage={errors.paymentMethod} />
                       </div>
-                      {/* )} */}
+                     )}
                     </div>
                   </div>
 
