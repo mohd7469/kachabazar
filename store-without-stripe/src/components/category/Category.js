@@ -12,6 +12,8 @@ import CategoryServices from "@services/CategoryServices";
 import CategoryCard from "@components/category/CategoryCard";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
+import NProgress from "nprogress";
+
 const Category = () => {
   const { categoryDrawerOpen, closeCategoryDrawer } =
     useContext(SidebarContext);
@@ -29,7 +31,15 @@ const Category = () => {
       {categoryDrawerOpen && (
         <div className="w-full flex justify-between items-center h-16 px-6 py-4 bg-emerald-500 text-white border-b border-gray-100">
           <h2 className="font-semibold font-serif text-lg m-0 text-heading flex align-center">
-            <Link href="/" className="mr-10">
+            <Link
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                NProgress.start();
+                window.location.href = "/";
+              }}
+              className="mr-10"
+            >
               {/*<Image
                 width={100}
                 height={38}
