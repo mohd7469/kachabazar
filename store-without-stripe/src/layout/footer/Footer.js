@@ -338,7 +338,7 @@ const Footer = () => {
 
         <hr className="hr-line"></hr>
 
-        <div className="mx-auto max-w-screen-2xl px-4 sm:px-10 bg-gray-50 shadow-sm border border-gray-50 rounded-lg" data-aos="fade-up">
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-10 bg-gray-50 shadow-sm border border-gray-50 rounded-lg" data-aos="zoom-in">
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-5 sm:gap-9 lg:gap-11 xl:gap-7 py-8 items-center justify-between">
             <div className="col-span-1">
               {storeCustomizationSetting?.footer?.social_links_status && (
