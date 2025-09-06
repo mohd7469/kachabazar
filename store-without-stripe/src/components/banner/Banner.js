@@ -11,7 +11,7 @@ const Banner = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center">
+      <div className="flex gap-4 flex-col md:justify-between md:items-center md:flex-row md:gap-0">
         <div>
           <h1 className="font-serif text-xl">
             <span className="text-emerald-600 font-bold">
