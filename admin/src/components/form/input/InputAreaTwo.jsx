@@ -8,6 +8,7 @@ const InputAreaTwo = ({
   label,
   type,
   placeholder,
+  className
 }) => {
   return (
     <>
@@ -20,7 +21,7 @@ const InputAreaTwo = ({
         placeholder={placeholder}
         name={name}
         autoComplete="new-password"
-        className="mr-2 p-2"
+        className={`mr-2 p-2 ${className}`}
       />
     </>
   );
