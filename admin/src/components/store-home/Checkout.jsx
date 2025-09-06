@@ -41,12 +41,13 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
         </div>
         <hr className="md:mb-12 mb-3" />
 
-        <div className="flex justify-between md:text-base text-sm mb-3  dark:text-gray-400 relative">
-          <div className="w-full text-gray-500">
+        <div className="flex justify-between items-center md:text-base text-sm mb-3 mt-12 dark:text-gray-400 relative">
+          <div className="w-full text-emerald-600">
             <strong>{t("PersonalInfo")}</strong>
           </div>
           <div className="w-full">
             <InputAreaTwo
+              className={"border-emerald-500"}
               register={register}
               label={t("PersonalInfo")}
               name="personal_details"
@@ -56,8 +57,8 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             <Error errorName={errors.personal_details} />
           </div>
         </div>
-
-        <hr className="md:mb-8 mb-3" />
+        <hr className="md:mb-12 mb-3" />
+        
         <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
           <div className="col-span-3">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
@@ -126,12 +127,13 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
           </div>
         </div>
 
-        <div className="flex justify-between md:text-base text-sm mb-3 mt-12 dark:text-gray-400 relative">
-          <div className="w-full text-gray-500">
+        <div className="flex justify-between items-center md:text-base text-sm mb-3 mt-12 dark:text-gray-400 relative">
+          <div className="w-full text-emerald-600">
             <strong>{t("ShippingInfo")}</strong>
           </div>
           <div className="w-full">
             <InputAreaTwo
+              className={"border-emerald-500"}
               register={register}
               label={t("ShippingInfo")}
               name="shipping_details"
@@ -141,10 +143,10 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             <Error errorName={errors.shipping_details} />
           </div>
         </div>
-
-        <hr className="md:mb-8 mb-3" />
+        <hr className="md:mb-12 mb-3" />
+        
         <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
-          <div className="col-span-4">
+          <div className="col-span-5">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("streetAddress")}
             </label>
@@ -157,7 +159,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.street_address} />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-3">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("City")}
             </label>
@@ -170,7 +172,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.city} />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-2">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("Country")}
             </label>
@@ -183,7 +185,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.country} />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-2">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("ZipCode")}
             </label>
@@ -196,6 +198,18 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.zip_code} />
           </div>
+        </div>
+        
+        <div className="flex justify-between items-center md:text-base text-sm mb-3 mt-12 dark:text-gray-400 relative">
+          <div className="w-full text-emerald-600">
+            <strong>{t("ShippingInfo")}</strong>
+          </div>
+          <div className="w-full">
+          </div>
+        </div>
+        <hr className="md:mb-12 mb-3" />
+
+        <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
           <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("Shippingcost")}
@@ -287,7 +301,18 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.shipping_two_cost} />
           </div>
-
+        </div>
+        
+        <div className="flex justify-between items-center md:text-base text-sm mb-3 mt-12 dark:text-gray-400 relative">
+          <div className="w-full text-emerald-600">
+            <strong>{t("Payment Info")}</strong>
+          </div>
+          <div className="w-full">
+          </div>
+        </div>
+        <hr className="md:mb-12 mb-3" />
+        
+        <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
           <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("PaymentMethod")}
@@ -301,7 +326,6 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.payment_method} />
           </div>
-
           <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("ContinueButton")}
@@ -329,11 +353,16 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             <Error errorName={errors.confirm_button} />
           </div>
         </div>
-        <div className="inline-flex md:text-base text-sm mb-3 text-gray-500 dark:text-gray-400 relative">
-          <strong>{t("CartItemSection")}</strong>
+        
+        <div className="flex justify-between items-center md:text-base text-sm mb-3 mt-12 dark:text-gray-400 relative">
+          <div className="w-full text-emerald-600">
+            <strong>{t("CartItemSection")}</strong>
+          </div>
+          <div className="w-full">
+          </div>
         </div>
-
-        <hr className="md:mb-8 mb-3" />
+        <hr className="md:mb-12 mb-3" />
+        
         <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
           <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
