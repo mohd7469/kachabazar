@@ -31,7 +31,7 @@ const Footer = () => {
     <div className="pb-16 lg:pb-0 xl:pb-0 bg-white">
       <div className="mx-auto max-w-screen-2xl px-4 sm:px-10">
         {/* grid-cols-2 */}
-        <div className="grid md:grid-cols-7 xl:grid-cols-12 gap-5 sm:gap-9 lg:gap-11 xl:gap-7 py-10 lg:py-16 justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-7 xl:grid-cols-12 gap-5 sm:gap-9 lg:gap-11 xl:gap-7 py-10 lg:py-16 justify-between">
           {storeCustomizationSetting?.footer?.block1_status && (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3" data-aos="fade-up">
               <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
