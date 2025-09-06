@@ -176,13 +176,14 @@ const Checkout = () => {
                           )}
                           name="city"
                           type="text"
-                          placeholder="Los Angeles"
+                          placeholder="Sharjah"
                         />
                         <Error errorName={errors.city} />
                       </div>
 
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                         <InputArea
+                          defaultValue={"UAE"}
                           register={register}
                           label={showingTranslateValue(
                             storeCustomizationSetting?.checkout?.country
@@ -196,6 +197,7 @@ const Checkout = () => {
 
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                         <InputArea
+                          defaultValue={"000000"}
                           register={register}
                           label={showingTranslateValue(
                             storeCustomizationSetting?.checkout?.zip_code
