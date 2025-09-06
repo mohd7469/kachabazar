@@ -57,6 +57,7 @@ const Offer = ({
           <FiSettings className="mt-1 mr-2" />
           {t("Offers")}
         </div>
+        
         <hr className="md:mb-10 mb-3" />
 
         <div className="xl:px-10 flex-grow scrollbar-hide w-full max-h-full pb-0">
