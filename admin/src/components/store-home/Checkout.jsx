@@ -202,7 +202,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
         
         <div className="flex justify-between items-center md:text-base text-sm mb-3 mt-12 dark:text-gray-400 relative">
           <div className="w-full text-emerald-600">
-            <strong>{t("ShippingInfo")}</strong>
+            <strong>{t("Shippingcost")}</strong>
           </div>
           <div className="w-full">
           </div>
@@ -210,7 +210,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
         <hr className="md:mb-12 mb-3" />
 
         <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
-          <div className="col-span-4">
+          <div className="col-span-12">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("Shippingcost")}
             </label>
@@ -223,6 +223,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.shipping_cost} />
           </div>
+          
           <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("ShippingNameOne")}
