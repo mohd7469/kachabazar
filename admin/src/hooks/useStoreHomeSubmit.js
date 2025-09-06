@@ -1094,7 +1094,9 @@ const useStoreHomeSubmit = () => {
         setIsSubmitting(false);
 
         notifySuccess(res.message);
-        // window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       } else {
         const res = await SettingServices.addStoreCustomizationSetting(
           storeCustomizationSettingData
