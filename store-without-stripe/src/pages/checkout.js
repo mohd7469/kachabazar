@@ -222,7 +222,7 @@ const Checkout = () => {
                           // value="FedEx"
                           value={showingTranslateValue(
                             storeCustomizationSetting?.checkout
-                              ?.shipping_name_two
+                              ?.shipping_name_one
                           )}
                           description={showingTranslateValue(
                             storeCustomizationSetting?.checkout
