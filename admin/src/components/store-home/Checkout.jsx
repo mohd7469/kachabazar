@@ -72,7 +72,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.first_name} />
           </div>
-          <div className="col-span-4">
+          {/*<div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("firstName")}
             </label>
@@ -84,7 +84,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
               placeholder={t("firstName")}
             />
             <Error errorName={errors.first_name} />
-          </div>
+          </div>*/}
           <div className="col-span-4">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("lastName")}
