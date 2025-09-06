@@ -59,7 +59,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
 
         <hr className="md:mb-8 mb-3" />
         <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
-          <div className="col-span-4">
+          <div className="col-span-3">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("firstName")}
             </label>
@@ -72,7 +72,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.first_name} />
           </div>
-          {/*<div className="col-span-4">
+          {/*<div className="col-span-3">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("firstName")}
             </label>
@@ -85,7 +85,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.first_name} />
           </div>*/}
-          <div className="col-span-4">
+          <div className="col-span-3">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("lastName")}
             </label>
@@ -98,7 +98,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.last_name} />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-3">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("emailAddress")}
             </label>
@@ -111,7 +111,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
             />
             <Error errorName={errors.email_address} />
           </div>
-          <div className="col-span-4">
+          <div className="col-span-3">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
               {t("Phone")}
             </label>
