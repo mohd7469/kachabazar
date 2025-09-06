@@ -163,7 +163,7 @@ const Checkout = () => {
                           )}
                           name="address"
                           type="text"
-                          placeholder="123 Boulevard Rd, Beverley Hills"
+                          placeholder="(Apartment / Room / Flat) Number, Building Name, Street Name, Area"
                         />
                         <Error errorName={errors.address} />
                       </div>
