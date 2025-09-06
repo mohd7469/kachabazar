@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FiTruck } from "react-icons/fi";
 
 const InputShipping = ({
@@ -11,6 +11,12 @@ const InputShipping = ({
   handleShippingCost,
   urgent = false
 }) => {
+  useEffect(() => {
+    if (!urgent) {
+      handleShippingCost(cost);
+    }
+  }, [urgent, cost, handleShippingCost]);
+  
   return (
     <div>
       <div className="p-3 card border border-gray-200 bg-white rounded-md">
@@ -23,9 +29,9 @@ const InputShipping = ({
               </span>
               <div>
                 <h6 className="font-serif font-bold text-sm text-gray-600">
-                  <div class="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
-                    <span class="h-2 w-2 rounded-full bg-amber-500"></span>
-                    <span class="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
+                  <div className="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
+                    <span className={`h-2 w-2 rounded-full ${urgent ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
+                    <span className="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
                   </div>
                   {value}
                 </h6>
@@ -43,6 +49,7 @@ const InputShipping = ({
               type="radio"
               value={value}
               className="form-radio outline-none focus:ring-0 text-emerald-500"
+              defaultChecked={!urgent}
             />
           </div>
         </label>

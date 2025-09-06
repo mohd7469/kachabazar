@@ -213,7 +213,7 @@ const Checkout = () => {
                         storeCustomizationSetting?.checkout?.shipping_cost
                       )}
                     />
-                    <div className="grid grid-cols-6 gap-6">
+                    <div className="grid grid-cols-6 gap-4 border p-4 rounded-lg shadow-sm bg-white">
                       <div className="col-span-6 sm:col-span-3">
                         <InputShipping
                           urgent={true}
