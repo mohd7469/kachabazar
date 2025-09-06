@@ -8,7 +8,7 @@ const InputAreaTwo = ({
   label,
   type,
   placeholder,
-  className
+  className = ""
 }) => {
   return (
     <>
