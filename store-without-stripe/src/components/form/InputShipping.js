@@ -9,6 +9,7 @@ const InputShipping = ({
   currency,
   description,
   handleShippingCost,
+  urgent = false
 }) => {
   return (
     <div>
@@ -17,18 +18,19 @@ const InputShipping = ({
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <span className="text-2xl mr-3 text-gray-400">
-                <FiTruck />
+                {/*<FiTruck />*/}
+                {urgent ? "🏍️💨" : "🚚"}
               </span>
               <div>
-                <h6 className="font-serif font-medium text-sm text-gray-600">
+                <h6 className="font-serif font-bold text-sm text-gray-600">
+                  <div class="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
+                    <span class="h-2 w-2 rounded-full bg-amber-500"></span>
+                    <span class="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
+                  </div>
                   {value}
                 </h6>
                 <p className="text-xs text-gray-500 font-medium">
                   {description}
-                  <span className="font-medium text-gray-600">
-                    {currency}
-                    {parseFloat(cost).toFixed(2)}
-                  </span>
                 </p>
               </div>
             </div>

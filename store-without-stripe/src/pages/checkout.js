@@ -216,6 +216,7 @@ const Checkout = () => {
                     <div className="grid grid-cols-6 gap-6">
                       <div className="col-span-6 sm:col-span-3">
                         <InputShipping
+                          urgent={true}
                           currency={currency}
                           handleShippingCost={handleShippingCost}
                           register={register}
@@ -241,6 +242,7 @@ const Checkout = () => {
 
                       <div className="col-span-6 sm:col-span-3">
                         <InputShipping
+                          urgent={false}
                           currency={currency}
                           handleShippingCost={handleShippingCost}
                           register={register}
