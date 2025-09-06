@@ -30,7 +30,9 @@ const CategoryCard = ({ title, icon, nested, id }) => {
 
     setShow(!show);
     router.push(`/search?category=${name}&_id=${id}`);
-    closeCategoryDrawer;
+    if (!nested?.length) {
+      closeCategoryDrawer(); // only close drawer on clicking same level menu
+    }
     setIsLoading(!isLoading);
   };
 

@@ -60,9 +60,17 @@ const Category = () => {
       )}
       <div className="w-full max-h-full">
         {categoryDrawerOpen && (
-          <h2 className="font-semibold font-serif text-lg m-0 text-heading flex align-center border-b px-8 py-3">
-            All Categories
-          </h2>
+          <div className="flex justify-between align-center items-center border-b px-8 py-3">
+            <h2 className="font-semibold font-serif text-lg m-0 text-heading">
+              All Categories
+            </h2>
+            {/*<button
+              onClick={closeCategoryDrawer}
+              className="border rounded px-4"
+            >
+              View
+            </button>*/}
+          </div>
         )}
         {isLoading ? (
           <Loading loading={isLoading} />
