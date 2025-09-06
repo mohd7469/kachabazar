@@ -150,7 +150,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
 
             {/* promotional banner card */}
             {storeCustomizationSetting?.home?.delivery_status && (
-              <div className="block mx-auto max-w-screen-2xl" data-aos="fade-up">
+              <div className="block mx-auto max-w-screen-2xl" data-aos="zoom-in">
                 <div className="mx-auto max-w-screen-2xl px-4 sm:px-10">
                   <div className="lg:p-16 p-6 bg-orange-100 shadow-sm rounded-lg">
                     <CardTwo />

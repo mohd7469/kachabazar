@@ -46,7 +46,7 @@ const AboutUs = () => {
                 </p>
               </div>
               <div className="grid md:grid-cols-2 gap-6 lg:grid-cols-2 xl:gap-6 mt-8">
-                <div className="p-8 bg-indigo-50 shadow-sm rounded-lg">
+                <div className="p-8 bg-indigo-50 shadow-sm rounded-lg" data-aos="fade-up">
                   {loading ? (
                     <CMSkeleton
                       count={8}
@@ -75,7 +75,7 @@ const AboutUs = () => {
                     </>
                   )}
                 </div>
-                <div className="p-8 bg-indigo-50 shadow-sm rounded-lg">
+                <div className="p-8 bg-indigo-50 shadow-sm rounded-lg" data-aos="fade-up">
                   {loading ? (
                     <CMSkeleton
                       count={8}
@@ -107,7 +107,7 @@ const AboutUs = () => {
               </div>
             </div>
 
-            <div className="mt-10 lg:mt-0">
+            <div className="mt-10 lg:mt-0" data-aos="zoom-in">
               <img
                 width={920}
                 height={750}
@@ -120,7 +120,7 @@ const AboutUs = () => {
             </div>
           </div>
           <div className="mt-10 lg:mt-16 text-base opacity-90 leading-7">
-            <p>
+            <p data-aos="fade-up">
               <CMSkeleton
                 count={5}
                 height={20}
@@ -131,7 +131,7 @@ const AboutUs = () => {
               />
             </p>
 
-            <p>
+            <p data-aos="fade-up">
               <CMSkeleton
                 count={8}
                 height={20}
@@ -143,7 +143,7 @@ const AboutUs = () => {
               />
             </p>
           </div>
-          <div className="mt-10 lg:mt-12 flex flex-col sm:grid gap-4">
+          <div className="mt-10 lg:mt-12 flex flex-col sm:grid gap-4" data-aos="zoom-in">
             <Image
               width={1920}
               height={570}
@@ -160,7 +160,7 @@ const AboutUs = () => {
           <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
             <div className="relative flex flex-col sm:flex-row sm:items-end justify-between mb-8">
               <div className="max-w-2xl">
-                <h3 className="text-xl lg:text-3xl mb-2 font-serif font-semibold">
+                <h3 className="text-xl lg:text-3xl mb-2 font-serif font-semibold" data-aos="fade-up">
                   <CMSkeleton
                     count={1}
                     height={50}
@@ -168,7 +168,7 @@ const AboutUs = () => {
                     data={storeCustomizationSetting?.about_us?.founder_title}
                   />
                 </h3>
-                <p className="mt-2 md:mt-3 font-normal block text-base">
+                <p className="mt-2 md:mt-3 font-normal block text-base" data-aos="fade-up">
                   <CMSkeleton
                     count={3}
                     height={20}
@@ -181,7 +181,7 @@ const AboutUs = () => {
               </div>
             </div>
             <div className="grid sm:grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-6 xl:gap-x-8">
-              <div className="max-w-sm">
+              <div className="max-w-sm" data-aos="fade-up">
                 <Image
                   width={420}
                   height={420}
@@ -205,7 +205,7 @@ const AboutUs = () => {
                   </span>
                 </div>
               </div>
-              <div className="max-w-sm">
+              <div className="max-w-sm" data-aos="fade-up">
                 <Image
                   width={420}
                   height={420}
@@ -229,7 +229,7 @@ const AboutUs = () => {
                   </span>
                 </div>
               </div>
-              <div className="max-w-sm">
+              <div className="max-w-sm" data-aos="fade-up">
                 <Image
                   width={420}
                   height={420}
@@ -253,7 +253,7 @@ const AboutUs = () => {
                   </span>
                 </div>
               </div>
-              <div className="max-w-sm">
+              <div className="max-w-sm" data-aos="fade-up">
                 <Image
                   width={420}
                   height={420}
@@ -277,7 +277,7 @@ const AboutUs = () => {
                   </span>
                 </div>
               </div>
-              <div className="max-w-sm">
+              <div className="max-w-sm" data-aos="fade-up">
                 <Image
                   width={420}
                   height={420}
@@ -301,7 +301,7 @@ const AboutUs = () => {
                   </span>
                 </div>
               </div>
-              <div className="max-w-sm">
+              <div className="max-w-sm" data-aos="fade-up">
                 <Image
                   width={420}
                   height={420}
