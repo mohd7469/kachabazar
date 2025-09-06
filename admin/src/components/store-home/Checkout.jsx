@@ -212,7 +212,7 @@ const Checkout = ({ isSave, errors, register, isSubmitting }) => {
         <div className="grid grid-cols-12 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
           <div className="col-span-12">
             <label className="block md:text-sm md:col-span-1 sm:col-span-2 text-xs font-semibold text-gray-600 dark:text-gray-400 mb-1">
-              {t("Shippingcost")}
+              {t("Shipping Title")}
             </label>
             <InputAreaTwo
               register={register}
