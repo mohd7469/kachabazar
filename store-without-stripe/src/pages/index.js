@@ -43,15 +43,15 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             <div className="bg-white">
               <div className="mx-auto py-5 max-w-screen-2xl px-3 sm:px-10">
                 <div className="flex w-full">
-                  <div className={`flex-shrink-0 lg:block shadow rounded-lg w-full ${storeCustomizationSetting?.home?.slider_width_status ? "" : "lg:w-3/5" }`}>
+                  <div className={`flex-shrink-0 lg:block shadow rounded-lg w-full ${storeCustomizationSetting?.home?.slider_width_status ? "" : "lg:w-3/5" }`} data-aos="zoom-in">
                     <MainCarousel />
                   </div>
-                  <div className={`w-full xl:ml-6 hidden ${storeCustomizationSetting?.home?.coupon_status ? "lg:flex" : "" }`}>
+                  <div className={`w-full xl:ml-6 hidden ${storeCustomizationSetting?.home?.coupon_status ? "lg:flex" : "" }`} data-aos="zoom-in">
                     <OfferCard />
                   </div>
                 </div>
                 {storeCustomizationSetting?.home?.promotion_banner_status && (
-                  <div className="bg-orange-100 px-10 py-6 rounded-lg mt-6">
+                  <div className="bg-orange-100 px-10 py-6 rounded-lg mt-6" data-aos="fade-in">
                     <Banner />
                   </div>
                 )}
@@ -94,7 +94,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* popular products */}
             {storeCustomizationSetting?.home?.popular_products_status && (
               <div className="bg-gray-50 lg:py-16 py-10 mx-auto max-w-screen-2xl px-3 sm:px-10">
-                <div className="mb-10 flex justify-center" data-aos="fade-up">
+                <div className="mb-10 flex justify-center">
                   <div className="text-center w-full lg:w-2/5">
                     <h2 className="text-xl lg:text-2xl mb-2 font-serif font-semibold">
                       <CMSkeleton
