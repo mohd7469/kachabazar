@@ -102,7 +102,7 @@ const ProductCard = ({ product, attributes }) => {
             <span className="text-gray-400 font-medium text-xs d-block mb-1">
               {product.unit}
             </span>
-            <h2 className="text-heading truncate mb-0 block text-sm font-medium text-gray-600">
+            <h2 className="text-heading truncate block text-sm font-medium text-gray-600 mb-2">
               <span className="line-clamp-2">
                 {showingTranslateValue(product?.title)}
               </span>
@@ -133,7 +133,7 @@ const ProductCard = ({ product, attributes }) => {
                     item.id === product._id && (
                       <div
                         key={item.id}
-                        className="h-9 w-auto flex flex-wrap items-center justify-evenly py-1 px-2 bg-emerald-500 text-white rounded"
+                        className="w-10 flex flex-col items-center justify-center py-2 px-2 bg-emerald-500 text-white rounded"
                       >
                         <button
                           onClick={() =>

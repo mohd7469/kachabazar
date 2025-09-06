@@ -7,7 +7,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
   return (
     <div className="font-serif product-price font-bold">
       {product?.isCombination ? (
-        <>
+        <div className={"flex flex-col"}>
           <span
             className={
               card
@@ -23,7 +23,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
               <del
                 className={
                   card
-                    ? "sm:text-sm font-normal text-base text-gray-400 ml-1"
+                    ? "sm:text-sm font-normal text-base text-gray-400"
                     : "text-lg font-normal text-gray-400 ml-1"
                 }
               >
@@ -32,9 +32,9 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
               </del>
             </>
           ) : null}
-        </>
+        </div>
       ) : (
-        <>
+        <div className={"flex flex-col"}>
           <span
             className={
               card
@@ -50,7 +50,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
               <del
                 className={
                   card
-                    ? "sm:text-sm font-normal text-base text-gray-400 ml-1"
+                    ? "sm:text-sm font-normal text-base text-gray-400"
                     : "text-lg font-normal text-gray-400 ml-1"
                 }
               >
@@ -59,7 +59,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
               </del>
             </>
           ) : null}
-        </>
+        </div>
       )}
     </div>
   );
