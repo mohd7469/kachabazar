@@ -30,7 +30,7 @@ const InputShipping = ({
               <div>
                 <h6 className="font-serif font-bold text-sm text-gray-600">
                   <div className="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
-                    <span className={`h-2 w-2 rounded-full ${urgent ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
+                    <span className={`h-2 w-2 rounded-full ${urgent ? 'bg-red-500' : 'bg-amber-500'}`}></span>
                     <span className="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
                   </div>
                   {value}

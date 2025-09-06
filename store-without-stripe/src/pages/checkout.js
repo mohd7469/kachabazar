@@ -112,13 +112,14 @@ const Checkout = () => {
                           name="lastName"
                           type="text"
                           placeholder="Doe"
-                          required={false}
+                          required={true}
                         />
                         <Error errorName={errors.lastName} />
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
                         <InputArea
+                          required={true}
                           register={register}
                           label={showingTranslateValue(
                             storeCustomizationSetting?.checkout?.email_address
@@ -280,6 +281,7 @@ const Checkout = () => {
                       {storeSetting?.cod_status && (
                         <div className="">
                           <InputPayment
+                            required={true}
                             defaultChecked={false}
                             description={'Pay on order arrives.'}
                             setShowCard={setShowCard}
