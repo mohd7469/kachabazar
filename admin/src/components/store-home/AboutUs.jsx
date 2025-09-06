@@ -56,7 +56,7 @@ const AboutUs = ({
 
   return (
     <>
-      <div className="grid grid-cols-12 font-sans pr-4">
+      {/*<div className="grid grid-cols-12 font-sans pr-4">*/}
         <div className="col-span-12 md:col-span-12 lg:col-span-12">
           <div className="sticky top-0 z-20 flex justify-end">
             {isSubmitting ? (
@@ -84,8 +84,8 @@ const AboutUs = ({
             <FiSettings className="mt-1 mr-2" />
             {t("AboutUs")}
           </div>
-
-          <hr className="md:mb-12 mb-3" />
+          
+          <hr className="md:mb-10 mb-3" />
 
           <div className="xl:px-10 flex-grow scrollbar-hide w-full max-h-full">
             <div className="inline-flex md:text-base text-sm mb-3 text-gray-500 dark:text-gray-400">
@@ -845,7 +845,7 @@ const AboutUs = ({
             </div>
           </div>
         </div>
-      </div>
+      {/*</div>*/}
     </>
   );
 };

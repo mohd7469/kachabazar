@@ -64,6 +64,7 @@ const Offer = ({
           <div className="inline-flex md:text-md text-sm mb-3 text-gray-500 dark:text-gray-400">
             <strong>{t("PageHeader")}</strong>
           </div>
+          
           <hr className="md:mb-12 mb-3" />
 
           <div className="grid md:grid-cols-5 sm:grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 md:mb-6 mb-3">
