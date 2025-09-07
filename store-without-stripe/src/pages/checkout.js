@@ -317,7 +317,7 @@ const Checkout = () => {
                         className="bg-indigo-50 border border-indigo-100 rounded py-3 text-center text-sm font-medium text-gray-700 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center items-center font-serif w-full"
                       >
                         <span className="mr-2">
-                          <i class="fa-solid fa-cart-shopping"></i>
+                          <i className="fa-solid fa-cart-shopping"></i>
                         </span>
                         {showingTranslateValue(
                           storeCustomizationSetting?.checkout?.continue_button

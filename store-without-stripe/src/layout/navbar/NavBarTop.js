@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { getUserSession } from "@lib/auth";
 import useGetSetting from "@hooks/useGetSetting";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import TrackOrder from "@pages/user/track-order";
 
 const NavBarTop = () => {
   const userInfo = getUserSession();
@@ -93,6 +94,8 @@ const NavBarTop = () => {
                 </Link>
                 <span className="mx-2">|</span>
               </div>
+              
+              <TrackOrder/>
 
               {userInfo?.email ? (
                 <button
