@@ -1,7 +1,7 @@
 import axios from "axios";
 import TRACKING_CONFIG from "./config";
 
-export async function getTrackingHtml(trackNo) {
+const getTrackingHtml = async (trackNo) => {
   if (!trackNo) throw new Error("tracking number is required");
   const url = `${TRACKING_CONFIG.BASE_URL}?trackno=${encodeURIComponent(trackNo)}`;
   console.log('url: ', url);
@@ -9,3 +9,5 @@ export async function getTrackingHtml(trackNo) {
   console.log('data: ', data);
   return data;
 }
+
+export default getTrackingHtml;
