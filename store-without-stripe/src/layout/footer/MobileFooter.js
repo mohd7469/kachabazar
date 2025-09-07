@@ -9,6 +9,7 @@ import { FiHome, FiUser, FiShoppingCart, FiAlignLeft } from "react-icons/fi";
 import { getUserSession } from "@lib/auth";
 import { SidebarContext } from "@context/SidebarContext";
 import CategoryDrawer from "@components/drawer/CategoryDrawer";
+import TrackOrder from "@pages/user/track-order";
 
 const MobileFooter = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -49,6 +50,11 @@ const MobileFooter = () => {
           </span>
           <FiShoppingCart className="w-6 h-6 drop-shadow-xl" />
         </button>
+        
+        <div className={"flex justify-between items-center"} >
+          <TrackOrder buttonLabel={""}/>
+        </div>
+        
         <button
           aria-label="User"
           type="button"

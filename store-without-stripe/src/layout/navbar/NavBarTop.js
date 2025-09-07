@@ -95,7 +95,10 @@ const NavBarTop = () => {
                 <span className="mx-2">|</span>
               </div>
               
-              <TrackOrder/>
+              <div className={"flex justify-between items-center"} >
+                <TrackOrder buttonLabel={"Order Tracking"}/>
+                <span className="mx-2">|</span>
+              </div>
 
               {userInfo?.email ? (
                 <button
