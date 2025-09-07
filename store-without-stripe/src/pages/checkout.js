@@ -281,9 +281,8 @@ const Checkout = () => {
                       {storeSetting?.cod_status && (
                         <div className="">
                           <InputPayment
-                            required={true}
                             defaultChecked={false}
-                            description={'Pay on order arrives.'}
+                            description={'Pay when order arrives.'}
                             setShowCard={setShowCard}
                             register={register}
                             name={t("common:cashOnDelivery")}
@@ -298,6 +297,7 @@ const Checkout = () => {
                       <div className="">
                         <InputPayment
                           defaultChecked={false}
+                          description={'Pay using card.'}
                           setShowCard={setShowCard}
                           register={register}
                           name="RazorPay"
@@ -317,7 +317,7 @@ const Checkout = () => {
                         className="bg-indigo-50 border border-indigo-100 rounded py-3 text-center text-sm font-medium text-gray-700 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center font-serif w-full"
                       >
                         <span className="text-xl mr-2">
-                          <IoReturnUpBackOutline />
+                          <i class="fa-solid fa-cart-shopping"></i>
                         </span>
                         {showingTranslateValue(
                           storeCustomizationSetting?.checkout?.continue_button

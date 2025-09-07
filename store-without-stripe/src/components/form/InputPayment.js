@@ -1,6 +1,14 @@
 import React from 'react';
 
-const InputPayment = ({ register, Icon, name, value, setShowCard, defaultChecked = false, description = "Choose this payment method" }) => {
+const InputPayment = ({
+  register,
+  Icon,
+  name,
+  value,
+  setShowCard,
+  defaultChecked = false,
+  description = "Choose this payment method"
+}) => {
   return (
     <div className="p-3 card border border-gray-200 bg-white rounded-md">
       <label className="cursor-pointer label">
@@ -28,6 +36,7 @@ const InputPayment = ({ register, Icon, name, value, setShowCard, defaultChecked
             name="paymentMethod"
             className="form-radio outline-none focus:ring-0 text-emerald-500"
             defaultChecked={defaultChecked}
+            required={true}
           />
         </div>
       </label>
