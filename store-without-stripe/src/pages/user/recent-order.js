@@ -13,7 +13,6 @@ import CMSkeletonTwo from "@components/preloader/CMSkeletonTwo";
 
 const RecentOrder = ({ data, loading, error }) => {
   const { handleChangePage, currentPage } = useContext(SidebarContext);
-
   const { storeCustomizationSetting } = useGetSetting();
   const { showingTranslateValue } = useUtilsFunction();
 
