@@ -4,7 +4,7 @@ import Link from "next/link";
 import {LiaShippingFastSolid} from "react-icons/lia";
 
 import NProgress from "nprogress";
-import TRACKING_CONFIG from "./config";
+import TRACKING_CONFIG from "@pages/user/tracking/config";
 
 const TrackOrder = ({
   buttonLabel = "Order Tracking",
