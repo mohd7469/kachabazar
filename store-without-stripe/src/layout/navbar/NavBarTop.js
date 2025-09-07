@@ -95,10 +95,12 @@ const NavBarTop = () => {
                 <span className="mx-2">|</span>
               </div>
               
-              <div className={"flex justify-between items-center"} >
-                <TrackOrder buttonLabel={"Order Tracking"}/>
-                <span className="mx-2">|</span>
-              </div>
+              {userInfo?.email && (
+                <div className={"flex justify-between items-center"} >
+                  <TrackOrder buttonLabel={"Order Tracking"}/>
+                  <span className="mx-2">|</span>
+                </div>
+              )}
 
               {userInfo?.email ? (
                 <button

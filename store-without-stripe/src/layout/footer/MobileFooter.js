@@ -51,9 +51,11 @@ const MobileFooter = () => {
           <FiShoppingCart className="w-6 h-6 drop-shadow-xl" />
         </button>
         
-        <div className={"flex justify-between items-center"} >
-          <TrackOrder buttonLabel={""}/>
-        </div>
+        {userInfo?.name && (
+          <div className={"flex justify-between items-center"} >
+            <TrackOrder buttonLabel={""}/>
+          </div>
+        )}
         
         <button
           aria-label="User"

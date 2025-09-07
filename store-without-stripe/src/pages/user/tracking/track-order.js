@@ -38,6 +38,8 @@ const TrackOrder = ({
   }, [setDrawer]);
   
   async function handleSubmit(e) {
+    console.log("handleSubmit:", e);
+ 
     e.preventDefault();
     setErrMsg(null);
     setHtml(null);
