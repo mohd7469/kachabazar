@@ -5,7 +5,6 @@ import {LiaShippingFastSolid} from "react-icons/lia";
 
 import NProgress from "nprogress";
 import TRACKING_CONFIG from "./config";
-import getTrackingHtml from "./api";
 
 const TrackOrder = ({
   buttonLabel = "Order Tracking",
@@ -51,8 +50,15 @@ const TrackOrder = ({
     NProgress.start();
     
     try {
-      const data = await getTrackingHtml(trackInput.trim());
-      console.log('res: ', data);
+      const trackingNumber = trackInput.trim();
+      if (!trackingNumber) throw new Error("tracking number is required");
+      
+      const url = `${TRACKING_CONFIG.BASE_URL}?trackno=${encodeURIComponent(trackingNumber)}`;
+      console.log("url:", url);
+      
+      const { data } = await axios.get(url, { responseType: "text" });
+      console.log("data:", data);
+      
       setHtml(data);
     } catch (err) {
       setErrMsg("Failed to load tracking page.");
