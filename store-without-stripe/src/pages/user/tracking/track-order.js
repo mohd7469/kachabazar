@@ -3,25 +3,19 @@ import React, {useEffect, useMemo, useState} from "react";
 import Link from "next/link";
 import {LiaShippingFastSolid} from "react-icons/lia";
 
-import TRACKING_CONFIG from "./config.js";
-import { getTrackingHtml } from "./api.js";
+import NProgress from "nprogress";
+import TRACKING_CONFIG from "./config";
+import { getTrackingHtml } from "./api";
 
 const TrackOrder = ({
-  trackNo,
-  keys = {},
-  mode = "proxy",
   buttonLabel = "Order Tracking",
-  height = "75vh",
   className = "",
 }) => {
   const [setDrawer, setDrawerOpen] = useState(false);
   
-  const [trackInput, setTrackInput] = useState(trackNo || "");
-  const [html, setHtml] = useState("");     // holds fetched HTML
-  const [loading, setLoading] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
-  
-
+  const [trackInput, setTrackInput] = useState(TRACKING_CONFIG.DEFAULT_TRACKNO);
+  const [errMsg, setErrMsg] = useState(null);
+  const [html, setHtml] = useState(null);
 
   // Close on Esc (SSR-safe)
   useEffect(() => {
@@ -34,7 +28,6 @@ const TrackOrder = ({
       return () => window.removeEventListener("keydown", onKey);
     }
   }, [setDrawer]);
-
   // Lock background scroll when setDrawer
   useEffect(() => {
     if (!setDrawer || typeof document === "undefined") return;
@@ -47,23 +40,24 @@ const TrackOrder = ({
   
   async function handleSubmit(e) {
     e.preventDefault();
-    setErrMsg("");
+    setErrMsg(null);
+    setHtml(null);
+   
     if (!trackInput.trim()) {
       setErrMsg("Please enter a tracking number.");
       return;
     }
+    
+    NProgress.start();
+    
     try {
-      setLoading(true);
-      // call your proxy API so CORS / X-Frame-Options don’t block you
-      const { data } = await axios.get("/api/track", {
-        params: { trackno: trackInput.trim() },
-        responseType: "text",
-      });
-      setHtml(typeof data === "string" ? data : String(data));
+      const data = await getTrackingHtml(trackInput.trim());
+      console.log('res: ', data);
+      setHtml(data);
     } catch (err) {
       setErrMsg("Failed to load tracking page.");
     } finally {
-      setLoading(false);
+      NProgress.done();
     }
   }
   
@@ -71,7 +65,8 @@ const TrackOrder = ({
     <>
       <div onClick={(e) => {
         e.preventDefault();
-        setDrawerOpen(true)
+        setDrawerOpen(true);
+        NProgress.done();
       }}>
         {buttonLabel ? (
           <Link
@@ -129,17 +124,17 @@ const TrackOrder = ({
             />
             <button
               type="submit"
-              disabled={loading}
+              disabled={NProgress?.status}
               className="rounded-lg bg-emerald-600 text-white px-4 py-2 disabled:opacity-60"
             >
-              {loading ? "Loading..." : TRACKING_CONFIG.BUTTON_LABEL}
+              {!NProgress?.status ? TRACKING_CONFIG.BUTTON_LABEL : "Loading.."}
             </button>
           </form>
           
           <div className="border rounded-lg overflow-hidden mt-4">
             {html ? (
               <iframe
-                title={`Tracking ${trackNo || ""}`}
+                title={`Tracking ${trackInput || ""}`}
                 className="w-full"
                 style={{ height: TRACKING_CONFIG.IFRAME_HEIGHT }}
                 srcDoc={html}
