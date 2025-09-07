@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FiTruck } from "react-icons/fi";
 
 const InputShipping = ({
@@ -11,14 +11,8 @@ const InputShipping = ({
   handleShippingCost,
   urgent = false
 }) => {
-  useEffect(() => {
-    if (!urgent) {
-      handleShippingCost(cost);
-    }
-  }, [urgent, cost, handleShippingCost]);
-  
   return (
-    <div>
+    <>
       <div className="p-3 card border border-gray-200 bg-white rounded-md">
         <label className="cursor-pointer label">
           <div className="flex items-center justify-between">
@@ -54,7 +48,7 @@ const InputShipping = ({
           </div>
         </label>
       </div>
-    </div>
+    </>
   );
 };
 

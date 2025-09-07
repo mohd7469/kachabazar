@@ -54,7 +54,6 @@ const useCheckoutSubmit = (storeSetting) => {
     !isLoading && data && Object.keys(data)?.length > 0;
 
   // console.log("storeSetting", storeSetting);
-
   // console.log("res", data);
 
   const {
@@ -63,7 +62,7 @@ const useCheckoutSubmit = (storeSetting) => {
     setValue,
     formState: { errors },
   } = useForm();
-
+  
   useEffect(() => {
     if (Cookies.get("couponInfo")) {
       const coupon = JSON.parse(Cookies.get("couponInfo"));
@@ -75,7 +74,7 @@ const useCheckoutSubmit = (storeSetting) => {
     setValue("email", userInfo?.email);
   }, [isCouponApplied]);
 
-  //remove coupon if total value less then minimum amount of coupon
+  // remove coupon if total value less than minimum amount of coupon
   useEffect(() => {
     if (minimumAmount - discountAmount > total || isEmpty) {
       setDiscountPercentage(0);
@@ -108,7 +107,7 @@ const useCheckoutSubmit = (storeSetting) => {
 
     setTotal(totalValue);
   }, [cartTotal, shippingCost, discountPercentage]);
-
+  
   const submitHandler = async (data) => {
     // console.log("data", data);
     // return;
