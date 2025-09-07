@@ -43,7 +43,6 @@ const InputShipping = ({
               type="radio"
               value={value}
               className="form-radio outline-none focus:ring-0 text-emerald-500"
-              defaultChecked={!urgent}
             />
           </div>
         </label>
