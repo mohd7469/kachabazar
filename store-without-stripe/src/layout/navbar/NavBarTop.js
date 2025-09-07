@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { getUserSession } from "@lib/auth";
 import useGetSetting from "@hooks/useGetSetting";
 import useUtilsFunction from "@hooks/useUtilsFunction";
-import TrackOrder from "@pages/user/track-order";
+import TrackOrder from "@pages/user/tracking/track-order";
 
 const NavBarTop = () => {
   const userInfo = getUserSession();

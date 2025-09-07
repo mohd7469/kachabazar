@@ -9,7 +9,7 @@ import { FiHome, FiUser, FiShoppingCart, FiAlignLeft } from "react-icons/fi";
 import { getUserSession } from "@lib/auth";
 import { SidebarContext } from "@context/SidebarContext";
 import CategoryDrawer from "@components/drawer/CategoryDrawer";
-import TrackOrder from "@pages/user/track-order";
+import TrackOrder from "@pages/user/tracking/track-order";
 
 const MobileFooter = () => {
   const [modalOpen, setModalOpen] = useState(false);
