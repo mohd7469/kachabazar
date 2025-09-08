@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 //internal import
 import Layout from "@layout/Layout";
@@ -17,6 +18,8 @@ const Search = ({ products, attributes }) => {
   const { t } = useTranslation();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
   const [visibleProduct, setVisibleProduct] = useState(18);
+  const router = useRouter();
+  const { query, category } = router?.query;
 
   useEffect(() => {
     setIsLoading(false);
@@ -55,6 +58,12 @@ const Search = ({ products, attributes }) => {
                     {t("common:totalI")}{" "}
                     <span className="font-bold">{productData?.length}</span>{" "}
                     {t("common:itemsFound")}
+                    {query && (
+                      <> for <span className="font-bold">{query?.replace(/-/g, " ")}</span></>
+                    )}
+                    {category && (
+                      <> in <span className="font-bold">{category?.replace(/-/g, " ")}</span></>
+                    )}
                   </h6>
                   <span className="text-sm font-serif">
                     <select
