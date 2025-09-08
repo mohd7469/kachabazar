@@ -21,7 +21,7 @@ import NProgress from 'nprogress';
 const Navbar = () => {
   const { t, lang } = useTranslation("common");
   const [searchText, setSearchText] = useState("");
-  const { toggleCartDrawer } = useContext(SidebarContext);
+  const { toggleCartDrawer, toggleCategoryDrawer } = useContext(SidebarContext);
   const { totalItems } = useCart();
   const router = useRouter();
 
@@ -85,7 +85,24 @@ const Navbar = () => {
             </Link>
             <div className="w-full transition-all duration-200 ease-in-out lg:flex lg:max-w-[520px] xl:max-w-[750px] 2xl:max-w-[900px] md:mx-12 lg:mx-4 xl:mx-0">
               <div className="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
-                <div className="flex flex-col mx-auto w-full">
+                <div className="flex mx-auto w-full items-center">
+                  {/* visible mobile only */}
+                  <div className="me-2 block lg:hidden">
+                    <Link
+                      href="/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        NProgress.start();
+                        window.location.href = "/";
+                      }}
+                    >
+                      <img
+                        src="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757352485/olyxmp1aipoydzbb4zjt.png"
+                        width={38}
+                        alt="Logo Left"
+                      />
+                    </Link>
+                  </div>
                   <form
                     onSubmit={handleSubmit}
                     className="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full"
@@ -106,6 +123,14 @@ const Navbar = () => {
                       <IoSearchOutline />
                     </button>
                   </form>
+                  {/* visible mobile only */}
+                  <div className="ms-2 block lg:hidden">
+                    <button onClick={toggleCategoryDrawer}>
+                      <span className="text-xl text-white">
+                        <i className={"fa fa-lg fa-bars"}></i>
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
