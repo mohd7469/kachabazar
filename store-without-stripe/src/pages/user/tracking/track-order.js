@@ -70,6 +70,7 @@ const TrackOrder = ({
       style.textContent = `
         body { pointer-events: none !important; }
         #sticky { display: none !important; }
+        .heading_sec h2 { margin: 0 !important;}
         .track { padding: 0px !important; }
         .container { margin: 0px !important; }
         .footer_info { display: none !important; }
