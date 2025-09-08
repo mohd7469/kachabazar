@@ -6,5 +6,5 @@
   "CLOSE_LABEL": "Close",
   "DRAWER_TITLE": "Track Order",
   "ICON_CLASS": "text-2xl text-emerald-600",
-  "DRAWER_WIDTH_CLASS": "sm:w-[48rem] md:w-[28rem]"
+  "DRAWER_WIDTH_CLASS": "w-full w-md"
 }

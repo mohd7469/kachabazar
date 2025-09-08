@@ -15,6 +15,7 @@ const TrackOrder = ({
   const [trackInput, setTrackInput] = useState(TRACKING_CONFIG.DEFAULT_TRACKNO);
   const [errMsg, setErrMsg] = useState(null);
   const [html, setHtml] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   // Close on Esc (SSR-safe)
   useEffect(() => {
@@ -43,28 +44,35 @@ const TrackOrder = ({
     e.preventDefault();
     setErrMsg(null);
     setHtml(null);
-   
-    if (!trackInput.trim()) {
+    
+    const trackingNumber = trackInput.trim();
+    if (!trackingNumber) {
       setErrMsg("Please enter a tracking number.");
-      return;
+      return throw new Error("tracking number is required");
     }
     
+    setLoading(true);
     NProgress.start();
     
     try {
-      const trackingNumber = trackInput.trim();
-      if (!trackingNumber) throw new Error("tracking number is required");
+      const target = `${TRACKING_CONFIG.BASE_URL}?trackno=${encodeURIComponent(trackingNumber)}`;
+      const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`;
       
-      const url = `${TRACKING_CONFIG.BASE_URL}?trackno=${encodeURIComponent(trackingNumber)}`;
-      console.log("url:", url);
-      
-      const { data } = await axios.get(url, { responseType: "text" });
+      const { data } = await axios.get(proxy, { responseType: "text" });
       console.log("data:", data);
       
-      setHtml(data);
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(data, "text/html");
+      const sticky = doc.getElementById("sticky");
+      if (sticky) {
+        sticky.style.display = "none";
+      }
+      const html = doc.documentElement.outerHTML;
+      setHtml(html);
     } catch (err) {
       setErrMsg("Failed to load tracking page.");
     } finally {
+      setLoading(false);
       NProgress.done();
     }
   }
@@ -132,10 +140,10 @@ const TrackOrder = ({
             />
             <button
               type="submit"
-              disabled={NProgress?.status}
+              disabled={loading || !trackInput}
               className="rounded-lg bg-emerald-600 text-white px-4 py-2 disabled:opacity-60"
             >
-              {!NProgress?.status ? TRACKING_CONFIG.BUTTON_LABEL : "Loading.."}
+              {!loading ? TRACKING_CONFIG.BUTTON_LABEL : "Loading.."}
             </button>
           </form>
           
