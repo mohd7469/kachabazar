@@ -40,6 +40,7 @@ const TrackOrder = ({
   
   async function handleSubmit(e) {
     console.log("handleSubmit:", e);
+    TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[28rem] lg:w-[28rem]"
  
     e.preventDefault();
     setErrMsg(null);
@@ -68,8 +69,17 @@ const TrackOrder = ({
         sticky.style.display = "none";
       }
       const html = doc.documentElement.outerHTML;
-      TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[28rem] lg:w-[70rem]"
-      setHtml(html);
+      
+      await new Promise((resolve) => {
+        setTimeout(() => {
+          NProgress.done();
+          TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[28rem] lg:w-[70rem]"
+          setLoading(false);
+          setHtml(html);
+          resolve(true);
+          console.log('promise')
+        }, 2000);
+      });
     } catch (err) {
       setErrMsg("Failed to load tracking page");
     } finally {
@@ -162,7 +172,7 @@ const TrackOrder = ({
                 {errMsg ? (
                   <div className={"text-red-500"}>{errMsg}</div>
                 ) : (
-                  <div className={"text-gray-500"}>Please Enter Order Tracking Number</div>
+                  <div className={"text-gray-500"}> { loading ? 'Please wait..' : 'Please Enter Order Tracking Number'}</div>
                 )}
               </div>
             )}
