@@ -19,7 +19,7 @@ if (typeof window !== "undefined") {
     AOS.init({
       duration: 500,
       once: true,
-      offset: 100, // optional
+      offset: 50, // optional
       // easing: "ease-in-out", // optional
     });
     window.__AOS_INITIALIZED__ = true;
