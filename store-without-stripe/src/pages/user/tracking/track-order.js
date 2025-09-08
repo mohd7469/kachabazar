@@ -82,7 +82,7 @@ const TrackOrder = ({
       await new Promise((resolve) => {
         setTimeout(() => {
           NProgress.done();
-          TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[28rem] lg:w-[70rem]"
+          TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[50rem] lg:w-[100rem]"
           setLoading(false);
           setHtml(html);
           resolve(true);
