@@ -131,7 +131,9 @@ const TrackOrder = ({
       <aside
         role="dialog"
         aria-modal="true"
-        className={`fixed right-0 top-0 z-[99] h-transform bg-white shadow-2xl ring-1 ring-black/5 transition-transform duration-300 w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
+        className={`fixed right-0 top-0 z-[99] h-transform bg-white shadow-2xl ring-1 ring-black/5
+        transition-all ease-in-out duration-300
+        w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
       >
         <div className="flex items-center justify-between border-b p-4">
