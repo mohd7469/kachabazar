@@ -62,10 +62,11 @@ const CategoryCarousel = () => {
             }
           }, 1000);
         }}
-        autoplay={{
+        autoplay={false}
+        /*autoplay={{
           delay: 5000,
           disableOnInteraction: false,
-        }}
+        }}*/
         spaceBetween={8}
         navigation={true}
         centeredSlides={false}
