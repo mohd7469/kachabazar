@@ -40,6 +40,9 @@ const TrackOrder = ({
   
   async function handleSubmit(e) {
     console.log("handleSubmit:", e);
+    
+    if (loading) return;
+    
     TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[28rem] lg:w-[28rem]"
  
     e.preventDefault();
@@ -60,14 +63,13 @@ const TrackOrder = ({
       const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`;
       
       const { data } = await axios.get(proxy, { responseType: "text" });
-      console.log("data:", data);
-      
       const parser = new DOMParser();
       const doc = parser.parseFromString(data, "text/html");
-      const sticky = doc.getElementById("sticky");
-      if (sticky) {
-        sticky.style.display = "none";
-      }
+      
+      doc.querySelector("body").style.pointerEvents = "none";
+      doc.querySelector("#sticky").style.display = "none";
+      doc.querySelector(".footer_info").style.display = "none";
+      
       const html = doc.documentElement.outerHTML;
       
       await new Promise((resolve) => {
@@ -77,8 +79,7 @@ const TrackOrder = ({
           setLoading(false);
           setHtml(html);
           resolve(true);
-          console.log('promise')
-        }, 2000);
+        }, 1000);
       });
     } catch (err) {
       setErrMsg("Failed to load tracking page");
