@@ -72,7 +72,7 @@ const TrackOrder = ({
         #sticky { display: none !important; }
         .heading_sec h2 { margin: 0 !important;}
         .track { padding: 0px !important; }
-        .container { margin: 0px !important; }
+        .container { width: 100% !important; margin: 0px auto !important; }
         .footer_info { display: none !important; }
       `;
       doc.head.appendChild(style);
@@ -82,7 +82,7 @@ const TrackOrder = ({
       await new Promise((resolve) => {
         setTimeout(() => {
           NProgress.done();
-          TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[50rem] lg:w-[100rem]"
+          TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[50rem] lg:w-[70rem]"
           setLoading(false);
           setHtml(html);
           resolve(true);
