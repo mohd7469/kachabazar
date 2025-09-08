@@ -106,11 +106,11 @@ const MainCarousel = () => {
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
-        // autoplay={false}
-        autoplay={{
+        autoplay={false}
+        /*autoplay={{
           delay: 2000,
           disableOnInteraction: false,
-        }}
+        }}*/
         loop={true}
         pagination={
           (storeCustomizationSetting?.slider?.bottom_dots ||
