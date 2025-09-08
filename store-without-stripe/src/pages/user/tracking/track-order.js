@@ -66,11 +66,15 @@ const TrackOrder = ({
       const parser = new DOMParser();
       const doc = parser.parseFromString(data, "text/html");
       
-      doc.querySelector("body").style.pointerEvents = "none";
-      doc.querySelector("#sticky").style.display = "none";
-      doc.querySelector(".track").style.padding = "0px";
-      doc.querySelector(".container").style.margin = "0px";
-      doc.querySelector(".footer_info").style.display = "none";
+      const style = doc.createElement("style");
+      style.textContent = `
+        body { pointer-events: none !important; }
+        #sticky { display: none !important; }
+        .track { padding: 0px !important; }
+        .container { margin: 0px !important; }
+        .footer_info { display: none !important; }
+      `;
+      doc.head.appendChild(style);
       
       const html = doc.documentElement.outerHTML;
       
@@ -81,7 +85,7 @@ const TrackOrder = ({
           setLoading(false);
           setHtml(html);
           resolve(true);
-        }, 1000);
+        }, 500);
       });
     } catch (err) {
       setErrMsg("Failed to load tracking page");
