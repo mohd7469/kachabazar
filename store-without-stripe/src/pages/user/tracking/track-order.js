@@ -69,6 +69,7 @@ const TrackOrder = ({
       doc.querySelector("body").style.pointerEvents = "none";
       doc.querySelector("#sticky").style.display = "none";
       doc.querySelector(".track").style.padding = "0px";
+      doc.querySelector(".container").style.margin = "0px";
       doc.querySelector(".footer_info").style.display = "none";
       
       const html = doc.documentElement.outerHTML;
