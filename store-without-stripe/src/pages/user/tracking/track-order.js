@@ -68,9 +68,10 @@ const TrackOrder = ({
         sticky.style.display = "none";
       }
       const html = doc.documentElement.outerHTML;
+      TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[28rem] lg:w-[70rem]"
       setHtml(html);
     } catch (err) {
-      setErrMsg("Failed to load tracking page.");
+      setErrMsg("Failed to load tracking page");
     } finally {
       setLoading(false);
       NProgress.done();
@@ -112,7 +113,7 @@ const TrackOrder = ({
       <aside
         role="dialog"
         aria-modal="true"
-        className={`fixed right-0 top-0 z-[99] h-transform bg-white shadow-2xl ring-1 ring-black/5 transition-transform duration-300 w-[100vw] sm:w-[28rem] md:w-[28rem]
+        className={`fixed right-0 top-0 z-[99] h-transform bg-white shadow-2xl ring-1 ring-black/5 transition-transform duration-300 w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
       >
         <div className="flex items-center justify-between border-b p-4">
@@ -159,9 +160,9 @@ const TrackOrder = ({
             ) : (
               <div className="p-6 text-sm text-center">
                 {errMsg ? (
-                  <div className={"text-red-500"}>{errMsg}.</div>
+                  <div className={"text-red-500"}>{errMsg}</div>
                 ) : (
-                  <div className={"text-gray-500"}>Enter a tracking number and press {TRACKING_CONFIG.BUTTON_LABEL}.</div>
+                  <div className={"text-gray-500"}>Please Enter Order Tracking Number</div>
                 )}
               </div>
             )}
