@@ -43,7 +43,7 @@ const CartItem = ({ item, currency }) => {
               {(item.price * item.quantity).toFixed(2)}
             </span>
           </div>
-          <div className="h-8 w-22 md:w-24 lg:w-24 flex flex-wrap items-center justify-evenly p-1 border border-gray-100 bg-white text-gray-600 rounded-md">
+          <div className="h-8 w-24 md:w-24 lg:w-24 flex flex-wrap items-center justify-evenly p-1 border border-gray-100 bg-white text-gray-600 rounded-md">
             <button
               onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
             >
@@ -51,7 +51,7 @@ const CartItem = ({ item, currency }) => {
                 <FiMinus />
               </span>
             </button>
-            <p className="text-sm font-semibold text-dark px-1">
+            <p className="text-sm font-semibold text-dark px-2">
               {item.quantity}
             </p>
             <button onClick={() => handleIncreaseQuantity(item)}>
