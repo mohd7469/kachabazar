@@ -1,3 +1,14 @@
+#nprogress {
+  * {
+    z-index: 999999 !important;
+  }
+  .bar {
+    height: 3px !important;
+    background: linear-gradient(90deg, #4285F4, #34A853, #FBBC05, #EA4335) !important;
+    border-radius: 2px !important;
+  }
+}
+
 .no-control, [data-no-control] {
   opacity: 0.3 !important;
   pointer-events: none !important;

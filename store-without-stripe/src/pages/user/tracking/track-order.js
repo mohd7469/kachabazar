@@ -131,20 +131,22 @@ const TrackOrder = ({
       <aside
         role="dialog"
         aria-modal="true"
-        className={`fixed right-0 top-0 z-[99] h-transform bg-white shadow-2xl ring-1 ring-black/5
+        className={`fixed right-0 top-0 z-[99] h-transform bg-orange-50 shadow-2xl ring-1 ring-black/5 shadow-lg
         transition-all ease-in-out duration-300
         w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
       >
         <div className="flex items-center justify-between border-b p-4">
-          <div className="flex items-center justify-between text-lg">
-            <h2 className="font-serif text-black me-2">Track Order</h2>
+          <div className="flex items-center justify-between text-lg animate__animated animate__fadeInRight animate__delay-1s">
+            <h2 className="font-serif text-lime-950 me-2">Track Order</h2>
+            💨
             <LiaShippingFastSolid
-              className={`text-2xl ${setDrawer ? 'animate__animated animate__fadeOutRight animate__delay-1s' : ''}`}/>
+              className={`text-amber-700 text-2xl ${setDrawer ? '' : ''}`}/>
+            
           </div>
           <button
             onClick={() => setDrawerOpen(false)}
-            className="inline-flex size-9 items-center justify-center rounded-md text-gray-600 bg-gray-100"
+            className="inline-flex size-9 items-center justify-center rounded-md text-gray-600 bg-white"
             aria-label="Close drawer"
           >
             ✕
@@ -154,6 +156,7 @@ const TrackOrder = ({
         <div className="h-[calc(100dvh-57px)] overflow-y-auto p-4 space-y-3">
           <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-2">
             <input
+              autoComplete={"on"}
               value={trackInput}
               onChange={(e) => setTrackInput(e.target.value)}
               placeholder="Enter tracking number"
@@ -171,14 +174,16 @@ const TrackOrder = ({
           
           <div className="border rounded-lg overflow-hidden mt-4">
             {html ? (
-              <iframe
-                title={`Tracking ${trackInput || ""}`}
-                className="w-full"
-                style={{ height: TRACKING_CONFIG.IFRAME_HEIGHT }}
-                srcDoc={html}
-              />
+              <div className={"animate__animated animate__zoomInUp"}>
+                <iframe
+                  title={`Tracking ${trackInput || ""}`}
+                  className="w-full"
+                  style={{ height: TRACKING_CONFIG.IFRAME_HEIGHT }}
+                  srcDoc={html}
+                />
+              </div>
             ) : (
-              <div className="p-6 text-sm text-center">
+              <div className="p-6 text-sm text-center bg-white">
                 {errMsg ? (
                   <div className={"text-red-500"}>{errMsg}</div>
                 ) : (
