@@ -42,13 +42,13 @@ const MainModal = ({ modalOpen, setModalOpen, children }) => {
             >
               {children}
             </Transition.Child>
-            <div className="absolute right-5 top-5">
+            <div className="absolute right-5 top-2">
               <button
                 onClick={() => setModalOpen(false)}
                 type="button"
                 className="inline-flex justify-center px-2 py-2 text-base font-medium text-red-500 bg-white border border-transparent rounded-full hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
               >
-                <IoClose />
+                <i className="fa fa-times"></i>
               </button>
             </div>
           </div>
