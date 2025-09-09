@@ -222,29 +222,31 @@ const ProductModal = ({
       <MainModal modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <div className="inline-block overflow-y-auto h-full align-middle transition-all transform bg-white shadow-xl rounded-2xl">
           <div className="flex flex-col lg:flex-row md:flex-row w-full max-w-4xl overflow-hidden">
-            <Link href={`/product/${product.slug}`} passHref>
-              <div
-                onClick={() => setModalOpen(false)}
-                className="flex-shrink-0 flex items-center justify-center h-auto cursor-pointer"
-              >
-                <Discount product={product} discount={discount} modal />
-                {product.image[0] ? (
-                  <Image
-                    src={img || product.image[0]}
-                    width={420}
-                    height={420}
-                    alt="product"
-                  />
-                ) : (
-                  <Image
-                    src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                    width={420}
-                    height={420}
-                    alt="product Image"
-                  />
-                )}
-              </div>
-            </Link>
+            <div className="w-full flex flex-col p-5 md:p-8 text-left m-auto">
+              <Link href={`/product/${product.slug}`} passHref>
+                <div
+                  onClick={() => setModalOpen(false)}
+                  className="flex-shrink-0 flex items-center justify-center h-auto cursor-pointer"
+                >
+                  <Discount product={product} discount={discount} modal />
+                  {product.image[0] ? (
+                    <Image
+                      src={img || product.image[0]}
+                      width={420}
+                      height={420}
+                      alt="product"
+                    />
+                  ) : (
+                    <Image
+                      src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                      width={420}
+                      height={420}
+                      alt="product Image"
+                    />
+                  )}
+                </div>
+              </Link>
+            </div>
 
             <div className="w-full flex flex-col p-5 md:p-8 text-left">
               <div className="mb-2 md:mb-2.5 block -mt-1.5">

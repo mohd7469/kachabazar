@@ -221,8 +221,7 @@ const ProductCard = ({ product, attributes }) => {
           <Discount product={product}/>
         </div>
         <div className="relative w-full min-h-48 lg:h-48 xl:h-52">
-          <Link href={`/product/${product.slug}`} passHref
-                className="relative block w-full h-full overflow-hidden"> {/*bg-gray-100*/}
+          <Link href={`/product/${product.slug}`} passHref> {/* relative block w-full h-full overflow-hidden bg-gray-100 */}
             {product.image[0] ? (
               <ImageWithFallback src={product.image[0]} alt="product"/>
             ) : (
