@@ -363,20 +363,18 @@ const ProductModal = ({
                   <div>
                     <button
                       onClick={() => handleMoreInfo(product.slug)}
-                      className="font-sans font-medium text-sm text-orange-500"
+                      className="font-sans font-medium text-sm text-gray-500 hover:text-emerald-600 hover:underline"
                     >
                       {t("common:moreInfo")}
                     </button>
                   </div>
                 </div>
               </div>
-              <div className="flex justify-end mt-2">
-                <p className="text-xs sm:text-sm text-gray-600">
-                  Call Us To Order By Mobile Number :{" "}
-                  <span className="text-emerald-700 font-semibold">
-                    +0044235234
-                  </span>{" "}
-                </p>
+              <div class="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
+                <div>
+                  <i class="fa-solid fa-headphones"></i> Call Us for Order
+                </div>
+                <a href="tel:+099949343" class="font-bold text-emerald-500">+099949343</a>
               </div>
             </div>
           </div>
