@@ -42,7 +42,7 @@ const MainModal = ({ modalOpen, setModalOpen, children }) => {
             >
               {children}
             </Transition.Child>
-            <div className="absolute right-5 top-2">
+            <div className="absolute right-5 top-4">
               <button
                 onClick={() => setModalOpen(false)}
                 type="button"
