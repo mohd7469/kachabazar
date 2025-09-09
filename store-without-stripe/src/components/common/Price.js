@@ -5,6 +5,18 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
   const { getNumberTwo } = useUtilsFunction();
 
   return (
+    <>
+      {product?.isCombination ? (
+        <div>***isCombination***</div>
+      ) : (
+        <div className={"flex items-center gap-2"}>
+          <span className="inline-block text-base font-bold text-gray-900">{currency}{getNumberTwo(product?.prices?.price)} </span>
+          <span className="inline-block text-base text-xs line-through">{currency}{getNumberTwo(originalPrice)}</span>
+        </div>
+      )}
+    </>
+    
+    /*
     <div className="font-serif product-price font-bold">
       {product?.isCombination ? (
         <div className={"flex flex-col"}>
@@ -62,6 +74,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
         </div>
       )}
     </div>
+    */
   );
 };
 
