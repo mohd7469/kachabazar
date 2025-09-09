@@ -247,7 +247,7 @@ const ProductCard = ({ product, attributes }) => {
             <button onClick={() => {handleModalOpen(!modalOpen, product._id); handleLogEvent("product",`opened ${showingTranslateValue(product?.title)} product modal`);}}
                     className="relative h-auto inline-flex items-center cursor-pointer justify-center rounded-full transition-colors text-xs py-2 px-4 bg-white text-slate-700 dark:bg-slate-900 dark:text-slate-300 hover:text-emerald-700 hover:bg-gray-100 dark:hover:bg-slate-800 shadow-lg focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-emerald-600 dark:focus:ring-offset-0"
             >
-              <i class="fa-solid fa-expand"></i>
+              <i className="fa-solid fa-expand"></i>
               <span className="ms-1 hidden xl:block lg:block">Quick View</span></button>
           </div>
           <div className="absolute bottom-3 right-3 z-10 flex items-center justify-center rounded-full bg-white text-gray-700 shadow-lg transition-all duration-300 ease-in-out hover:bg-gray-100 hover:text-emerald-500">
