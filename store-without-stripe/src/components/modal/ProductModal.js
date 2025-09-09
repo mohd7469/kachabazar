@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
+import useGetSetting from "@hooks/useGetSetting";
+
 //internal import
 import Price from "@components/common/Price";
 import Stock from "@components/common/Stock";
@@ -25,6 +27,8 @@ const ProductModal = ({
   attributes,
   currency,
 }) => {
+  const { storeCustomizationSetting } = useGetSetting();
+
   const router = useRouter();
   const { setIsLoading, isLoading } = useContext(SidebarContext);
   const { t } = useTranslation("ns1");
@@ -374,7 +378,14 @@ const ProductModal = ({
                 <div>
                   <i class="fa-solid fa-headphones"></i> Call Us for Order
                 </div>
-                <a href="tel:+099949343" class="font-bold text-emerald-500">+099949343</a>
+                <a
+                  href={`tel:${
+                    storeCustomizationSetting?.navbar?.phone || "+971*****"
+                  }`}
+                  className="font-bold text-emerald-500"
+                >
+                  {storeCustomizationSetting?.navbar?.phone || "+971*****"}
+                </a>
               </div>
             </div>
           </div>
