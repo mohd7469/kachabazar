@@ -13,7 +13,7 @@ const CartItem = ({ item, currency }) => {
   const { closeCartDrawer } = useContext(SidebarContext);
   const { handleIncreaseQuantity } = useAddToCart();
 
-  // console.log("item>>", item);
+  console.log("item>>", item);
 
   return (
     <div className="group w-full h-auto flex justify-start items-center bg-white py-3 px-4 border-b hover:bg-gray-50 transition-all border-gray-100 relative last:border-b-0">
@@ -40,7 +40,7 @@ const CartItem = ({ item, currency }) => {
         <div className="flex items-center justify-between">
           <div className="font-bold text-sm md:text-base text-heading leading-5">
             <span>
-              {currency} {(item.price * item.quantity).toFixed(2)}
+              {currency} {(item.price).toFixed(2)} {/* *item.quantity */}
             </span>
           </div>
           <div className="h-8 w-24 md:w-24 lg:w-24 flex flex-wrap items-center justify-evenly p-1 border border-gray-100 bg-white text-gray-600 rounded-md">
