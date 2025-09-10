@@ -450,23 +450,21 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             </span>
                             <Tags product={product} />
                           </div>
-
+                          
                           <div className="mt-8">
-                            <p className="text-xs sm:text-sm text-gray-700 font-medium">
-                              <div className="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
-                                <div>
-                                  <i className="fa-solid fa-headphones"></i> Call Us for Order
-                                </div>
-                                <a
-                                  href={`tel:${
-                                    storeCustomizationSetting?.navbar?.phone || "+971*****"
-                                  }`}
-                                  className="font-bold text-emerald-500"
-                                >
-                                  {storeCustomizationSetting?.navbar?.phone || "+971*****"}
-                                </a>
+                            <div className="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
+                              <div>
+                                <i className="fa-solid fa-headphones"></i> Call Us for Order
                               </div>
-                            </p>
+                              <a
+                                href={`tel:${
+                                  storeCustomizationSetting?.navbar?.phone || "+971*****"
+                                }`}
+                                className="font-bold text-emerald-500"
+                              >
+                                {storeCustomizationSetting?.navbar?.phone || "+971*****"}
+                              </a>
+                            </div>
                           </div>
 
                           {/* social share */}
