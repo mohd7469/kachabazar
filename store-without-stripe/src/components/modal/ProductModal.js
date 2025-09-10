@@ -374,9 +374,9 @@ const ProductModal = ({
                   </div>
                 </div>
               </div>
-              <div class="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
+              <div className="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
                 <div>
-                  <i class="fa-solid fa-headphones"></i> Call Us for Order
+                  <i className="fa-solid fa-headphones"></i> Call Us for Order
                 </div>
                 <a
                   href={`tel:${

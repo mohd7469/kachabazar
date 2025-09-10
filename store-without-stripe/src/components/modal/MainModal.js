@@ -10,11 +10,11 @@ const MainModal = ({ modalOpen, setModalOpen, children }) => {
       <Transition appear show={modalOpen} as={Fragment}>
         <Dialog
           as="div"
-          className="fixed inset-0 z-30 overflow-y-auto text-center"
+          className="fixed inset-0 z-30 overflow-y-auto text-center my-4 md:my-0"
           onClose={() => setModalOpen(false)}
           initialFocus={cancelButtonRef}
         >
-          <div className="min-h-screen px-4">
+          <div className="min-h-screen px-4 relative">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
