@@ -41,6 +41,7 @@ import parse from "html-react-parser";
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const { storeCustomizationSetting } = useGetSetting();
   const router = useRouter();
+  const minLength = 220;
 
   const { lang, showingTranslateValue, getNumber, currency } =
     useUtilsFunction();
@@ -360,7 +361,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           <div className="text-sm leading-6 text-gray-500 md:leading-7">
                             {parse(
                               isReadMore
-                                ? showingTranslateValue(product?.description)?.slice(0, 200) + " ..."
+                                ? showingTranslateValue(product?.description)?.slice(0, minLength) + " ..."
                                 : showingTranslateValue(product?.description)
                             )}
                             
@@ -368,13 +369,13 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             {isReadMore
                               ? showingTranslateValue(
                                   product?.description
-                                )?.slice(0, 230)
+                                )?.slice(0, minLength)
                               : sh owingTranslateValue(product?.description)}
                             */}
                             
                             <br />
                             {Object?.keys(product?.description)?.includes(lang)
-                              ? product?.description[lang]?.length > 230 && (
+                              ? product?.description[lang]?.length > minLength && (
                                   <span
                                     onClick={() => setIsReadMore(!isReadMore)}
                                     className="read-or-hide"
@@ -384,7 +385,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                       : t("common:showLess")}
                                   </span>
                                 )
-                              : product?.description?.en?.length > 230 && (
+                              : product?.description?.en?.length > minLength && (
                                   <span
                                     onClick={() => setIsReadMore(!isReadMore)}
                                     className="read-or-hide"
