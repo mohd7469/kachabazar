@@ -35,6 +35,8 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import Discount from "@components/common/Discount";
 import ImageCarousel from "@components/carousel/ImageCarousel";
 
+import parse from "html-react-parser";
+
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const router = useRouter();
 
@@ -354,11 +356,20 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
                         <div>
                           <div className="text-sm leading-6 text-gray-500 md:leading-7">
+                            {parse(
+                              isReadMore
+                                ? showingTranslateValue(product?.description)?.slice(0, 200) + " ..."
+                                : showingTranslateValue(product?.description)
+                            )}
+                            
+                            {/*
                             {isReadMore
                               ? showingTranslateValue(
                                   product?.description
                                 )?.slice(0, 230)
-                              : showingTranslateValue(product?.description)}
+                              : sh owingTranslateValue(product?.description)}
+                            */}
+                            
                             <br />
                             {Object?.keys(product?.description)?.includes(lang)
                               ? product?.description[lang]?.length > 230 && (

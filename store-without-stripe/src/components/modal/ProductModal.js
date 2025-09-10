@@ -20,6 +20,8 @@ import { SidebarContext } from "@context/SidebarContext";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import { handleLogEvent } from "src/lib/analytics";
 
+import parse from "html-react-parser";
+
 const ProductModal = ({
   modalOpen,
   setModalOpen,
@@ -271,7 +273,8 @@ const ProductModal = ({
                 </div>
               </div>
               <p className="text-sm leading-6 text-gray-500 md:leading-6">
-                {showingTranslateValue(product?.description)}
+                {parse(showingTranslateValue(product?.description))}
+                {/*{showingTranslateValue(product?.description)}*/}
               </p>
               <div className="flex items-center my-4">
                 <Price
