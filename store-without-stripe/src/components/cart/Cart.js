@@ -102,7 +102,7 @@ const Cart = () => {
           )}
 
           {items.map((item, i) => (
-            <CartItem key={i + 1} item={item} />
+            <CartItem key={i + 1} item={item} currency={currency} />
           ))}
         </div>
         
@@ -141,8 +141,7 @@ const Cart = () => {
                 {!userInfo ? 'Register' : 'Proceed'} To Checkout
               </span>
                 <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
-                {currency}
-                  {cartTotal.toFixed(2)}
+                {currency} {cartTotal.toFixed(2)}
               </span>
               </button>
             </div>
