@@ -35,9 +35,11 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import Discount from "@components/common/Discount";
 import ImageCarousel from "@components/carousel/ImageCarousel";
 
+import useGetSetting from "@hooks/useGetSetting";
 import parse from "html-react-parser";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
+  const { storeCustomizationSetting } = useGetSetting();
   const router = useRouter();
 
   const { lang, showingTranslateValue, getNumber, currency } =
@@ -450,10 +452,19 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
                           <div className="mt-8">
                             <p className="text-xs sm:text-sm text-gray-700 font-medium">
-                              Call Us To Order By Mobile Number :{" "}
-                              <span className="text-emerald-700 font-semibold">
-                                +0044235234
-                              </span>{" "}
+                              <div className="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
+                                <div>
+                                  <i className="fa-solid fa-headphones"></i> Call Us for Order
+                                </div>
+                                <a
+                                  href={`tel:${
+                                    storeCustomizationSetting?.navbar?.phone || "+971*****"
+                                  }`}
+                                  className="font-bold text-emerald-500"
+                                >
+                                  {storeCustomizationSetting?.navbar?.phone || "+971*****"}
+                                </a>
+                              </div>
                             </p>
                           </div>
 
