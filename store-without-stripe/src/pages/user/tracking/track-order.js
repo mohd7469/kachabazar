@@ -131,7 +131,7 @@ const TrackOrder = ({
       <aside
         role="dialog"
         aria-modal="true"
-        className={`fixed right-0 top-0 z-[99] h-transform bg-gray-50 shadow-2xl ring-1 ring-black/5 shadow-lg
+        className={`fixed right-0 top-0 z-[99] h-transform bg-white shadow-2xl ring-1 ring-black/5 shadow-lg
         transition-all ease-in-out duration-300
         w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
@@ -148,7 +148,7 @@ const TrackOrder = ({
                     height={30}
                   />
                 ) : (
-                  <i className="fa-regular fa-clock"></i>
+                  <i className="fa-regular fa-clock text-orange-600"></i>
                 )}
               </span>
               Track Order
@@ -156,10 +156,9 @@ const TrackOrder = ({
           </div>
           <button
             onClick={() => setDrawerOpen(false)}
-            className="inline-flex size-9 items-center justify-center rounded-md text-gray-600 bg-white"
-            aria-label="Close drawer"
+            className="inline-flex text-base items-center justify-center text-gray-500 p-2 focus:outline-none transition-opacity hover:text-red-400"
           >
-            ✕
+            <i className="fa-solid fa-times"></i>
           </button>
         </div>
         

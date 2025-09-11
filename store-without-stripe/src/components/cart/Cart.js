@@ -66,7 +66,7 @@ const Cart = () => {
                   height={30}
                 />
               ) : (
-                <i className="fa-solid fa-cart-shopping"></i>
+                <i className="fa-solid fa-cart-shopping text-orange-600"></i>
               )}
             </span>
             Shopping Cart
@@ -75,10 +75,7 @@ const Cart = () => {
             onClick={closeCartDrawer}
             className="inline-flex text-base items-center justify-center text-gray-500 p-2 focus:outline-none transition-opacity hover:text-red-400"
           >
-            <IoClose />
-            <span className="font-sens text-sm text-gray-500 hover:text-red-400 ml-1">
-              Close
-            </span>
+            <i className="fa-solid fa-times"></i>
           </button>
         </div>
         <div className="overflow-y-scroll flex-grow scrollbar-hide w-full max-h-full">
