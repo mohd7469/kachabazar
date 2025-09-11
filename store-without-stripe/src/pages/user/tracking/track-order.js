@@ -102,10 +102,10 @@ const TrackOrder = ({
           break;
         }
         case 'benex' : {
-          return notifyError("This can't be use at the moment!");
+          return notifyError("This can't be use at the moment!!");
         }
         case 'aramex' : {
-          return notifyError("This can't be use at the moment!");
+          return notifyError("This can't be use at the moment!!");
         }
       }
     } catch (err) {
