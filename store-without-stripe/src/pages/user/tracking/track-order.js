@@ -2,15 +2,15 @@ import axios from "axios";
 import React, {useEffect, useMemo, useState} from "react";
 import Link from "next/link";
 import {LiaShippingFastSolid} from "react-icons/lia";
-
+import { notifyError, notifySuccess } from "../../../utils/toast";
 import NProgress from "nprogress";
 import TRACKING_CONFIG from "./config.json";
 import Shipper from "./shipper";
 
 const shippers = [
-  { label: "Panda", value: "panda", iconUrl: "https://unpkg.com/lucide-static/icons/truck.svg" },
-  { label: "Benex", value: "benex", iconUrl: "https://unpkg.com/lucide-static/icons/boxes.svg" },
-  { label: "Aramex", value: "aramex", iconUrl: "https://companieslogo.com/img/orig/ARMX.AE-2abdb672.png", disabled: true },
+  { label: "Panda", value: "panda", shipperUrl: "https://deliverypanda.me/tracking" },
+  { label: "Benex", value: "benex", shipperUrl: "" },
+  { label: "Aramex", value: "aramex", shipperUrl: "", disabled: true },
 ];
 
 const TrackOrder = ({
@@ -67,35 +67,47 @@ const TrackOrder = ({
     NProgress.start();
     
     try {
-      const target = `${TRACKING_CONFIG.BASE_URL}?trackno=${encodeURIComponent(trackingNumber)}`;
-      const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`;
-      
-      const { data } = await axios.get(proxy, { responseType: "text" });
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, "text/html");
-      
-      const style = doc.createElement("style");
-      style.textContent = `
-        body { pointer-events: none !important; }
-        #sticky { display: none !important; }
-        .heading_sec h2 { margin: 0 !important;}
-        .track { padding: 0px !important; }
-        .container { width: 100% !important; margin: 0px auto !important; }
-        .footer_info { display: none !important; }
-      `;
-      doc.head.appendChild(style);
-      
-      const html = doc.documentElement.outerHTML;
-      
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          NProgress.done();
-          TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[50rem] lg:w-[70rem]"
-          setLoading(false);
-          setHtml(html);
-          resolve(true);
-        }, 500);
-      });
+      const selectedShipper = shippers.find(s => s.value === shipper);
+      switch (selectedShipper?.value) {
+        case 'panda' : {
+          const target = `${selectedShipper.shipperUrl}?trackno=${encodeURIComponent(trackingNumber)}`;
+          const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`;
+          
+          const { data } = await axios.get(proxy, { responseType: "text" });
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data, "text/html");
+          
+          const style = doc.createElement("style");
+          style.textContent = `
+            body { pointer-events: none !important; }
+            #sticky { display: none !important; }
+            .heading_sec h2 { margin: 0 !important;}
+            .track { padding: 0px !important; }
+            .container { width: 100% !important; margin: 0px auto !important; }
+            .footer_info { display: none !important; }
+          `;
+          doc.head.appendChild(style);
+          
+          const html = doc.documentElement.outerHTML;
+          
+          await new Promise((resolve) => {
+            setTimeout(() => {
+              NProgress.done();
+              TRACKING_CONFIG.DRAWER_WIDTH_CLASS = "sm:w-[28rem] md:w-[50rem] lg:w-[70rem]"
+              setLoading(false);
+              setHtml(html);
+              resolve(true);
+            }, 500);
+          });
+          break;
+        }
+        case 'benex' : {
+          return notifyError("This can't be use at the moment!");
+        }
+        case 'aramex' : {
+          return notifyError("This can't be use at the moment!");
+        }
+      }
     } catch (err) {
       setErrMsg("Failed to load tracking page");
     } finally {
