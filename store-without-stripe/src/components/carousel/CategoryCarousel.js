@@ -80,7 +80,7 @@ const CategoryCarousel = () => {
         ) : (
           data?.[0]?.children?.map((category, i) => (
             <SwiperSlide key={i + 1}>
-              <div className="flex items-center justify-center gap-4 bg-white cursor-pointer p-2 border border-gray-100 transition-all duration-100 ease-in-out hover:border-emerald-500 rounded-full"
+              <div className="flex items-center justify-center gap-4 bg-white cursor-pointer p-2 border border-gray-50 transition-all duration-100 ease-in-out hover:border-emerald-500 rounded-full"
                    onClick={() => handleCategoryClick(category?._id, category?.name)}>
                 {/* Image container */}
                 <div className="w-8 h-8 rounded-lg">
@@ -89,7 +89,7 @@ const CategoryCarousel = () => {
                     alt={category?.name || "category"}
                     width={40}
                     height={40}
-                    className="w-full h-full object-cover"
+                    className="rounded-lg w-full h-full object-cover"
                   />
                 </div>
                 

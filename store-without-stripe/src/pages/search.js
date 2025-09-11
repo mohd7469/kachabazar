@@ -54,15 +54,15 @@ const Search = ({ products, attributes }) => {
                 </div>
               ) : (
                 <div className="flex justify-between my-3 bg-orange-100 border border-gray-100 rounded p-3">
-                  <h6 className="text-sm font-serif">
+                  <h6 className="text-sm font-serif truncate">
                     {t("common:totalI")}{" "}
                     <span className="font-bold">{productData?.length}</span>{" "}
                     {t("common:itemsFound")}
                     {query && (
-                      <> for <span className="font-bold">{query?.replace(/-/g, " ")}</span></>
+                      <> for <span className="font-bold capitalize">{query?.replace(/-/g, " ")}</span></>
                     )}
                     {category && (
-                      <> in <span className="font-bold">{category?.replace(/-/g, " ")}</span></>
+                      <> in <span className="font-bold capitalize">{category?.replace(/-/g, " ")}</span></>
                     )}
                   </h6>
                   <span className="text-sm font-serif">

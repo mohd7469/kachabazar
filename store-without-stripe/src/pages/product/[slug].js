@@ -291,6 +291,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                         width={650}
                         height={650}
                         priority
+                        className="rounded-lg"
                       />
                     ) : (
                       <Image
