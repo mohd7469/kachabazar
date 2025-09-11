@@ -21,3 +21,28 @@
     }
   }
 }
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: "" !important;
+}
+
+.swiper-button-prev::before,
+.swiper-button-next::before {
+  font-family: "Font Awesome 7 Free" !important;
+  font-weight: 700;
+  font-size: 25px;
+  color: green;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  border-width: 1px;
+  border-radius: 9999px;
+}
+
+.swiper-button-prev::before {
+  content: "\f104";
+}
+.swiper-button-next::before {
+  content: "\f105";
+}

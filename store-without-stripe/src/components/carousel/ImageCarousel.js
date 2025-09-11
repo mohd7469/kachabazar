@@ -1,7 +1,5 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRef } from "react";
-import { IoChevronBackOutline, IoChevronForward } from "react-icons/io5"; // requires a loader
 import { Autoplay, Controller, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,43 +7,27 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const ImageCarousel = ({ images, handleChangeImage }) => {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-
   return (
     <>
       <Swiper
-        spaceBetween={1}
-        navigation={true}
-        allowTouchMove={false}
-        loop={true}
-        autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
-        }}
-        slidesPerView={4}
         modules={[Autoplay, Navigation, Pagination, Controller]}
-        className="mySwiper image-carousel"
+        navigation
+        slidesPerView={Math.min(images.length, 3)} // 1 → 1, 2 → 2, 3 → 3, 4+ → 3
+        className="my-6"
       >
         {images?.map((img, i) => (
-          <SwiperSlide key={i + 1} className="group">
-            <button onClick={() => handleChangeImage(img)}>
+          <SwiperSlide key={i + 1}>
+            <div className="flex items-center justify-center bg-white p-2" onClick={() => handleChangeImage(img)}>
               <Image
-                className="border inline-flex items-center justify-center px-3 py-1 mt-2"
+                className="flex items-center justify-center bg-gray-50 rounded-full shadow"
                 src={img}
                 alt="product"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
               />
-            </button>
+            </div>
           </SwiperSlide>
         ))}
-        <button ref={prevRef} className="prev">
-          <IoChevronBackOutline />
-        </button>
-        <button ref={nextRef} className="next">
-          <IoChevronForward />
-        </button>
       </Swiper>
     </>
   );
