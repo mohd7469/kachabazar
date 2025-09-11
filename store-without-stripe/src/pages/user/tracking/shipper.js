@@ -33,24 +33,11 @@ const Shipper = ({
                 type="radio"
                 name={name}
                 value={opt.value}
-                className="sr-only"
+                className={`sr-only ${opt.disabled ? 'no-control' : ''}`}
                 disabled={opt.disabled}
                 checked={isSelected}
                 onChange={() => onChange(opt.value)}
               />
-              {opt.iconSrc ? (
-                <Image
-                  src={opt.iconSrc}
-                  alt={`${opt.label} logo`}
-                  width={16}
-                  height={16}
-                  unoptimized
-                  loading="lazy"
-                  className={`h-4 w-4 ${isSelected ? "brightness-0 invert" : ""}`}
-                />
-              ) : opt.Icon ? (
-                <opt.Icon className="h-4 w-4" />
-              ) : null}
               <span>{opt.label}</span>
             </label>
           );
