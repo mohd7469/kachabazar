@@ -17,17 +17,14 @@ const InputShipping = ({
         <label className="cursor-pointer label">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <span className="text-2xl mr-3 text-gray-400">
-                {/*<FiTruck />*/}
-                {urgent ? "🏍️💨" : "🚚"}
-              </span>
+              <div className="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
+                <span className={`h-2 w-2 rounded-full ${urgent ? 'bg-red-500' : 'bg-amber-500'}`}></span>
+                <span className="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
+              </div>
               <div>
-                <h6 className="font-serif font-bold text-sm text-gray-600">
-                  <div className="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
-                    <span className={`h-2 w-2 rounded-full ${urgent ? 'bg-red-500' : 'bg-amber-500'}`}></span>
-                    <span className="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
-                  </div>
-                  {value}
+                <h6 className="font-serif font-bold text-sm text-gray-600 flex items-center justify-center gap-2">
+                  <span>{value}</span>
+                  <span className="text-2xl mr-3 text-gray-400">{urgent ? "🏍️💨" : "🚚"}</span>
                 </h6>
                 <p className="text-xs text-gray-500 font-medium">
                   {description}

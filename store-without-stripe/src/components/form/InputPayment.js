@@ -37,6 +37,8 @@ const InputPayment = ({
             className="form-radio outline-none focus:ring-0 text-emerald-500"
             defaultChecked={defaultChecked}
             required={true}
+            onInvalid={(e) => e.currentTarget.setCustomValidity("?")}
+            onInput={(e) => e.currentTarget.setCustomValidity("")}
           />
         </div>
       </label>
