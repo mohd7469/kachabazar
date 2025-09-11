@@ -12,7 +12,7 @@ const ImageCarousel = ({ images, handleChangeImage }) => {
       <Swiper
         modules={[Autoplay, Navigation, Pagination, Controller]}
         navigation
-        slidesPerView={Math.min(images.length, 3)} // 1 → 1, 2 → 2, 3 → 3, 4+ → 3
+        slidesPerView={Math.min(images?.length, 3)} // 1 → 1, 2 → 2, 3 → 3, ... 4 → 3 ...
         className="my-6"
       >
         {images?.map((img, i) => (

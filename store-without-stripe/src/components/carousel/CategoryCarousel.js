@@ -47,68 +47,29 @@ const CategoryCarousel = () => {
   return (
     <>
       <Swiper
-        onInit={(swiper) => {
-          swiper.params.navigation.prevEl = prevRef.current;
-          swiper.params.navigation.nextEl = nextRef.current;
-          swiper.navigation.init();
-          swiper.navigation.update();
-          setTimeout(()=>{
-            swiper.slideTo(1);
-            console.log('sliding..');
-            
-            const slider = document.querySelector(".category-slider .swiper-wrapper");
-            if (slider) {
-              slider.classList.add("flex", "justify-center", "items-center");
-            }
-          }, 1000);
-        }}
-        autoplay={false}
-        /*autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}*/
-        spaceBetween={8}
-        navigation={true}
-        centeredSlides={false}
-        allowTouchMove={true}
-        loop={true}
+        modules={[Autoplay, Navigation, Pagination, Controller]}
+        navigation
         breakpoints={{
-          375: {
-            width: 375,
-            slidesPerView: 2,
+          320: {
+            slidesPerView: Math.min(3)
           },
-          414: {
-            width: 414,
-            slidesPerView: 3,
-          },
-          660: {
-            width: 660,
-            slidesPerView: 4,
+          576: {
+            slidesPerView: Math.min(4),
           },
           768: {
-            width: 768,
-            slidesPerView: 6,
+            slidesPerView: Math.min(5),
           },
-          991: {
-            width: 991,
-            slidesPerView: 8,
+          992: {
+            slidesPerView: Math.min(6),
           },
-          /*
-          1140: {
-            width: 1140,
-            slidesPerView: 9,
+          1200: {
+            slidesPerView: Math.min(6),
           },
-          1680: {
-            width: 1680,
-            slidesPerView: 10,
-          },
-          1920: {
-            width: 1920,
-            slidesPerView: 10,
-          },*/
+          1400: {
+            slidesPerView: Math.min(7),
+          }
         }}
-        modules={[Autoplay, Navigation, Pagination, Controller]}
-        className="mySwiper category-slider my-10"
+        className="my-6 rounded-full"
       >
         {loading ? (
           <Loading loading={loading} />
@@ -117,44 +78,27 @@ const CategoryCarousel = () => {
             {error?.response?.data?.message || error?.message}
           </p>
         ) : (
-          <div>
-            {data[0]?.children?.map((category, i) => (
-              <SwiperSlide key={i + 1} className="group">
-                <div
-                  onClick={() =>
-                    handleCategoryClick(category?._id, category.name)
-                  }
-                  className="text-center cursor-pointer p-3 bg-white rounded-lg"
-                >
-                  <div className="bg-white p-2 mx-auto w-10 h-10 rounded-full shadow-md">
-                    <div className="relative w-6 h-8">
-                      <Image
-                        src={
-                          category?.icon ||
-                          "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                        }
-                        alt="category"
-                        width={40}
-                        height={40}
-                        className="object-fill"
-                      />
-                    </div>
-                  </div>
-
-                  <h3 className="text-xs text-gray-600 mt-2 font-serif group-hover:text-emerald-500">
-                    {showingTranslateValue(category?.name)}
-                  </h3>
+          data?.[0]?.children?.map((category, i) => (
+            <SwiperSlide key={i + 1}>
+              <div className="flex items-center justify-center gap-3 bg-white cursor-pointer p-2 hover:bg-gray-50 hover:shadow"
+                   onClick={() => handleCategoryClick(category?._id, category?.name)}>
+                {/* Image container */}
+                <div className="w-8 h-8 flex-shrink-0 rounded-md overflow-hidden">
+                  <Image
+                    src={category?.icon || "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"}
+                    alt={category?.name || "category"}
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              </SwiperSlide>
-            ))}
-          </div>
+                
+                {/* Text content */}
+                <p className="text-xs text-gray-500 truncate">{showingTranslateValue(category?.name)}</p>
+              </div>
+            </SwiperSlide>
+          ))
         )}
-        <button ref={prevRef} className="prev">
-          <IoChevronBackOutline />
-        </button>
-        <button ref={nextRef} className="next">
-          <IoChevronForward />
-        </button>
       </Swiper>
     </>
   );
