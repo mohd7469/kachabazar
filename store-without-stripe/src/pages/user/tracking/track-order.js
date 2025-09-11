@@ -169,7 +169,7 @@ const TrackOrder = ({
               value={trackInput}
               onChange={(e) => setTrackInput(e.target.value)}
               placeholder="Enter tracking number"
-              className="flex-1 min-w-56 border rounded-lg px-3 py-2"
+              className="flex-1 min-w-56 border rounded-lg px-3 py-2 transition-all duration-100 ease-in-out focus:outline-emerald-700"
               disabled={loading}
             />
             <button
