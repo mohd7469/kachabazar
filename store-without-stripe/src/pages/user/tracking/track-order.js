@@ -131,18 +131,28 @@ const TrackOrder = ({
       <aside
         role="dialog"
         aria-modal="true"
-        className={`fixed right-0 top-0 z-[99] h-transform bg-orange-50 shadow-2xl ring-1 ring-black/5 shadow-lg
+        className={`fixed right-0 top-0 z-[99] h-transform bg-gray-50 shadow-2xl ring-1 ring-black/5 shadow-lg
         transition-all ease-in-out duration-300
         w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
       >
         <div className="flex items-center justify-between border-b p-4">
           <div className="flex items-center justify-between text-lg animate__animated animate__fadeInRight animate__delay-1s">
-            <h2 className="font-serif text-lime-950 me-2">Track Order</h2>
-            💨
-            <LiaShippingFastSolid
-              className={`text-amber-700 text-2xl ${setDrawer ? '' : ''}`}/>
-            
+            <h2 className="font-semibold text-gray-800 text-lg m-0 text-heading flex items-center">
+              <span className="text-xl mr-2">
+                {loading ? (
+                  <img
+                    src="/loader/spinner.gif"
+                    alt="Loading"
+                    width={30}
+                    height={30}
+                  />
+                ) : (
+                  <i className="fa-regular fa-clock"></i>
+                )}
+              </span>
+              Track Order
+            </h2>
           </div>
           <button
             onClick={() => setDrawerOpen(false)}
