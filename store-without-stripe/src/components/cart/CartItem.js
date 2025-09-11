@@ -17,13 +17,14 @@ const CartItem = ({ item, currency }) => {
 
   return (
     <div className="group w-full h-auto flex justify-start items-center bg-white py-3 px-4 border-b hover:bg-gray-50 transition-all border-gray-100 relative last:border-b-0">
-      <div className="relative flex rounded-full border border-gray-100 shadow-sm overflow-hidden flex-shrink-0 cursor-pointer mr-4">
+      <div className="relative flex shadow-sm overflow-hidden flex-shrink-0 cursor-pointer mr-4">
         <Image
           key={item.id}
           src={Array.isArray(item.image) ? item.image[0] : item.image}
           width={40}
           height={40}
           alt={item.title}
+          className="object-contain transition duration-150 ease-linear transform group-hover:scale-105 p-2 size-20 flex-none rounded-md bg-gray-100 object-cover"
         />
       </div>
       <div className="flex flex-col w-full overflow-hidden">
@@ -34,11 +35,11 @@ const CartItem = ({ item, currency }) => {
         >
           {item.title}
         </Link>
-        <span className="text-xs text-gray-500 font-semibold mb-1">
+        <span className="text-xs text-gray-400 mb-1">
           Price <del className={''}>{currency} {item.originalPrice}</del>
         </span>
         <div className="flex items-center justify-between">
-          <div className="font-bold text-sm md:text-base text-heading leading-5">
+          <div className="font-bold text-sm md:text-base text-heading leading-5 text-teal-700">
             <span>
               {currency} {(item.price).toFixed(2)} {/* *item.quantity */}
             </span>
