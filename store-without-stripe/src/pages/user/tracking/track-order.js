@@ -5,18 +5,26 @@ import {LiaShippingFastSolid} from "react-icons/lia";
 
 import NProgress from "nprogress";
 import TRACKING_CONFIG from "./config.json";
+import Shipper from "./shipper";
+
+const shippers = [
+  { label: "Panda", value: "panda", iconUrl: "https://unpkg.com/lucide-static/icons/truck.svg" },
+  { label: "Benex", value: "benex", iconUrl: "https://unpkg.com/lucide-static/icons/boxes.svg" },
+  { label: "Aramex", value: "aramex", iconUrl: "https://companieslogo.com/img/orig/ARMX.AE-2abdb672.png", disabled: true },
+];
 
 const TrackOrder = ({
   buttonLabel = "Order Tracking",
   className = "",
 }) => {
   const [setDrawer, setDrawerOpen] = useState(false);
+  const [shipper, setShipper] = useState(shippers[0].value);
   
   const [trackInput, setTrackInput] = useState(TRACKING_CONFIG.DEFAULT_TRACKNO);
   const [errMsg, setErrMsg] = useState(null);
   const [html, setHtml] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  
   // Close on Esc (SSR-safe)
   useEffect(() => {
     if (!setDrawer) return;
@@ -148,7 +156,7 @@ const TrackOrder = ({
                     height={30}
                   />
                 ) : (
-                  <i className="fa-regular fa-clock text-orange-600"></i>
+                  <i className="fa-regular fa-clock text-yellow-500"></i>
                 )}
               </span>
               Track Order
@@ -164,6 +172,10 @@ const TrackOrder = ({
         
         <div className="h-[calc(100dvh-57px)] overflow-y-auto p-4 space-y-3">
           <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-2">
+            <fieldset className="mb-1">
+              <Shipper options={shippers} value={shipper} onChange={setShipper} />
+            </fieldset>
+            
             <input
               autoComplete={"on"}
               value={trackInput}

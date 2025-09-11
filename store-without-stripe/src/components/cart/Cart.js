@@ -66,7 +66,7 @@ const Cart = () => {
                   height={30}
                 />
               ) : (
-                <i className="fa-solid fa-cart-shopping text-orange-600"></i>
+                <i className="fa-solid fa-cart-shopping text-yellow-500"></i>
               )}
             </span>
             Shopping Cart
