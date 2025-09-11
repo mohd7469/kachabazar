@@ -136,7 +136,7 @@ const TrackOrder = ({
         w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
       >
-        <div className="flex items-center justify-between border-b p-4">
+        <div className="flex items-center justify-between p-4 bg-gray-100">
           <div className="flex items-center justify-between text-lg animate__animated animate__fadeInRight animate__delay-1s">
             <h2 className="font-semibold text-gray-800 text-lg m-0 text-heading flex items-center">
               <span className="text-xl mr-2">
