@@ -34,7 +34,7 @@ import ProductServices from "@services/ProductServices";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import Discount from "@components/common/Discount";
 import ImageCarousel from "@components/carousel/ImageCarousel";
-
+import NProgress from "nprogress";
 import useGetSetting from "@hooks/useGetSetting";
 import parse from "html-react-parser";
 
@@ -221,9 +221,11 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
       return notifyError("Please select all variant first!");
     }
   };
-
-  const handleChangeImage = (img) => {
-    setImg(img);
+  
+  const handleChangeImage = async (img) => {
+    NProgress.start();
+    await setImg(img);
+    NProgress.done();
   };
 
   const { t } = useTranslation();
@@ -247,7 +249,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
           <div className="px-0 py-10 lg:py-10">
             <div className="mx-auto px-3 lg:px-10 max-w-screen-2xl">
               <div className="flex items-center pb-4">
-                <ol className="flex items-center w-full overflow-hidden font-serif">
+                <ol className="flex items-center w-full overflow-hidden font-serif truncate">
                   <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold">
                     <Link href="/">Home</Link>
                   </li>
@@ -262,6 +264,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                       <button
                         type="button"
                         onClick={() => setIsLoading(!isLoading)}
+                        className={"uppercase"}
                       >
                         {category_name}
                       </button>
@@ -271,7 +274,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                     {" "}
                     <FiChevronRight />{" "}
                   </li>
-                  <li className="text-sm px-1 transition duration-200 ease-in ">
+                  <li className="text-sm px-1 transition duration-200 ease-in text-gray-400">
                     {showingTranslateValue(product?.title)}
                   </li>
                 </ol>

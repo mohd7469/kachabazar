@@ -101,7 +101,7 @@ const ChildAttributes = () => {
 
       <AnimatedContent>
         <div className="flex items-center pb-4">
-          <ol className="flex items-center w-full overflow-hidden font-serif">
+          <ol className="flex items-center w-full overflow-hidden font-serif truncate">
             <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold">
               <Link className="text-blue-700" to={`/attributes`}>
                 Attributes

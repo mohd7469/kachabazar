@@ -69,7 +69,7 @@ const CategoryCarousel = () => {
             slidesPerView: Math.min(7),
           }
         }}
-        className="my-6 rounded-full"
+        className="my-6"
       >
         {loading ? (
           <Loading loading={loading} />
@@ -80,10 +80,10 @@ const CategoryCarousel = () => {
         ) : (
           data?.[0]?.children?.map((category, i) => (
             <SwiperSlide key={i + 1}>
-              <div className="flex items-center justify-center gap-3 bg-white cursor-pointer p-2 hover:bg-gray-50 hover:shadow"
+              <div className="flex items-center justify-center gap-4 bg-white cursor-pointer p-2 border border-gray-100 transition-all duration-100 ease-in-out hover:border-emerald-500 rounded-full"
                    onClick={() => handleCategoryClick(category?._id, category?.name)}>
                 {/* Image container */}
-                <div className="w-8 h-8 flex-shrink-0 rounded-md overflow-hidden">
+                <div className="w-8 h-8 rounded-lg">
                   <Image
                     src={category?.icon || "https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"}
                     alt={category?.name || "category"}
