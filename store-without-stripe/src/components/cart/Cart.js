@@ -57,7 +57,7 @@ const Cart = () => {
       <div className="flex flex-col w-full h-full justify-between items-middle bg-white rounded cursor-pointer">
         <div className="w-full flex justify-between items-center relative px-5 py-4 border-b bg-indigo-50 border-gray-100">
           <h2 className="font-semibold text-gray-800 text-lg m-0 text-heading flex items-center">
-            <span className="text-xl mr-2 mb-1">
+            <span className="text-xl mr-2">
               {loading ? (
                 <img
                   src="/loader/spinner.gif"

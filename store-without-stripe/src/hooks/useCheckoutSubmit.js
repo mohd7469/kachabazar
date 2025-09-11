@@ -356,6 +356,7 @@ const useCheckoutSubmit = (storeSetting) => {
 
   return {
     register,
+    currency,
     errors,
     showCard,
     setShowCard,
