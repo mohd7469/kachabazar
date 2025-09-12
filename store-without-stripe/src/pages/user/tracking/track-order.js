@@ -156,9 +156,9 @@ const TrackOrder = ({
         w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
       >
-        <div className="flex items-center justify-between p-4 bg-gray-100">
-          <div className="flex items-center justify-between text-lg animate__animated animate__fadeInRight animate__delay-1s">
-            <h2 className="font-semibold text-gray-800 text-lg m-0 text-heading flex items-center">
+        <div className="w-full flex justify-between items-center relative px-5 py-4 bg-emerald-600">
+          <div className="flex items-center justify-between text-lg">
+            <h2 className="text-white text-lg m-0 text-heading flex items-center">
               <span className="text-xl mr-2">
                 {loading ? (
                   <img
@@ -168,7 +168,7 @@ const TrackOrder = ({
                     height={30}
                   />
                 ) : (
-                  <i className="fa-regular fa-clock text-yellow-500"></i>
+                  <i className="fa-solid fa-clock"></i>
                 )}
               </span>
               Track Order
@@ -176,7 +176,7 @@ const TrackOrder = ({
           </div>
           <button
             onClick={() => setDrawerOpen(false)}
-            className="inline-flex text-base items-center justify-center text-gray-500 p-2 focus:outline-none transition-opacity hover:text-red-400"
+            className="inline-flex text-base items-center justify-center text-white p-2 focus:outline-none transition-opacity rounded-lg hover:bg-emerald-400"
           >
             <i className="fa-solid fa-times"></i>
           </button>
@@ -207,7 +207,7 @@ const TrackOrder = ({
             ) : (
               <div className="p-6 text-sm text-center bg-white">
                 {errMsg ? (
-                  <div className={"text-red-500"}>{errMsg}</div>
+                  <div className={"text-red-500"}><i className="fa-solid fa-circle-info"></i> {errMsg}</div>
                 ) : (
                   <div className={"text-gray-500"}> { loading ? 'Please wait..' : 'Please Enter Order Tracking Number'}</div>
                 )}

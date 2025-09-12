@@ -55,9 +55,9 @@ const Cart = () => {
   return (
     <>
       <div className="flex flex-col w-full h-full justify-between items-middle bg-white rounded cursor-pointer">
-        <div className="w-full flex justify-between items-center relative px-5 py-4 border-b bg-indigo-50 border-gray-100">
-          <h2 className="font-semibold text-gray-800 text-lg m-0 text-heading flex items-center">
-            <span className="text-xl mr-2">
+        <div className="w-full flex justify-between items-center relative px-5 py-4 bg-emerald-600">
+          <h2 className="text-white text-lg m-0 text-heading flex items-center">
+            <span className="text-xl mr-3">
               {loading ? (
                 <img
                   src="/loader/spinner.gif"
@@ -66,14 +66,14 @@ const Cart = () => {
                   height={30}
                 />
               ) : (
-                <i className="fa-solid fa-cart-shopping text-yellow-500"></i>
+                <i className="fa-solid fa-cart-shopping"></i>
               )}
             </span>
             Shopping Cart
           </h2>
           <button
             onClick={closeCartDrawer}
-            className="inline-flex text-base items-center justify-center text-gray-500 p-2 focus:outline-none transition-opacity hover:text-red-400"
+            className="inline-flex text-base items-center justify-center text-white p-2 focus:outline-none transition-opacity rounded-lg hover:bg-emerald-400"
           >
             <i className="fa-solid fa-times"></i>
           </button>
