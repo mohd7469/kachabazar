@@ -71,21 +71,10 @@ const TrackOrder = ({
       switch (selectedShipper?.value) {
         case 'panda' : {
           const target = `${selectedShipper.shipperUrl}?trackno=${encodeURIComponent(trackingNumber)}`;
-          const proxy = `https://api.allorigins.win/get?charset=ISO-8859-1&url=${encodeURIComponent(target)}`;
+          const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`;
           
-          const { data, headers } = await axios.get(proxy, { responseType: "text" });
-          let result;
-          try {
-            if (typeof data === "string" && headers["content-type"]?.includes("application/json")) {
-              result = JSON.parse(data)?.contents ?? "";
-            } else if (typeof data === "string") {
-              result = data; // raw html
-            } else if (data && typeof data === "object" && "contents" in data) {
-              result = data.contents;
-            }
-          } catch (e) {
-            console.error("Parse error:", e);
-          }
+          const { data: buf } = await axios.get(proxy, { responseType: "arraybuffer" });
+          let result = new TextDecoder("utf-8").decode(buf);
           
           const parser = new DOMParser();
           const doc = parser.parseFromString(result, "text/html");
@@ -98,6 +87,7 @@ const TrackOrder = ({
             .track { padding: 0px !important; }
             .container { width: 100% !important; margin: 0px auto !important; }
             .footer_info { display: none !important; }
+            .shipment_inner > .container > br:nth-of-type(-n+2) { display: none !important; }
           `;
           doc.head.appendChild(style);
           

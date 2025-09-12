@@ -32,6 +32,7 @@ const Shipper = ({
           </select>
         </div>
         <input
+          type={"search"}
           id={`${name}-input`}
           name={`${name}-input`}
           placeholder="Enter tracking number"
