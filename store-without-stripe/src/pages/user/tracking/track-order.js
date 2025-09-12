@@ -9,8 +9,7 @@ import Shipper from "./shipper";
 
 const shippers = [
   { label: "Panda", value: "panda", shipperUrl: "https://deliverypanda.me/tracking" },
-  { label: "Benex", value: "benex", shipperUrl: "" },
-  { label: "Aramex", value: "aramex", shipperUrl: "", disabled: true },
+  { label: "Benex", value: "benex", shipperUrl: "https://benex.com/tracking" },
 ];
 
 const TrackOrder = ({
@@ -18,9 +17,10 @@ const TrackOrder = ({
   className = "",
 }) => {
   const [setDrawer, setDrawerOpen] = useState(false);
-  const [shipper, setShipper] = useState(shippers[0].value);
-  
-  const [trackInput, setTrackInput] = useState(TRACKING_CONFIG.DEFAULT_TRACKNO);
+
+  const [shipperSelectBox, setShipperSelectBox] = useState(shippers[0].value);
+  const [shipperInputBox, setShipperInputBox] = useState(TRACKING_CONFIG.DEFAULT_TRACKNO);
+
   const [errMsg, setErrMsg] = useState(null);
   const [html, setHtml] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -57,7 +57,7 @@ const TrackOrder = ({
     setErrMsg(null);
     setHtml(null);
     
-    const trackingNumber = trackInput.trim();
+    const trackingNumber = shipperInputBox.trim();
     if (!trackingNumber) {
       setErrMsg("Please enter a tracking number.");
       return throw new Error("tracking number is required");
@@ -67,7 +67,7 @@ const TrackOrder = ({
     NProgress.start();
     
     try {
-      const selectedShipper = shippers.find(s => s.value === shipper);
+      const selectedShipper = shippers.find(s => s.value === shipperSelectBox);
       switch (selectedShipper?.value) {
         case 'panda' : {
           const target = `${selectedShipper.shipperUrl}?trackno=${encodeURIComponent(trackingNumber)}`;
@@ -183,33 +183,22 @@ const TrackOrder = ({
         </div>
         
         <div className="h-[calc(100dvh-57px)] overflow-y-auto p-4 space-y-3">
-          <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-2">
-            <fieldset className="mb-1">
-              <Shipper options={shippers} value={shipper} onChange={setShipper} />
-            </fieldset>
-            
-            <input
-              autoComplete={"on"}
-              value={trackInput}
-              onChange={(e) => setTrackInput(e.target.value)}
-              placeholder="Enter tracking number"
-              className="flex-1 min-w-56 border rounded-lg px-3 py-2 transition-all duration-100 ease-in-out focus:outline-emerald-700"
-              disabled={loading}
+          <form onSubmit={handleSubmit} className="">
+            <Shipper
+              options={shippers}
+              loading={loading}
+              shipperSelectBox={shipperSelectBox}
+              onChangeShipperSelectBox={setShipperSelectBox}
+              shipperInputBox={shipperInputBox}
+              onChangeShipperInputBox={setShipperInputBox}
             />
-            <button
-              type="submit"
-              disabled={loading || !trackInput}
-              className="rounded-lg bg-emerald-600 text-white px-4 py-2 disabled:opacity-60"
-            >
-              {!loading ? TRACKING_CONFIG.BUTTON_LABEL : "Loading.."}
-            </button>
           </form>
           
           <div className="border rounded-lg overflow-hidden mt-4">
             {html ? (
               <div className={"animate__animated animate__zoomInUp"}>
                 <iframe
-                  title={`Tracking ${trackInput || ""}`}
+                  title={`Tracking ${shipperInputBox || ""}`}
                   className="w-full"
                   style={{ height: TRACKING_CONFIG.IFRAME_HEIGHT }}
                   srcDoc={html}
