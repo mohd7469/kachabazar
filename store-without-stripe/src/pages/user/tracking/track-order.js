@@ -71,11 +71,24 @@ const TrackOrder = ({
       switch (selectedShipper?.value) {
         case 'panda' : {
           const target = `${selectedShipper.shipperUrl}?trackno=${encodeURIComponent(trackingNumber)}`;
-          const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`;
+          const proxy = `https://api.allorigins.win/get?charset=ISO-8859-1&url=${encodeURIComponent(target)}`;
           
-          const { data } = await axios.get(proxy, { responseType: "text" });
+          const { data, headers } = await axios.get(proxy, { responseType: "text" });
+          let result;
+          try {
+            if (typeof data === "string" && headers["content-type"]?.includes("application/json")) {
+              result = JSON.parse(data)?.contents ?? "";
+            } else if (typeof data === "string") {
+              result = data; // raw html
+            } else if (data && typeof data === "object" && "contents" in data) {
+              result = data.contents;
+            }
+          } catch (e) {
+            console.error("Parse error:", e);
+          }
+          
           const parser = new DOMParser();
-          const doc = parser.parseFromString(data, "text/html");
+          const doc = parser.parseFromString(result, "text/html");
           
           const style = doc.createElement("style");
           style.textContent = `
@@ -156,7 +169,7 @@ const TrackOrder = ({
         w-[100vw] ${TRACKING_CONFIG.DRAWER_WIDTH_CLASS}
         ${setDrawer ? "translate-x-0" : "translate-x-full"} ${className}`}
       >
-        <div className="w-full flex justify-between items-center relative px-5 py-4 bg-emerald-600">
+        <div className="w-full flex justify-between items-center relative px-5 py-4 bg-emerald-700">
           <div className="flex items-center justify-between text-lg">
             <h2 className="text-white text-lg m-0 text-heading flex items-center">
               <span className="text-xl mr-2">
@@ -176,7 +189,7 @@ const TrackOrder = ({
           </div>
           <button
             onClick={() => setDrawerOpen(false)}
-            className="inline-flex text-base items-center justify-center text-white p-2 focus:outline-none transition-opacity rounded-lg hover:bg-emerald-400"
+            className="inline-flex text-base items-center justify-center text-white p-2 focus:outline-none transition-opacity rounded-lg bg-emerald-600 hover:bg-emerald-500"
           >
             <i className="fa-solid fa-times"></i>
           </button>

@@ -55,7 +55,7 @@ const Cart = () => {
   return (
     <>
       <div className="flex flex-col w-full h-full justify-between items-middle bg-white rounded cursor-pointer">
-        <div className="w-full flex justify-between items-center relative px-5 py-4 bg-emerald-600">
+        <div className="w-full flex justify-between items-center relative px-5 py-4 bg-emerald-700">
           <h2 className="text-white text-lg m-0 text-heading flex items-center">
             <span className="text-xl mr-3">
               {loading ? (
@@ -73,7 +73,7 @@ const Cart = () => {
           </h2>
           <button
             onClick={closeCartDrawer}
-            className="inline-flex text-base items-center justify-center text-white p-2 focus:outline-none transition-opacity rounded-lg hover:bg-emerald-400"
+            className="inline-flex text-base items-center justify-center text-white p-2 focus:outline-none transition-opacity rounded-lg bg-emerald-600 hover:bg-emerald-500"
           >
             <i className="fa-solid fa-times"></i>
           </button>
