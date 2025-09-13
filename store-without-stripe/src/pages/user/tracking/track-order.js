@@ -71,7 +71,7 @@ const TrackOrder = ({
       switch (selectedShipper?.value) {
         case 'panda' : {
           const target = `${selectedShipper.shipperUrl}?trackno=${encodeURIComponent(trackingNumber)}`;
-          const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}`;
+          const proxy = `https://app-cors.vercel.app/api/proxy?url=${encodeURIComponent(target)}`;
           
           const { data: buf } = await axios.get(proxy, { responseType: "arraybuffer" });
           let result = new TextDecoder("utf-8").decode(buf);
