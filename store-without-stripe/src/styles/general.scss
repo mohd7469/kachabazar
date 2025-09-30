@@ -1,3 +1,11 @@
+.required::before {
+  content: "*" !important;
+  color: red !important;
+  font-size: 1em !important;   /* smaller */
+  vertical-align: super !important; /* lifts it above baseline */
+  margin-right: 3px !important;
+}
+
 #nprogress {
   * {
     z-index: 999999 !important;
