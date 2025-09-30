@@ -31,9 +31,7 @@ const MainCarousel = () => {
         storeCustomizationSetting?.slider?.first_button
       ),
       url: showingUrl(storeCustomizationSetting?.slider?.first_link),
-      image:
-        showingImage(storeCustomizationSetting?.slider?.first_img) ||
-        "/slider/slider-1.jpg",
+      image: showingImage(storeCustomizationSetting?.slider?.first_img)
     },
     {
       id: 2,
@@ -47,9 +45,7 @@ const MainCarousel = () => {
         storeCustomizationSetting?.slider?.second_button
       ),
       url: showingUrl(storeCustomizationSetting?.slider?.second_link),
-      image:
-        showingImage(storeCustomizationSetting?.slider?.second_img) ||
-        "/slider/slider-2.jpg",
+      image: showingImage(storeCustomizationSetting?.slider?.second_img)
     },
     {
       id: 3,
@@ -63,9 +59,7 @@ const MainCarousel = () => {
         storeCustomizationSetting?.slider?.third_button
       ),
       url: showingUrl(storeCustomizationSetting?.slider?.third_link),
-      image:
-        showingImage(storeCustomizationSetting?.slider?.third_img) ||
-        "/slider/slider-3.jpg",
+      image: showingImage(storeCustomizationSetting?.slider?.third_img)
     },
     {
       id: 4,
@@ -79,9 +73,7 @@ const MainCarousel = () => {
         storeCustomizationSetting?.slider?.four_button
       ),
       url: showingUrl(storeCustomizationSetting?.slider?.four_link),
-      image:
-        showingImage(storeCustomizationSetting?.slider?.four_img) ||
-        "/slider/slider-1.jpg",
+      image: showingImage(storeCustomizationSetting?.slider?.four_img)
     },
     {
       id: 5,
@@ -95,9 +87,7 @@ const MainCarousel = () => {
         storeCustomizationSetting?.slider?.five_button
       ),
       url: showingUrl(storeCustomizationSetting?.slider?.five_link),
-      image:
-        showingImage(storeCustomizationSetting?.slider?.five_img) ||
-        "/slider/slider-2.jpg",
+      image: showingImage(storeCustomizationSetting?.slider?.five_img)
     },
   ];
 
@@ -136,7 +126,7 @@ const MainCarousel = () => {
               <Image
                 width={950}
                 height={400}
-                src={item.image || "/slider/slider-1.jpg"}
+                src={item.image}
                 alt={item.title}
                 className="object-cover"
                 priority

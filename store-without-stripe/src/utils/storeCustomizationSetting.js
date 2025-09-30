@@ -462,7 +462,7 @@ export const storeCustomization = {
     bottom_dots: true,
     both_slider: false,
     first_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-1_rl8qdc.jpg",
+      "",
     first_title: {
       en: "The Best Quality Products Guaranteed!",
       de: "Die besten Qualitätsprodukte garantiert!",
@@ -477,7 +477,7 @@ export const storeCustomization = {
     },
     first_link: "/search?category=milk-dairy",
     second_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-2_o6aezc.jpg",
+      "",
     second_title: {
       en: "Best Different Type of Grocery Store",
       de: "Bestes anderes Lebensmittelgeschäft",
@@ -492,7 +492,7 @@ export const storeCustomization = {
     },
     second_link: "/search?category=fish-meat",
     third_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688492/settings/slider-3_iw4nnf.jpg",
+      "",
     third_title: {
       en: "Quality Freshness Guaranteed!",
       de: "Qualitätsfrische garantiert!",
@@ -506,7 +506,8 @@ export const storeCustomization = {
       de: "Jetzt einkaufen",
     },
     third_link: "/search?category=fruits-vegetable",
-    four_img: "https://i.postimg.cc/rscqZJNz/slider-1.webp",
+    four_img:
+      "",
     four_title: {
       en: "The Best Quality Products Guaranteed!",
       de: "Die besten Qualitätsprodukte garantiert!",
@@ -521,7 +522,7 @@ export const storeCustomization = {
     },
     four_link: "/search?category=fruits-vegetable",
     five_img:
-      "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-2_o6aezc.jpg",
+      "",
     five_title: {
       en: "Best Different Type of Grocery Store",
       de: "Bestes anderes Lebensmittelgeschäft",
