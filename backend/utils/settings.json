@@ -459,76 +459,81 @@
         "left_right_arrow": false,
         "bottom_dots": true,
         "both_slider": false,
-        "first_img": "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-1_rl8qdc.jpg",
+
+        "first_img": "",
         "first_title": {
-          "en": "The Best Quality Products Guaranteed!",
-          "de": "Die besten Qualitätsprodukte garantiert!"
+          "en": "",
+          "de": ""
         },
         "first_description": {
-          "en": "The Best Quality Products Guaranteed!",
-          "de": "Die besten Qualitätsprodukte garantiert!"
+          "en": "",
+          "de": ""
         },
         "first_button": {
           "en": "Shop Now",
           "de": "Jetzt einkaufen"
         },
-        "first_link": "/search?category=milk-dairy",
-        "second_img": "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-2_o6aezc.jpg",
+        "first_link": "/search?category=",
+
+        "second_img": "",
         "second_title": {
-          "en": "Best Different Type of Grocery Store",
-          "de": "Bestes anderes Lebensmittelgeschäft"
+          "en": "",
+          "de": ""
         },
         "second_description": {
-          "en": "Quickly aggregate empowered networks after emerging products...",
-          "de": "Schnelle Bündelung leistungsstarker Netzwerke nach neuen Produkten ..."
+          "en": "",
+          "de": ""
         },
         "second_button": {
           "en": "Shop Now",
           "de": "Jetzt einkaufen"
         },
-        "second_link": "/search?category=fish-meat",
-        "third_img": "https://res.cloudinary.com/ahossain/image/upload/v1697688492/settings/slider-3_iw4nnf.jpg",
+        "second_link": "/search?category=",
+
+        "third_img": "",
         "third_title": {
-          "en": "Quality Freshness Guaranteed!",
-          "de": "Qualitätsfrische garantiert!"
+          "en": "",
+          "de": ""
         },
         "third_description": {
-          "en": "Intrinsicly fashion performance based products rather than accurate benefits...",
-          "de": "Gestalten Sie Produkte grundsätzlich auf Leistung und nicht auf konkrete Vorteile ..."
+          "en": "",
+          "de": ""
         },
         "third_button": {
           "en": "Shop Now",
           "de": "Jetzt einkaufen"
         },
-        "third_link": "/search?category=fruits-vegetable",
-        "four_img": "https://i.postimg.cc/rscqZJNz/slider-1.webp",
+        "third_link": "/search?category=",
+
+        "four_img": "",
         "four_title": {
-          "en": "The Best Quality Products Guaranteed!",
-          "de": "Die besten Qualitätsprodukte garantiert!"
+          "en": "",
+          "de": ""
         },
         "four_description": {
-          "en": "Dramatically facilitate effective total linkage for go forward processes...",
-          "de": "Ermöglichen Sie eine effektive Gesamtverknüpfung für weitere Prozesse erheblich."
+          "en": "",
+          "de": ""
         },
         "four_button": {
           "en": "Shop Now",
           "de": "Jetzt einkaufen"
         },
-        "four_link": "/search?category=fruits-vegetable",
-        "five_img": "https://res.cloudinary.com/ahossain/image/upload/v1697688491/settings/slider-2_o6aezc.jpg",
+        "four_link": "/search?category=",
+
+        "five_img": "",
         "five_title": {
-          "en": "Best Different Type of Grocery Store",
-          "de": "Bestes anderes Lebensmittelgeschäft"
+          "en": "",
+          "de": ""
         },
         "five_description": {
-          "en": "Quickly aggregate empowered networks after emerging products...",
-          "de": "Schnelle Bündelung leistungsstarker Netzwerke nach neuen Produkten ..."
+          "en": "",
+          "de": ""
         },
         "five_button": {
           "en": "Shop Now",
           "de": "Jetzt einkaufen"
         },
-        "five_link": "/search?category=fish-meat"
+        "five_link": "/search?category="
       },
       "checkout": {
         "personal_details": {
