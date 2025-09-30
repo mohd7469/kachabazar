@@ -252,7 +252,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
             <div className="mx-auto px-3 lg:px-10 max-w-screen-2xl">
               <div className="flex items-center pb-4">
                 <ol className="flex items-center w-full overflow-hidden font-serif truncate">
-                  <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold">
+                  <li className="text-sm pr-1 transition duration-200 ease-in cursor-pointer hover:text-emerald-500 font-semibold uppercase">
                     <Link href="/">Home</Link>
                   </li>
                   <li className="text-sm mt-[1px]">
