@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 
@@ -11,6 +12,8 @@ import MobileFooter from "@layout/footer/MobileFooter";
 import FeatureCard from "@components/feature-card/FeatureCard";
 
 const Layout = ({ title, description, children }) => {
+  const [setDrawer, setDrawerOpen] = useState(false);
+
   return (
     <>
       <ToastContainer />
@@ -25,7 +28,7 @@ const Layout = ({ title, description, children }) => {
           {description && <meta name="description" content={description} />}
           <link ref="icon" href="/favicon.png" />
         </Head>
-        <NavBarTop />
+        <NavBarTop setDrawer={setDrawer} setDrawerOpen={setDrawerOpen}/>
         <Navbar />
         <div className="bg-gray-50">{children}</div>
         <MobileFooter />
@@ -36,7 +39,7 @@ const Layout = ({ title, description, children }) => {
           </div>
           <hr className="hr-line"></hr>
           <div className="border-t border-gray-100 w-full">
-            <Footer />
+            <Footer setDrawer={setDrawer} setDrawerOpen={setDrawerOpen}/>
           </div>
         </div>
       </div>

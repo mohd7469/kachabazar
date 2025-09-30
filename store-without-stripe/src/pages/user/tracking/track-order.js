@@ -13,10 +13,12 @@ const shippers = [
 ];
 
 const TrackOrder = ({
+  setDrawer,
+  setDrawerOpen,
   buttonLabel = "Order Tracking",
   className = "",
 }) => {
-  const [setDrawer, setDrawerOpen] = useState(false);
+  //   const [setDrawer, setDrawerOpen] = useState(false);
 
   const [shipperSelectBox, setShipperSelectBox] = useState(shippers[0].value);
   const [shipperInputBox, setShipperInputBox] = useState(TRACKING_CONFIG.DEFAULT_TRACKNO);

@@ -20,7 +20,7 @@ import NProgress from 'nprogress';
 
 import moment from "moment";
 
-const Footer = () => {
+const Footer = ({ setDrawer, setDrawerOpen }) => {
   const { t } = useTranslation();
   const userInfo = getUserSession();
 
@@ -152,7 +152,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="flex items-baseline">
-                  <Link
+                  {/*<Link
                     href={`${storeCustomizationSetting?.footer?.block2_sub_link3}`}
                     className="text-gray-600 inline-block w-full hover:text-emerald-500"
                   >
@@ -164,7 +164,13 @@ const Footer = () => {
                         storeCustomizationSetting?.footer?.block2_sub_title3
                       }
                     />
-                  </Link>
+                  </Link>*/}
+                  <button
+                    onClick={() => setDrawerOpen(true)}
+                    className="flex text-gray-600 w-full hover:text-emerald-500"
+                  >
+                    {storeCustomizationSetting?.footer?.block2_sub_title3['en']}
+                  </button>
                 </li>
                 <li className="flex items-baseline">
                   <Link

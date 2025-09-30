@@ -15,7 +15,7 @@ import useGetSetting from "@hooks/useGetSetting";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import TrackOrder from "@pages/user/tracking/track-order";
 
-const NavBarTop = () => {
+const NavBarTop = ({ setDrawer, setDrawerOpen }) => {
   const userInfo = getUserSession();
   const router = useRouter();
 
@@ -97,7 +97,8 @@ const NavBarTop = () => {
               
               {/*{userInfo?.email && (*/}
                 <div className={"flex justify-between items-center"} >
-                  <TrackOrder buttonLabel={"Order Tracking"}/>
+                  <TrackOrder buttonLabel={"Order Tracking"}
+                      setDrawer={setDrawer} setDrawerOpen={setDrawerOpen}/>
                   <span className="mx-2">|</span>
                 </div>
               {/*)}*/}
