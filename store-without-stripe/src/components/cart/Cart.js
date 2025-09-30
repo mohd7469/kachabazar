@@ -51,6 +51,18 @@ const Cart = () => {
       }
     }
   };
+  
+  const goToCheckout = async () => {
+    setLoading(true);
+    if (items?.length <= 0) {
+      closeCartDrawer();
+      setLoading(false);
+    } else {
+      await router.push("/checkout");
+      closeCartDrawer();
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -115,7 +127,7 @@ const Cart = () => {
             </div>
           ) : (
             <div className="mx-5 my-3">
-              {!userInfo && (
+              {/*{!userInfo && (
                 <button
                   disabled={loading}
                   onClick={handleGuest}
@@ -124,9 +136,9 @@ const Cart = () => {
                   <span className="align-middle font-medium">
                     Continue as Guest
                   </span>
-                  {/*<span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
+                  <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
                   {guestId}
-                </span>*/}
+                </span>
                 </button>
               )}
               
@@ -140,7 +152,36 @@ const Cart = () => {
                 <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
                 {currency} {cartTotal.toFixed(2)}
               </span>
-              </button>
+              </button>*/}
+              
+              {!userInfo ? (
+                <button
+                  disabled={loading}
+                  onClick={handleGuest}
+                  className="w-full py-3 px-3 rounded-lg bg-emerald-500 hover:bg-emerald-600 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
+                >
+                  <span className="align-middle font-medium">
+                    Proceed to Checkout
+                  </span>
+                  <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
+                    {currency} {cartTotal.toFixed(2)}
+                  </span>
+                </button>
+              ) : (
+                <button
+                  disabled={loading}
+                  onClick={goToCheckout}
+                  className="w-full py-3 px-3 rounded-lg bg-emerald-700 hover:bg-emerald-600 flex items-center justify-between bg-heading text-sm sm:text-base text-white focus:outline-none transition duration-300"
+                >
+                  <span className="align-middle font-medium" title={userInfo?.name}>
+                    <i className={"fa-solid fa-user me-1"}></i>
+                    Proceed to Checkout
+                  </span>
+                  <span className="rounded-lg font-bold py-2 px-3 bg-white text-emerald-600">
+                    {currency} {cartTotal.toFixed(2)}
+                  </span>
+                </button>
+              )}
             </div>
           )
         )}
