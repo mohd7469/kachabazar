@@ -39,6 +39,7 @@ import useGetSetting from "@hooks/useGetSetting";
 import parse from "html-react-parser";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
+  const { toggleCartDrawer, toggleCategoryDrawer } = useContext(SidebarContext);
   const { storeCustomizationSetting } = useGetSetting();
   const router = useRouter();
   const minLength = 220;
@@ -217,6 +218,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
         originalPrice: originalPrice,
       };
       handleAddItem(newItem);
+      toggleCartDrawer();
     } else {
       return notifyError("Please select all variant first!");
     }

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import {useContext, useState} from "react";
 import { IoAdd, IoBagAddSharp, IoRemove } from "react-icons/io5";
 import { useCart } from "react-use-cart";
 
@@ -17,10 +17,11 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 import ProductModal from "@components/modal/ProductModal";
 import ImageWithFallback from "@components/common/ImageWithFallBack";
 import { handleLogEvent } from "src/lib/analytics";
+import { SidebarContext } from "@context/SidebarContext";
 
 const ProductCard = ({ product, attributes }) => {
   const [modalOpen, setModalOpen] = useState(false);
-
+  const { toggleCartDrawer, toggleCategoryDrawer } = useContext(SidebarContext);
   const { items, addItem, updateItemQuantity, inCart } = useCart();
   const { handleIncreaseQuantity } = useAddToCart();
   const { globalSetting } = useGetSetting();
@@ -48,6 +49,7 @@ const ProductCard = ({ product, attributes }) => {
       originalPrice: product.prices?.originalPrice,
     };
     addItem(newItem);
+    toggleCartDrawer();
   };
 
   const handleModalOpen = (event, id) => {
