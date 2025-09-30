@@ -164,9 +164,12 @@ const Checkout = () => {
                           )}
                           name="address"
                           type="text"
-                          placeholder="(Apartment / Room / Flat) Number, Building Name, Street Name, Area"
+                          placeholder="Enter Address"
                         />
                         <Error errorName={errors.address} />
+                        <div className={'text-xs text-gray-400'}>
+                          e.g: Apartment or Flat number, Building Name, Street Name, Area
+                        </div>
                       </div>
 
                       <div className="col-span-6 sm:col-span-6 lg:col-span-2">
