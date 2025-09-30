@@ -17,10 +17,10 @@ const InputShipping = ({
         <label className="cursor-pointer label">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <div className="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
+              {/*<div className="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
                 <span className={`h-2 w-2 rounded-full ${urgent ? 'bg-red-500' : 'bg-amber-500'}`}></span>
                 <span className="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
-              </div>
+              </div>*/}
               <div>
                 <h6 className="font-serif font-bold text-sm text-gray-600 flex items-center justify-center gap-2">
                   <span>{value}</span>
@@ -31,16 +31,21 @@ const InputShipping = ({
                 </p>
               </div>
             </div>
-            <input
-              onClick={() => handleShippingCost(cost)}
-              {...register(`shippingOption`, {
-                required: `Shipping Option is required!`,
-              })}
-              name="shippingOption"
-              type="radio"
-              value={value}
-              className="form-radio outline-none focus:ring-0 text-emerald-500"
-            />
+            <div className="flex items-center gap-2">
+              <div class="font-bold text-sm md:text-base text-heading leading-5 text-teal-700">
+                <span>{currency}{parseFloat(cost).toFixed(2)}</span>
+              </div>
+              <input
+                onClick={() => handleShippingCost(cost)}
+                {...register(`shippingOption`, {
+                  required: `Shipping Option is required!`,
+                })}
+                name="shippingOption"
+                type="radio"
+                value={value}
+                className="form-radio outline-none focus:ring-0 text-emerald-500"
+              />
+            </div>
           </div>
         </label>
       </div>

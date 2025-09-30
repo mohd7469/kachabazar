@@ -69,7 +69,7 @@ const Checkout = () => {
         <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
           <div className="py-10 lg:py-12 px-0 2xl:max-w-screen-2xl w-full xl:max-w-screen-xl flex flex-col md:flex-row lg:flex-row">
             <div className="md:w-full lg:w-3/5 flex h-full flex-col order-2 sm:order-1 lg:order-1">
-              <div className="mt-5 md:mt-0 md:col-span-2 px-2">
+              <div className="border p-5 lg:px-8 lg:py-8 rounded-lg bg-white mt-5 md:mt-0 md:col-span-2">
                 <form onSubmit={handleSubmit(submitHandler)}>
                   {hasShippingAddress && (
                     <div className="flex justify-end my-2">
@@ -82,7 +82,7 @@ const Checkout = () => {
                     </div>
                   )}
                   <div className="form-group">
-                    <h2 className="font-semibold font-serif text-base text-gray-700 pb-3">
+                    <h2 className="font-bold md:text-base text-heading leading-5 text-teal-800 pb-3 text-lg">
                       01.{" "}
                       {showingTranslateValue(
                         storeCustomizationSetting?.checkout?.personal_details
@@ -119,7 +119,7 @@ const Checkout = () => {
 
                       <div className="col-span-6 sm:col-span-3">
                         <InputArea
-                          required={true}
+                          required={false}
                           register={register}
                           label={showingTranslateValue(
                             storeCustomizationSetting?.checkout?.email_address
@@ -148,7 +148,7 @@ const Checkout = () => {
                   </div>
 
                   <div className="form-group mt-12">
-                    <h2 className="font-semibold font-serif text-base text-gray-700 pb-3">
+                    <h2 className="font-bold md:text-base text-heading leading-5 text-teal-800 pb-3 text-lg">
                       02.{" "}
                       {showingTranslateValue(
                         storeCustomizationSetting?.checkout?.shipping_details
@@ -196,7 +196,7 @@ const Checkout = () => {
                         <Error errorName={errors.country} />
                       </div>
 
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                      {/*<div className="col-span-6 sm:col-span-3 lg:col-span-2">
                         <InputArea
                           defaultValue={"000000"}
                           register={register}
@@ -208,7 +208,7 @@ const Checkout = () => {
                           placeholder="2345"
                         />
                         <Error errorName={errors.zipCode} />
-                      </div>
+                      </div>*/}
                     </div>
 
                     <Label
@@ -216,8 +216,8 @@ const Checkout = () => {
                         storeCustomizationSetting?.checkout?.shipping_cost
                       )}
                     />
-                    <div className="grid grid-cols-6 gap-4">
-                      <div className="col-span-6 sm:col-span-3">
+                    <div className="grid grid-cols-6 gap-4 mt-3">
+                      <div className="col-span-6 sm:col-span-12">
                         <InputShipping
                           urgent={true}
                           currency={currency}
@@ -243,7 +243,7 @@ const Checkout = () => {
                         <Error errorName={errors.shippingOption} />
                       </div>
 
-                      <div className="col-span-6 sm:col-span-3">
+                      <div className="col-span-6 sm:col-span-12">
                         <InputShipping
                           urgent={false}
                           currency={currency}
@@ -270,7 +270,7 @@ const Checkout = () => {
                     </div>
                   </div>
                   <div className="form-group mt-12">
-                    <h2 className="font-semibold text-base text-gray-700 pb-3">
+                    <h2 className="font-bold md:text-base text-heading leading-5 text-teal-800 pb-3">
                       03.{" "}
                       {showingTranslateValue(
                         storeCustomizationSetting?.checkout?.payment_method
@@ -314,7 +314,7 @@ const Checkout = () => {
                     <div className="col-span-6 sm:col-span-3">
                       <Link
                         href="/"
-                        className="bg-indigo-50 border border-indigo-100 rounded py-3 text-center text-sm font-medium text-gray-700 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center items-center font-serif w-full"
+                        className="bg-gray-50 border border-indigo-100 rounded py-3 text-center text-sm font-bold text-gray-600 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center items-center font-serif w-full"
                       >
                         <span className="mr-2">
                           <i className="fa-solid fa-cart-shopping"></i>

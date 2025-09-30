@@ -71,7 +71,7 @@ const useCheckoutSubmit = (storeSetting) => {
       setDiscountPercentage(coupon.discountType);
       setMinimumAmount(coupon.minimumAmount);
     }
-    setValue("email", userInfo?.email);
+    // setValue("email", userInfo?.email);
   }, [isCouponApplied]);
 
   // remove coupon if total value less than minimum amount of coupon
@@ -120,7 +120,7 @@ const useCheckoutSubmit = (storeSetting) => {
       const userDetails = {
         name: `${data.firstName} ${data.lastName}`,
         contact: data.contact,
-        email: data.email,
+        email: data.email || userInfo?.email,
         address: data.address,
         country: data.country,
         city: data.city,
