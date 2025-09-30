@@ -126,7 +126,7 @@ const MainCarousel = () => {
               <Image
                 width={950}
                 height={400}
-                src={item.image}
+                src={item.image || "https://placehold.co/950x400/F3F4F6/31343C.png?font=raleway&text=Pharmilow Innovative Healthcare Solutions for a Healthier Tomorrow"}
                 alt={item.title}
                 className="object-cover"
                 priority
