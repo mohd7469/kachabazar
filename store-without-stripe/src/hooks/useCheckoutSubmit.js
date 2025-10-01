@@ -140,6 +140,7 @@ const useCheckoutSubmit = (storeSetting) => {
         shippingCost: shippingCost,
         discount: discountAmount,
         total: total,
+        note: data.note,
       };
 
       await CustomerServices.addShippingAddress({
@@ -360,6 +361,7 @@ const useCheckoutSubmit = (storeSetting) => {
   // set checkout form default values
   useEffect(() => {
     setValue("country", 'United Arab Emirates');
+    setValue("firstName", 'Mr / Mrs.');
     const cost = storeCustomizationSetting?.checkout?.shipping_two_cost || 0;
     setShippingCost(Number(cost));
     setValue("paymentMethod", 'Cash');
