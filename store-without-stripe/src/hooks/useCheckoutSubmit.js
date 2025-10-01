@@ -16,9 +16,11 @@ import CouponServices from "@services/CouponServices";
 import { notifyError, notifySuccess } from "@utils/toast";
 import CustomerServices from "@services/CustomerServices";
 import NotificationServices from "@services/NotificationServices";
+import useGetSetting from "@hooks/useGetSetting";
 
 const useCheckoutSubmit = (storeSetting) => {
   const { dispatch } = useContext(UserContext);
+  const { storeCustomizationSetting } = useGetSetting();
 
   const [error, setError] = useState("");
   const [total, setTotal] = useState("");
@@ -60,6 +62,7 @@ const useCheckoutSubmit = (storeSetting) => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm();
   
@@ -353,7 +356,16 @@ const useCheckoutSubmit = (storeSetting) => {
       return notifyError(error.message);
     }
   };
-
+  
+  // set checkout form default values
+  useEffect(() => {
+    setValue("country", 'United Arab Emirates');
+    const cost = storeCustomizationSetting?.checkout?.shipping_two_cost || 0;
+    setShippingCost(Number(cost));
+    setValue("paymentMethod", 'Cash');
+    setValue("shippingOption", 'Standard Delivery');
+  }, [storeCustomizationSetting, setShippingCost, setValue]);
+  
   return {
     register,
     currency,
@@ -368,6 +380,7 @@ const useCheckoutSubmit = (storeSetting) => {
     items,
     cartTotal,
     handleSubmit,
+    watch,
     submitHandler,
     handleShippingCost,
     handleCouponCode,

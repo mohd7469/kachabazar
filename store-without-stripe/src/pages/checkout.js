@@ -51,6 +51,7 @@ const Checkout = () => {
     showCard,
     setShowCard,
     handleSubmit,
+    watch,
     submitHandler,
     handleShippingCost,
     handleCouponCode,
@@ -186,8 +187,9 @@ const Checkout = () => {
                       </div>
 
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                        {/*
                         <InputArea
-                          defaultValue={"UAE"}
+                          defaultValue={""}
                           register={register}
                           label={showingTranslateValue(
                             storeCustomizationSetting?.checkout?.country
@@ -197,6 +199,21 @@ const Checkout = () => {
                           placeholder="United States"
                         />
                         <Error errorName={errors.country} />
+                        */}
+                        <Label
+                          className={'required'}
+                          label={showingTranslateValue(
+                            storeCustomizationSetting?.checkout?.country
+                          )}
+                        />
+                        <div class="flex items-center ps-2 h-11 font-semibold text-gray-500">
+                          <img
+                            src="https://flagcdn.com/w40/ae.png"
+                            alt="UAE Flag"
+                            className="inline-block w-6 h-4"
+                          />
+                          <span className={'ms-2'}>{watch('country')}</span>
+                        </div>
                       </div>
 
                       {/*<div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -213,7 +230,7 @@ const Checkout = () => {
                         <Error errorName={errors.zipCode} />
                       </div>*/}
                     </div>
-
+                    {/*
                     <Label
                       label={showingTranslateValue(
                         storeCustomizationSetting?.checkout?.shipping_cost
@@ -223,6 +240,7 @@ const Checkout = () => {
                       <div className="col-span-6 sm:col-span-12">
                         <InputShipping
                           urgent={true}
+                          defaultChecked={false}
                           currency={currency}
                           handleShippingCost={handleShippingCost}
                           register={register}
@@ -249,6 +267,7 @@ const Checkout = () => {
                       <div className="col-span-6 sm:col-span-12">
                         <InputShipping
                           urgent={false}
+                          defaultChecked={false}
                           currency={currency}
                           handleShippingCost={handleShippingCost}
                           register={register}
@@ -271,7 +290,9 @@ const Checkout = () => {
                         <Error errorName={errors.shippingOption} />
                       </div>
                     </div>
+                    */}
                   </div>
+                  {/*
                   <div className="form-group mt-12">
                     <h2 className="font-bold md:text-base text-heading leading-5 text-teal-800 pb-3">
                       03.{" "}
@@ -284,7 +305,7 @@ const Checkout = () => {
                       {storeSetting?.cod_status && (
                         <div className="">
                           <InputPayment
-                            defaultChecked={true}
+                            defaultChecked={false}
                             description={'Pay when order arrives.'}
                             setShowCard={setShowCard}
                             register={register}
@@ -312,6 +333,7 @@ const Checkout = () => {
                      )}
                     </div>
                   </div>
+                  */}
 
                   <div className="grid grid-cols-6 gap-4 lg:gap-6 mt-10">
                     <div className="col-span-6 sm:col-span-3">
