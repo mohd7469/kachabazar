@@ -9,7 +9,8 @@ const InputShipping = ({
   currency,
   description,
   handleShippingCost,
-  urgent = false
+  urgent = false,
+  defaultChecked = false,
 }) => {
   return (
     <>
@@ -17,10 +18,6 @@ const InputShipping = ({
         <label className="cursor-pointer label">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              {/*<div className="inline-flex items-center space-x-2 rounded-full border px-2 me-2">
-                <span className={`h-2 w-2 rounded-full ${urgent ? 'bg-red-500' : 'bg-amber-500'}`}></span>
-                <span className="font-semibold">{currency}{parseFloat(cost).toFixed(2)}</span>
-              </div>*/}
               <div>
                 <h6 className="font-serif font-bold text-sm text-gray-600 flex items-center justify-center gap-2">
                   <span>{value}</span>
@@ -32,7 +29,7 @@ const InputShipping = ({
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div class="font-bold text-sm md:text-base text-heading leading-5 text-teal-700">
+              <div className="font-bold text-sm md:text-base text-heading leading-5 text-teal-700">
                 <span>{currency}{parseFloat(cost).toFixed(2)}</span>
               </div>
               <input
@@ -40,6 +37,7 @@ const InputShipping = ({
                 {...register(`shippingOption`, {
                   required: `Shipping Option is required!`,
                 })}
+                defaultChecked={defaultChecked}
                 name="shippingOption"
                 type="radio"
                 value={value}
