@@ -92,7 +92,7 @@ const Footer = ({ setDrawer, setDrawerOpen }) => {
                   </Link>
                 </li>
                 <li className="flex items-baseline">
-                  <Link
+                  {/*<Link
                     href={`${storeCustomizationSetting?.footer?.block1_sub_link4}`}
                     className="text-gray-600 inline-block w-full hover:text-emerald-500"
                   >
@@ -104,7 +104,15 @@ const Footer = ({ setDrawer, setDrawerOpen }) => {
                         storeCustomizationSetting?.footer?.block1_sub_title4
                       }
                     />
-                  </Link>
+                  </Link>*/}
+                  <button
+                    onClick={() =>
+                      window.open(`https://pharmelow.com/${storeCustomizationSetting?.footer?.block1_sub_link4}`, "_blank")
+                    }
+                    className="flex text-gray-600 w-full hover:text-emerald-500"
+                  >
+                    {storeCustomizationSetting?.footer?.block2_sub_title4['en']}
+                  </button>
                 </li>
               </ul>
             </div>
@@ -188,7 +196,7 @@ const Footer = ({ setDrawer, setDrawerOpen }) => {
                   </Link>*/}
                   <button
                     onClick={() =>
-                      window.open(`https://app.pharmilow.com/${storeCustomizationSetting?.footer?.block2_sub_link4}`, "_blank")
+                      window.open(`https://pharmelow.com/${storeCustomizationSetting?.footer?.block2_sub_link4}`, "_blank")
                     }
                     className="flex text-gray-600 w-full hover:text-emerald-500"
                   >
