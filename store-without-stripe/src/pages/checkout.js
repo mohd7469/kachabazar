@@ -284,7 +284,7 @@ const Checkout = () => {
                       {storeSetting?.cod_status && (
                         <div className="">
                           <InputPayment
-                            defaultChecked={false}
+                            defaultChecked={true}
                             description={'Pay when order arrives.'}
                             setShowCard={setShowCard}
                             register={register}
