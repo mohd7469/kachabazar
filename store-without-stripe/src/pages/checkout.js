@@ -91,6 +91,7 @@ const Checkout = () => {
                     </h2>
 
                     <div className="grid grid-cols-6 gap-6">
+                      {/*
                       <div className="col-span-6 sm:col-span-3">
                         <InputArea
                           register={register}
@@ -100,10 +101,11 @@ const Checkout = () => {
                           name="firstName"
                           type="text"
                           placeholder="John"
+                          required={true}
                         />
                         <Error errorName={errors.firstName} />
                       </div>
-
+                      */}
                       <div className="col-span-6 sm:col-span-3">
                         <InputArea
                           register={register}
@@ -112,12 +114,24 @@ const Checkout = () => {
                           )}
                           name="lastName"
                           type="text"
-                          placeholder="Doe"
+                          placeholder="Enter Your Name"
                           required={true}
                         />
                         <Error errorName={errors.lastName} />
                       </div>
-
+                      <div className="col-span-6 sm:col-span-3">
+                        <InputArea
+                          register={register}
+                          label={showingTranslateValue(
+                            storeCustomizationSetting?.checkout?.checkout_phone
+                          )}
+                          name="contact"
+                          type="tel"
+                          placeholder="501231234"
+                        />
+                        <Error errorName={errors.contact} />
+                      </div>
+                      
                       <div className="col-span-6 sm:col-span-3">
                         <InputArea
                           required={false}
@@ -131,20 +145,6 @@ const Checkout = () => {
                         />
                         <Error errorName={errors.email} />
                       </div>
-
-                      <div className="col-span-6 sm:col-span-3">
-                        <InputArea
-                          register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.checkout_phone
-                          )}
-                          name="contact"
-                          type="tel"
-                          placeholder="+062-6532956"
-                        />
-
-                        <Error errorName={errors.contact} />
-                      </div>
                     </div>
                   </div>
 
@@ -157,22 +157,6 @@ const Checkout = () => {
                     </h2>
 
                     <div className="grid grid-cols-6 gap-6 mb-8">
-                      <div className="col-span-6">
-                        <InputArea
-                          register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.street_address
-                          )}
-                          name="address"
-                          type="text"
-                          placeholder="Enter Address"
-                        />
-                        <Error errorName={errors.address} />
-                        <div className={'text-xs text-gray-400'}>
-                          e.g: Apartment or Flat number, Building Name, Street Name, Area
-                        </div>
-                      </div>
-
                       <div className="col-span-6 sm:col-span-6 lg:col-span-2">
                         <InputArea
                           register={register}
@@ -206,7 +190,7 @@ const Checkout = () => {
                             storeCustomizationSetting?.checkout?.country
                           )}
                         />
-                        <div class="flex items-center ps-2 h-11 font-semibold text-gray-500">
+                        <div className="flex items-center ps-2 h-11 font-semibold text-gray-500">
                           <img
                             src="https://flagcdn.com/w40/ae.png"
                             alt="UAE Flag"
@@ -215,7 +199,23 @@ const Checkout = () => {
                           <span className={'ms-2'}>{watch('country')}</span>
                         </div>
                       </div>
-
+                      
+                      <div className="col-span-6">
+                        <InputArea
+                          register={register}
+                          label={showingTranslateValue(
+                            storeCustomizationSetting?.checkout?.street_address
+                          )}
+                          name="address"
+                          type="text"
+                          placeholder="Enter Address"
+                        />
+                        <Error errorName={errors.address} />
+                        <div className={'text-xs text-gray-400  [word-spacing:0.2rem]'}>
+                          e.g: Area, Street Name, Building Name
+                        </div>
+                      </div>
+                      
                       {/*<div className="col-span-6 sm:col-span-3 lg:col-span-2">
                         <InputArea
                           defaultValue={"000000"}
@@ -230,6 +230,22 @@ const Checkout = () => {
                         <Error errorName={errors.zipCode} />
                       </div>*/}
                     </div>
+                    
+                    <div className="grid grid-cols-6 gap-6 mb-8">
+                      <div className="col-span-12">
+                        <InputArea
+                          required={false}
+                          defaultValue={""}
+                          register={register}
+                          label={'Note'}
+                          name="note"
+                          type="text"
+                          placeholder="Any Special Note For Delivery.."
+                        />
+                        <Error errorName={errors.zipCode} />
+                      </div>
+                    </div>
+                    
                     {/*
                     <Label
                       label={showingTranslateValue(
