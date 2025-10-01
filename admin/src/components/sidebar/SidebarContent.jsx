@@ -49,11 +49,11 @@ const SidebarContent = () => {
 
   return (
     <div className="py-4 text-gray-500 dark:text-gray-400">
-      <a className=" text-gray-900 dark:text-gray-200" href="/dashboard">
+      <a className="flex justify-center items-center mx-3 p-1 ps-2 rounded-lg bg-emerald-700" href="/dashboard">
         {mode === "dark" ? (
-          <img src={logoLight} alt="kachabazar" width="135" className="pl-6" />
+          <img src={logoLight} width="135" className="" />
         ) : (
-          <img src={logoDark} alt="kachabazar" width="135" className="pl-6" />
+          <img src={logoDark} width="135" className="" />
         )}
       </a>
       <ul className="mt-8">
@@ -87,12 +87,18 @@ const SidebarContent = () => {
         )}
       </ul>
       <span className="lg:fixed bottom-0 px-6 py-6 w-64 mx-auto relative mt-3 block">
-        <Button onClick={handleLogOut} size="large" className="w-full">
+        {/*<Button onClick={handleLogOut} size="large" className="w-full">
           <span className="flex items-center">
             <IoLogOutOutline className="mr-3 text-lg" />
             <span className="text-sm">{t("LogOut")}</span>
           </span>
-        </Button>
+        </Button>*/}
+        <button onClick={handleLogOut} className="w-full font-bold">
+          <span className="flex items-center">
+            <IoLogOutOutline className="mr-4 text-lg text-red-600 dark:text-red-400" />
+            <span className="text-sm text-red-600 dark:text-red-400">{t("LogOut")}</span>
+          </span>
+        </button>
       </span>
     </div>
   );
