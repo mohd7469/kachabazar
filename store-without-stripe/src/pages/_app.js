@@ -142,7 +142,7 @@ function MyApp({ Component, pageProps }) {
       </QueryClientProvider>
       <FloatingWhatsApp
         phoneNumber="1302783235"
-        accountName="Need help?"
+        accountName="Support"
         allowEsc
         allowClickAway
         notification
