@@ -276,6 +276,19 @@ const Header = () => {
                                     </h6>
 
                                     <p className="flex items-center text-xs text-gray-400">
+                                      {
+                                        value.status === "unread" && (
+                                        <span className="me-2 focus:outline-none">
+                                          <img
+                                            src={ellipse}
+                                            width={12}
+                                            height={12}
+                                            alt="ellipse"
+                                            className="w-3 h-3 text-emerald-600"
+                                          />
+                                        </span>
+                                      )}
+                                      
                                       {value.productId ? (
                                         <Badge type="danger">Stock Out</Badge>
                                       ) : (
@@ -286,18 +299,6 @@ const Header = () => {
                                       </span>
                                     </p>
                                   </div>
-
-                                  {value.status === "unread" && (
-                                    <span className="px-2 focus:outline-none">
-                                      <img
-                                        src={ellipse}
-                                        width={12}
-                                        height={12}
-                                        alt="ellipse"
-                                        className="w-3 h-3 text-emerald-600"
-                                      />
-                                    </span>
-                                  )}
                                 </Link>
 
                                 <div className="group inline-block relative">
