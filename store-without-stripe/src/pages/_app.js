@@ -1,5 +1,6 @@
 import "@styles/custom.css";
 import "@styles/_index.scss";
+import { FloatingWhatsApp } from 'react-floating-whatsapp'
 
 import Router from "next/router";
 import NProgress from "nprogress";
@@ -139,6 +140,15 @@ function MyApp({ Component, pageProps }) {
           </UserProvider>
         </SessionProvider>
       </QueryClientProvider>
+      <FloatingWhatsApp
+        phoneNumber="1302783235"
+        accountName="Need help?"
+        allowEsc
+        allowClickAway
+        notification
+        notificationSound
+        avatar="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg"
+      />
     </>
   );
 }
