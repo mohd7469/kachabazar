@@ -435,7 +435,11 @@ const Checkout = () => {
                     {couponInfo.couponCode ? (
                       <div className="bg-emerald-50 px-4 py-3 leading-tight w-full rounded-md flex justify-between items-center">
                         {" "}
-                        <div className="text-emerald-600">"{couponInfo.couponCode}" Coupon Applied </div>
+                        <div className="text-emerald-600">
+                          <span className={"text-lg me-1"}>🥳</span>
+                          <span className={"text-orange-400 me-1"}>"{couponInfo.couponCode}"</span>
+                          Coupon Applied
+                        </div>
                         <button
                           title={"Remove coupon"}
                           onClick={() => handleRemoveCoupon()}
