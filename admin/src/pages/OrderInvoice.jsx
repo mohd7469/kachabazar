@@ -154,7 +154,7 @@ const OrderInvoice = () => {
                   <br />
                   <span className="ml-2">{data?.user_info?.contact}</span>
                   <br />
-                  {data?.user_info?.address?.substring(0, 30)}
+                  {data?.user_info?.address}
                   <br />
                   {data?.user_info?.city}, {data?.user_info?.country},{" "}
                   {data?.user_info?.zipCode}
@@ -162,7 +162,7 @@ const OrderInvoice = () => {
               </div>
             </div>
             {data?.note ? (
-              <div className="text-sm border rounded-xl border-gray-100 p-4 bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-yellow-600 dark:text-yellow-500 mt-4">
+              <div className="text-sm border rounded-xl border-gray-100 p-4 bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-yellow-600 dark:text-yellow-500 mt-4 text-right">
                 <i className="fa fa-info-circle"></i> <span className={'font-bold'}>Special note:</span> {data?.note}
               </div>
             ) : ''}

@@ -18,7 +18,7 @@ const OrderHistory = ({ order, currency }) => {
       <td className="px-5 py-3 leading-6 text-center whitespace-nowrap">
         <span className="text-sm">{order.paymentMethod}</span>
       </td>
-      <td className="px-5 py-3 leading-6 text-center whitespace-nowrap font-medium text-sm">
+      <td className="px-5 py-3 leading-6 text-center whitespace-nowrap font-bold text-sm">
         {order.status === "Delivered" && (
           <span className="text-emerald-500">{order.status}</span>
         )}

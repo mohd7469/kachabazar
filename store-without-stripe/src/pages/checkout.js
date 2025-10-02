@@ -127,7 +127,7 @@ const Checkout = () => {
                           )}
                           name="contact"
                           type="tel"
-                          placeholder="501231234"
+                          placeholder="0501231234"
                         />
                         <Error errorName={errors.contact} />
                       </div>

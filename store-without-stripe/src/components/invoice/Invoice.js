@@ -16,28 +16,33 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
       <div className="bg-indigo-50 p-8 rounded-t-xl">
         <div className="flex lg:flex-row md:flex-row flex-col lg:items-center justify-between pb-4 border-b border-gray-50">
           <div>
-            <h1 className="font-bold font-serif text-2xl uppercase">Invoice</h1>
-            <h6 className="text-gray-700">
-              Status :{" "}
-              {data.status === "Delivered" && (
-                <span className="text-emerald-500">{data.status}</span>
-              )}
-              {data.status === "POS-Completed" && (
-                <span className="text-emerald-500">{data.status}</span>
-              )}
-              {data.status === "Pending" && (
-                <span className="text-orange-500">{data.status}</span>
-              )}
-              {data.status === "Cancel" && (
-                <span className="text-red-500">{data.status}</span>
-              )}
-              {data.status === "Processing" && (
-                <span className="text-indigo-500">{data.status}</span>
-              )}
-              {data.status === "Deleted" && (
-                <span className="text-red-700">{data.status}</span>
-              )}
-            </h6>
+            <div class="flex flex-col">
+              <h1 className="font-bold font-serif text-2xl uppercase ms-1">Invoice</h1>
+              <h6 className="bg-blue-100  text-sm font-medium px-3 py-1 rounded-full">
+                Status :{" "}
+                {data.status === "Delivered" && (
+                  <span className="text-emerald-500">{data.status}</span>
+                )}
+                {data.status === "POS-Completed" && (
+                  <span className="text-emerald-500">{data.status}</span>
+                )}
+                {data.status === "Pending" && (
+                  <span className="text-orange-500">{data.status}</span>
+                )}
+                {data.status === "Cancel" && (
+                  <span className="text-red-500">{data.status}</span>
+                )}
+                {data.status === "Processing" && (
+                  <span className="text-indigo-500">{data.status}</span>
+                )}
+                {data.status === "Deleted" && (
+                  <span className="text-red-700">{data.status}</span>
+                )}
+              </h6>
+            </div>
+            
+            
+            
           </div>
           <div className="lg:text-right text-left">
             <h2 className="text-lg font-serif font-semibold mt-4 lg:mt-0 md:mt-0">
@@ -91,6 +96,11 @@ const Invoice = ({ data, printRef, globalSetting, currency }) => {
             </span>
           </div>
         </div>
+        {data?.note ? (
+          <div className="text-sm border rounded-xl border-gray-100 p-4 bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-yellow-600 dark:text-yellow-500 mt-4 text-right">
+            <i className="fa fa-info-circle"></i> <span className={'font-bold'}>Special note:</span> {data?.note}
+          </div>
+        ) : ''}
       </div>
       <div className="s">
         <div className="overflow-hidden lg:overflow-visible px-8 my-10">
