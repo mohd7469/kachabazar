@@ -161,6 +161,11 @@ const OrderInvoice = () => {
                 </span>
               </div>
             </div>
+            {data?.note ? (
+              <div className="text-sm border rounded-xl border-gray-100 p-4 bg-gray-50 dark:bg-gray-900 dark:border-gray-800 text-yellow-600 dark:text-yellow-500 mt-4">
+                <i className="fa fa-info-circle"></i> <span className={'font-bold'}>Special note:</span> {data?.note}
+              </div>
+            ) : ''}
           </div>
         )}
         <div>

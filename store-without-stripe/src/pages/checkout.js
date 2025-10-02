@@ -165,7 +165,7 @@ const Checkout = () => {
                           )}
                           name="city"
                           type="text"
-                          placeholder="Sharjah"
+                          placeholder="Enter City"
                         />
                         <Error errorName={errors.city} />
                       </div>
