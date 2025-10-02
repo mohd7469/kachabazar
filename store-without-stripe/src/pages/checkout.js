@@ -25,6 +25,7 @@ import useCheckoutSubmit from "@hooks/useCheckoutSubmit";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import SettingServices from "@services/SettingServices";
 import SwitchToggle from "@components/form/SwitchToggle";
+import {FiTrash, FiTrash2} from "react-icons/fi";
 
 const Checkout = () => {
   const { t } = useTranslation();
@@ -55,6 +56,7 @@ const Checkout = () => {
     submitHandler,
     handleShippingCost,
     handleCouponCode,
+    handleRemoveCoupon,
     discountAmount,
     shippingCost,
     isCheckoutSubmit,
@@ -431,13 +433,17 @@ const Checkout = () => {
                 <div className="flex items-center mt-4 py-4 lg:py-4 text-sm w-full font-semibold text-heading last:border-b-0 last:text-base last:pb-0">
                   <form className="w-full">
                     {couponInfo.couponCode ? (
-                      <span className="bg-emerald-50 px-4 py-3 leading-tight w-full rounded-md flex justify-between">
+                      <div className="bg-emerald-50 px-4 py-3 leading-tight w-full rounded-md flex justify-between items-center">
                         {" "}
-                        <p className="text-emerald-600">Coupon Applied </p>{" "}
-                        <span className="text-red-500 text-right">
-                          {couponInfo.couponCode}
-                        </span>
-                      </span>
+                        <div className="text-emerald-600">"{couponInfo.couponCode}" Coupon Applied </div>
+                        <button
+                          title={"Remove coupon"}
+                          onClick={() => handleRemoveCoupon()}
+                          className="hover:bg-red-200 text-red-500 cursor-pointer bg-red-100 p-2 rounded"
+                        >
+                          <FiTrash2 />
+                        </button>
+                      </div>
                     ) : (
                       <div className="flex flex-col sm:flex-row items-start justify-end">
                         <input

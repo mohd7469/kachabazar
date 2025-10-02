@@ -358,6 +358,21 @@ const useCheckoutSubmit = (storeSetting) => {
     }
   };
   
+  const handleRemoveCoupon = () => {
+    setCouponInfo({});
+    setIsCouponApplied(false);
+    setDiscountPercentage(0);
+    setMinimumAmount(0);
+    
+    // remove from redux
+    dispatch({ type: "REMOVE_COUPON" });
+    
+    // remove from cookies
+    Cookies.remove("couponInfo");
+    
+    notifySuccess("Coupon has been removed!");
+  };
+  
   // set checkout form default values
   useEffect(() => {
     setValue("country", 'United Arab Emirates');
@@ -386,6 +401,7 @@ const useCheckoutSubmit = (storeSetting) => {
     submitHandler,
     handleShippingCost,
     handleCouponCode,
+    handleRemoveCoupon,
     discountPercentage,
     discountAmount,
     shippingCost,
