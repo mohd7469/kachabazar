@@ -85,9 +85,27 @@ function MyApp({ Component, pageProps }) {
   const [storeSetting, setStoreSetting] = useState(null);
   
   const [statusMessage, setStatusMessage] = useState("");
+  const [showWhatsApp, setShowWhatsApp] = useState(false);
   useEffect(() => {
-    const randomMinutes = Math.floor(Math.random() * 10) + 1;
-    setStatusMessage(`Typically replies within ${moment.duration(randomMinutes, "minutes").humanize()}`);
+    const handleWindowLoad = () => {
+      console.log("handleWindowLoad");
+      const randomMinutes = Math.floor(Math.random() * 10) + 1;
+      setStatusMessage(
+        `Typically replies within ${moment
+        .duration(randomMinutes, "minutes")
+        .humanize()}`
+      );
+      setShowWhatsApp(true);
+    };
+    
+    if (document.readyState === "complete") {
+      // page already fully loaded
+      handleWindowLoad();
+    } else {
+      // wait until load
+      window.addEventListener("load", handleWindowLoad);
+      return () => window.removeEventListener("load", handleWindowLoad);
+    }
   }, []);
   
   useEffect(() => {
@@ -148,16 +166,19 @@ function MyApp({ Component, pageProps }) {
           </UserProvider>
         </SessionProvider>
       </QueryClientProvider>
-      <FloatingWhatsApp
-        phoneNumber="13022783235"
-        accountName="Support"
-        statusMessage={statusMessage}
-        allowEsc
-        allowClickAway
-        notification
-        notificationSound
-        avatar="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg"
-      />
+      
+      {showWhatsApp && (
+        <FloatingWhatsApp
+          phoneNumber="13022783235"
+          accountName="Support"
+          statusMessage={statusMessage}
+          allowEsc
+          allowClickAway
+          notification
+          notificationSound
+          avatar="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg"
+        />
+      )}
     </>
   );
 }
