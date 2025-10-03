@@ -15,6 +15,20 @@ import {Controller} from "react-hook-form";
 import {PhoneInput} from 'react-international-phone';
 import 'react-international-phone/style.css';
 
+import Select from "react-select";
+const cities = [
+  { value: "Abu Dhabi", label: "Abu Dhabi" },
+  { value: "Dubai", label: "Dubai" },
+  { value: "Sharjah", label: "Sharjah" },
+  { value: "Ajman", label: "Ajman" },
+  { value: "Al Ain", label: "Al Ain" },
+  { value: "Ras Al Khaimah", label: "Ras Al Khaimah" },
+  { value: "Umm Al Quwain", label: "Umm Al Quwain" },
+  { value: "Fujairah", label: "Fujairah" },
+  { value: "Khor Fakkan", label: "Khor Fakkan" },
+  { value: "Dibba Al-Fujairah", label: "Dibba Al-Fujairah" }
+];
+
 import Layout from "@layout/Layout";
 import Label from "@components/form/Label";
 import Error from "@components/form/Error";
@@ -250,7 +264,7 @@ const Checkout = () => {
 
                     <div className="grid grid-cols-6 gap-6 mb-8">
                       <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                        <InputArea
+                        {/*<InputArea
                           register={register}
                           label={showingTranslateValue(
                             storeCustomizationSetting?.checkout?.city
@@ -259,7 +273,68 @@ const Checkout = () => {
                           type="text"
                           placeholder="Enter City"
                         />
-                        <Error errorName={errors.city} />
+                        <Error errorName={errors.city} />*/}
+                        <>
+                          <Controller
+                            name="city"
+                            control={control}
+                            rules={{
+                              required: "City is required",
+                            }}
+                            render={({ field }) => (
+                              <>
+                                <Label
+                                  label={showingTranslateValue(
+                                    storeCustomizationSetting?.checkout?.city
+                                  )}
+                                  className="required"
+                                />
+                                <Select
+                                  styles={{
+                                    control: (base, state) => ({
+                                      ...base,
+                                      boxShadow: "none !important",                 // removes react-select default shadow
+                                      outline: "none !important",                   // removes focus outline
+                                      minHeight: "48px",                 // same height as other inputs
+                                      borderColor: "#d1d5db",
+                                    }),
+                                    input: (base) => ({
+                                      ...base,
+                                      boxShadow: "none !important",                 // removes react-select default shadow
+                                      outline: "none !important",                   // removes focus outline
+                                      border: "none !important",
+                                      paddingLeft: 8,                    // keep alignment with placeholder
+                                    }),
+                                    placeholder: (base) => ({
+                                      ...base,
+                                      color: "rgba(0,0,0,0.3)",          // dimmed placeholder
+                                      paddingLeft: 8,
+                                    }),
+                                    singleValue: (base) => ({
+                                      ...base,
+                                      paddingLeft: 8,
+                                      color: "rgba(0,0,0,0.9)",
+                                    }),
+                                  }}
+                                  placeholder="Select City"
+                                  options={cities}
+                                  defaultValue={cities.find((c) => c.value === field.value) || null}
+                                  isClearable={true}
+                                  isSearchable={true}
+                                  onChange={(option) => {
+                                    field.onChange(option?.value);
+                                    field.onBlur();
+                                  }}
+                                />
+                              </>
+                            )}
+                          />
+                          
+                          {errors.city && (
+                            <p className="text-red-500 text-xs mt-1">{errors.city.message}</p>
+                          )}
+                        </>
+                      
                       </div>
 
                       <div className="col-span-6 sm:col-span-3 lg:col-span-2">
