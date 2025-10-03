@@ -6,6 +6,9 @@
   background-image: none;
 }
 
+.react-international-phone-country-selector-button {
+    padding: 0 8px !important;
+}
 .react-international-phone-input,
 .react-international-phone-country-selector,
 .react-international-phone-country-selector button,

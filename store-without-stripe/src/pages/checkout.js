@@ -304,16 +304,19 @@ const Checkout = () => {
                                       outline: "none !important",                   // removes focus outline
                                       border: "none !important",
                                       paddingLeft: 8,                    // keep alignment with placeholder
+                                      fontSize: 14,
                                     }),
                                     placeholder: (base) => ({
                                       ...base,
                                       color: "rgba(0,0,0,0.3)",          // dimmed placeholder
                                       paddingLeft: 8,
+                                      fontSize: 14,
                                     }),
                                     singleValue: (base) => ({
                                       ...base,
                                       paddingLeft: 8,
                                       color: "rgba(0,0,0,0.9)",
+                                      fontSize: 14,
                                     }),
                                   }}
                                   placeholder="Select City"
