@@ -1,17 +1,19 @@
+import {useEffect} from "react";
 import React from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
-  IoReturnUpBackOutline,
   IoArrowForward,
-  IoBagHandle,
-  IoWalletSharp,
+  IoBagHandle
 } from "react-icons/io5";
 import { useQuery } from "@tanstack/react-query";
 import { ImCreditCard } from "react-icons/im";
 import useTranslation from "next-translate/useTranslation";
 
-//internal import
+import {PhoneNumberUtil} from 'google-libphonenumber';
+import {Controller} from "react-hook-form";
+import {PhoneInput} from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 import Layout from "@layout/Layout";
 import Label from "@components/form/Label";
@@ -25,7 +27,11 @@ import useCheckoutSubmit from "@hooks/useCheckoutSubmit";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import SettingServices from "@services/SettingServices";
 import SwitchToggle from "@components/form/SwitchToggle";
-import {FiTrash, FiTrash2} from "react-icons/fi";
+import {FiTrash2} from "react-icons/fi";
+
+const phoneUtil = PhoneNumberUtil.getInstance();
+
+//internal import
 
 const Checkout = () => {
   const { t } = useTranslation();
@@ -53,6 +59,9 @@ const Checkout = () => {
     setShowCard,
     handleSubmit,
     watch,
+    control,
+    setValue,
+    getValues,
     submitHandler,
     handleShippingCost,
     handleCouponCode,
@@ -65,7 +74,33 @@ const Checkout = () => {
     isCouponAvailable,
     handleDefaultShippingAddress,
   } = useCheckoutSubmit();
-
+  
+  const handlePhoneValid = (phone) => {
+    try {
+      const parsed = phoneUtil.parseAndKeepRawInput(phone);
+      return phoneUtil.isValidNumber(parsed);
+    } catch (error) {
+      return false;
+    }
+  };
+  
+  useEffect(() => {
+    const handleWindowLoad = () => {
+      const input = document.querySelector(".react-international-phone-input");
+      if (input) {
+        input.classList.add("flex-1");
+      }
+    };
+    
+    if (document.readyState === "complete") {
+      // already loaded
+      handleWindowLoad();
+    } else {
+      window.addEventListener("load", handleWindowLoad);
+      return () => window.removeEventListener("load", handleWindowLoad);
+    }
+  }, []);
+  
   return (
     <>
       <Layout title="Checkout" description="this is checkout page">
@@ -122,6 +157,7 @@ const Checkout = () => {
                         <Error errorName={errors.lastName} />
                       </div>
                       <div className="col-span-6 sm:col-span-3">
+                        {/*
                         <InputArea
                           register={register}
                           label={showingTranslateValue(
@@ -129,9 +165,63 @@ const Checkout = () => {
                           )}
                           name="contact"
                           type="tel"
-                          placeholder="0501231234"
+                          placeholder="0501234567"
                         />
                         <Error errorName={errors.contact} />
+                        */}
+                        <>
+                          {/* Controlled PhoneInput */}
+                          <Controller
+                            name="contact"
+                            control={control}
+                            rules={{
+                              required: "Phone number is required",
+                              validate: (input, allValues) => {
+                                console.log('validate', allValues);
+                                const fullContact = getValues("fullContact"); // 👈 grab full number
+                                return handlePhoneValid(fullContact) || "Invalid phone number";
+                              }
+                              // validate: (value, meta) => {
+                              //   console.log('validate');
+                              //   console.log(value, handlePhoneValid(value), meta);
+                              //   return handlePhoneValid(value) || "Invalid phone number";
+                              // }
+                            }}
+                            render={({ field }) => (
+                              <>
+                                <Label
+                                  label={showingTranslateValue(
+                                    storeCustomizationSetting?.checkout?.checkout_phone
+                                  )}
+                                  className="required"
+                                />
+                                <PhoneInput
+                                  className="customPhoneInput h-12"
+                                  placeholder={'0501234567'}
+                                  value={field.value}
+                                  onChange={(phone, meta) => {
+                                    setValue("fullContact", phone, { shouldValidate: true }); // for full number with country code
+                                    field.onChange(meta.inputValue); // user input number without country code
+                                    field.onBlur(); // mark as touched
+                                    field.ref(meta); // optional if you want meta info
+                                  }}
+                                  disableDialCodePrefill={true}
+                                  disableDialCodeAndPrefix={true}
+                                  showDisabledDialCodeAndPrefix={true}
+                                  defaultCountry="ae"
+                                />
+                              </>
+                            )}
+                          />
+                          
+                          {/* Error */}
+                          {errors.contact && (
+                            <p className="text-red-500 text-xs mt-1">
+                              {errors.contact.message}
+                            </p>
+                          )}
+                        </>
+                        {/*{watch('contact')}*/}
                       </div>
                       
                       <div className="col-span-6 sm:col-span-3">
