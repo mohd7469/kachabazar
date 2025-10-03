@@ -1,5 +1,7 @@
 import "@styles/custom.css";
 import "@styles/_index.scss";
+
+import moment from "moment";
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 
 import Router from "next/router";
@@ -81,7 +83,13 @@ const queryClient = new QueryClient({
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [storeSetting, setStoreSetting] = useState(null);
-
+  
+  const [statusMessage, setStatusMessage] = useState("");
+  useEffect(() => {
+    const randomMinutes = Math.floor(Math.random() * 10) + 1;
+    setStatusMessage(`Typically replies within ${moment.duration(randomMinutes, "minutes").humanize()}`);
+  }, []);
+  
   useEffect(() => {
     const fetchStoreSettings = async () => {
       try {
@@ -141,8 +149,9 @@ function MyApp({ Component, pageProps }) {
         </SessionProvider>
       </QueryClientProvider>
       <FloatingWhatsApp
-        phoneNumber="1302783235"
+        phoneNumber="13022783235"
         accountName="Support"
+        statusMessage={statusMessage}
         allowEsc
         allowClickAway
         notification
