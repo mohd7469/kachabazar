@@ -62,9 +62,16 @@ const useCheckoutSubmit = (storeSetting) => {
     register,
     handleSubmit,
     setValue,
+    getValues,
     watch,
+    control,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      contact: "",
+      fullContact: "",
+    },
+  });
   
   useEffect(() => {
     if (Cookies.get("couponInfo")) {
@@ -398,6 +405,9 @@ const useCheckoutSubmit = (storeSetting) => {
     cartTotal,
     handleSubmit,
     watch,
+    control,
+    setValue,
+    getValues,
     submitHandler,
     handleShippingCost,
     handleCouponCode,
