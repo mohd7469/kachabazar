@@ -29,7 +29,7 @@ const CartItem = ({ item, currency }) => {
       </div>
       <div className="flex flex-col w-full overflow-hidden">
         <Link
-          href={`/product/${item.slug}`}
+          href={`/product/${item.slug ? item.slug : item.sku}`}
           onClick={closeCartDrawer}
           className="truncate text-sm font-medium text-gray-700 text-heading line-clamp-1"
         >
