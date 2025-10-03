@@ -3,6 +3,14 @@ import "@styles/_index.scss";
 
 import moment from "moment";
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
+const messages = [
+  "Please tell us your concern!",
+  "Need assistance? We're here for you.",
+  "What do you wanna ask?",
+  "How can we support you?",
+  "Tell us how can we help you?",
+  "Feel free to ask anything!"
+];
 
 import Router from "next/router";
 import NProgress from "nprogress";
@@ -84,11 +92,12 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [storeSetting, setStoreSetting] = useState(null);
   
+  const [phoneNumber, setPhoneNumber] = useState('13022783235');
   const [statusMessage, setStatusMessage] = useState("");
+  const [chatMessage, setChatMessage] = useState(`Hello there!\nHow can we help?`);
   const [showWhatsApp, setShowWhatsApp] = useState(false);
   useEffect(() => {
     const handleWindowLoad = () => {
-      console.log("handleWindowLoad");
       const randomMinutes = Math.floor(Math.random() * 10) + 1;
       setStatusMessage(
         `Typically replies within ${moment
@@ -96,6 +105,43 @@ function MyApp({ Component, pageProps }) {
         .humanize()}`
       );
       setShowWhatsApp(true);
+      
+      if (!showWhatsApp) return;
+      
+      const chatbox = document.querySelector(".floatingWhatsApp");
+      if (!chatbox) return;
+      
+      const form = chatbox.querySelector("form");
+      if (!form) return;
+      
+      // Get the input field
+      const input = form.querySelector("input");
+      if (!input) return;
+      
+      // 🚫 Kill the library's default submit
+      form.onsubmit = null;
+      
+      // ✅ Add your own
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const pageUrl = window.location.href;
+        const message = input?.value || "";
+        if (!message) {
+          const timer = setTimeout(() => {
+            setChatMessage(messages[Math.floor(Math.random() * messages.length)]);
+          }, 500);
+          return () => clearTimeout(timer);
+        }
+        
+        const finalMessage = `${message}\n\n\n${pageUrl}`;
+        const encodedMessage = encodeURIComponent(finalMessage);
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+        
+        // ✅ Clear input after sending
+        input.value = "";
+      });
     };
     
     if (document.readyState === "complete") {
@@ -106,7 +152,7 @@ function MyApp({ Component, pageProps }) {
       window.addEventListener("load", handleWindowLoad);
       return () => window.removeEventListener("load", handleWindowLoad);
     }
-  }, []);
+  }, [showWhatsApp]);
   
   useEffect(() => {
     const fetchStoreSettings = async () => {
@@ -169,9 +215,11 @@ function MyApp({ Component, pageProps }) {
       
       {showWhatsApp && (
         <FloatingWhatsApp
-          phoneNumber="13022783235"
+          chatboxClassName="floatingWhatsApp"
+          phoneNumber={phoneNumber}
           accountName="Support"
           statusMessage={statusMessage}
+          chatMessage={chatMessage}
           allowEsc
           allowClickAway
           notification
