@@ -6,6 +6,13 @@
   background-image: none;
 }
 
+.react-international-phone-input,
+.react-international-phone-country-selector,
+.react-international-phone-country-selector button,
+.react-international-phone-dial-code-preview {
+    height: 100% !important;
+}
+
 .StripeElement {
   box-sizing: border-box;
   height: 50px;
