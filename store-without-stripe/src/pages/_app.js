@@ -1,6 +1,7 @@
 import "@styles/custom.css";
 import "@styles/_index.scss";
 
+import axios from "axios";
 import moment from "moment";
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
 const messages = [
@@ -90,6 +91,7 @@ const queryClient = new QueryClient({
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const [whatsappLoading, setWhatsappLoading] = useState(false);
   const [storeSetting, setStoreSetting] = useState(null);
   
   const [phoneNumber, setPhoneNumber] = useState('13022783235');
@@ -127,43 +129,62 @@ function MyApp({ Component, pageProps }) {
         e.stopPropagation();
         
         let product = null;
-        try {
-          let __NEXT_DATA__ = document.getElementById('__NEXT_DATA__');
-          if (__NEXT_DATA__?.textContent) {
-            const meta = JSON.parse(__NEXT_DATA__.textContent);
-            product = meta?.props?.pageProps?.product ?? null;
-          }
-        } catch (error) {
-          console.error("Error parsing __NEXT_DATA__:", error);
-          product = null;
-        }
         
-        console.log('meta', product);
-        
+        // 1️⃣ Get current page URL
         const pageUrl = window.location.href;
         const message = input?.value || "";
-        if (!message) {
-          const timer = setTimeout(() => {
-            setChatMessage(messages[Math.floor(Math.random() * messages.length)]);
-          }, 500);
-          return () => clearTimeout(timer);
-        }
         
-        let finalMessage;
-        
-        if (product) {
-          const title = product?.title?.en || product?.title || "";
-          const price = product?.prices?.price ? `${product.prices.price} AED` : "";
-          finalMessage = `${pageUrl}\n${title}\n${price}\n\n${message}`;
-        } else {
-          finalMessage = `${pageUrl}\n\n${message}`;
-        }
-        
-        const encodedMessage = encodeURIComponent(finalMessage);
-        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
-        
-        // ✅ Clear input after sending
-        input.value = "";
+        (async () => {
+          try {
+            form.focus();
+            setWhatsappLoading(true);
+            NProgress.start();
+            
+            // 2️⃣ Fetch the page HTML
+            const { data: html } = await axios.get(pageUrl);
+            
+            // 3️⃣ Extract the __NEXT_DATA__ script content
+            const match = html.match(
+              /<script id="__NEXT_DATA__" type="application\/json">([^<]+)<\/script>/
+            );
+            
+            if (match && match[1]) {
+              const meta = JSON.parse(match[1]);
+              product = meta?.props?.pageProps?.product ?? null;
+            }
+          } catch (error) {
+            NProgress.done();
+            console.error("Error fetching or parsing __NEXT_DATA__:", error);
+            product = null;
+          }
+          
+          console.log('meta', product);
+          
+          if (!message) {
+            const timer = setTimeout(() => {
+              setChatMessage(messages[Math.floor(Math.random() * messages.length)]);
+            }, 500);
+            return () => clearTimeout(timer);
+          }
+          
+          let finalMessage;
+          if (product) {
+            const title = product?.title?.en || product?.title || "";
+            const price = product?.prices?.price ? `${product.prices.price} AED` : "";
+            finalMessage = `Link: ${pageUrl}\nProduct: ${title}\nPrice: ${price}\n\n${message}`;
+          } else {
+            finalMessage = `Link: ${pageUrl}\n\n${message}`;
+          }
+          
+          const encodedMessage = encodeURIComponent(finalMessage);
+          window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+          
+          // ✅ Clear input after sending
+          input.value = "";
+
+          setWhatsappLoading(false);
+          NProgress.done();
+        })();
       });
     };
     
@@ -237,19 +258,21 @@ function MyApp({ Component, pageProps }) {
       </QueryClientProvider>
       
       {showWhatsApp && (
-        <FloatingWhatsApp
-          chatboxClassName="floatingWhatsApp !mb-10 lg:!mb-0"
-          buttonClassName={'mb-10 lg:mb-0'}
-          phoneNumber={phoneNumber}
-          accountName="Support"
-          statusMessage={statusMessage}
-          chatMessage={chatMessage}
-          allowEsc
-          allowClickAway
-          notification
-          notificationSound
-          avatar="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg"
-        />
+        <div className={`!bg-white !border !rounded-lg ${whatsappLoading ? 'no-control' : ''}`}>
+          <FloatingWhatsApp
+            chatboxClassName="floatingWhatsApp !mb-10 lg:!mb-0"
+            buttonClassName={'mb-10 lg:mb-0'}
+            phoneNumber={phoneNumber}
+            accountName="Support"
+            statusMessage={statusMessage}
+            chatMessage={chatMessage}
+            allowEsc
+            allowClickAway
+            notification
+            notificationSound
+            avatar="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg"
+          />
+        </div>
       )}
     </>
   );
