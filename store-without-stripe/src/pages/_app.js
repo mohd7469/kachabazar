@@ -165,7 +165,7 @@ function MyApp({ Component, pageProps }) {
               setChatMessage(messages[Math.floor(Math.random() * messages.length)]);
               form.focus();
               setWhatsappLoading(false);
-              NProgress.start();
+              NProgress.done();
             }, 500);
             return () => clearTimeout(timer);
           }
