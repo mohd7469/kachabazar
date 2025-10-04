@@ -135,7 +135,7 @@ function MyApp({ Component, pageProps }) {
           return () => clearTimeout(timer);
         }
         
-        const finalMessage = `${message}\n\n\n${pageUrl}`;
+        const finalMessage = `${pageUrl}\n\n${message}`;
         const encodedMessage = encodeURIComponent(finalMessage);
         window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
         
@@ -225,6 +225,7 @@ function MyApp({ Component, pageProps }) {
           notification
           notificationSound
           avatar="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg"
+          buttonClassName={'mb-10 lg:mb-0'}
         />
       )}
     </>
