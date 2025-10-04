@@ -17,7 +17,7 @@ import 'react-international-phone/style.css';
 
 
 const cities = [
-  { value: "", label: "—" },
+  { value: "", label: "Select City" },
   { value: "Abu Dhabi", label: "Abu Dhabi" },
   { value: "Dubai", label: "Dubai" },
   { value: "Sharjah", label: "Sharjah" },
@@ -276,7 +276,9 @@ const Checkout = () => {
                         />
                         <Error errorName={errors.city} />*/}
                         
-                        <Label label={'Select City'} className={ 'required' } />
+                        <Label label={showingTranslateValue(
+                          storeCustomizationSetting?.checkout?.city
+                        )} className={ 'required' } />
                         <select
                           name="city"
                           {...register("city", { required: "City is required" })}
@@ -479,7 +481,7 @@ const Checkout = () => {
                   */}
 
                   <div className="grid grid-cols-6 gap-4 lg:gap-6 mt-10">
-                    <div className="col-span-6 sm:col-span-3">
+                    {/*<div className="col-span-6 sm:col-span-3">
                       <Link
                         href="/"
                         className="bg-gray-50 border border-indigo-100 rounded py-3 text-center text-sm font-bold text-gray-600 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center items-center font-serif w-full"
@@ -491,15 +493,15 @@ const Checkout = () => {
                           storeCustomizationSetting?.checkout?.continue_button
                         )}
                       </Link>
-                    </div>
-                    <div className={`col-span-6 sm:col-span-3 ${isEmpty || isCheckoutSubmit ? 'no-control' : ''}`}>
+                    </div>*/}
+                    <div className={`col-span-6 sm:col-span-12 ${isEmpty || isCheckoutSubmit ? 'no-control' : ''}`}>
                       <button
                         type="submit"
                         disabled={isEmpty || isCheckoutSubmit}
                         className="bg-emerald-500 hover:bg-emerald-600 border border-emerald-500 transition-all rounded py-3 text-center text-sm font-serif font-medium text-white flex justify-center w-full"
                       >
                         {isCheckoutSubmit ? (
-                          <span className="flex justify-center text-center">
+                          <span className="flex justify-center text-center items-center">
                             {" "}
                             <img
                               src="/loader/spinner.gif"
@@ -512,15 +514,16 @@ const Checkout = () => {
                             </span>
                           </span>
                         ) : (
-                          <span className="flex justify-center text-center">
+                          <span className="flex justify-center text-center items-center">
+                            <span className="text-xl mx-2">
+                              {" "}
+                              {/*<IoArrowForward />*/}
+                              <i className="fa-solid fa-cart-shopping"></i>
+                            </span>
                             {showingTranslateValue(
                               storeCustomizationSetting?.checkout
                                 ?.confirm_button
                             )}
-                            <span className="text-xl ml-2">
-                              {" "}
-                              <IoArrowForward />
-                            </span>
                           </span>
                         )}
                       </button>

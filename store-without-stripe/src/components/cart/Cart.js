@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { useCart } from "react-use-cart";
 import { IoBagCheckOutline, IoClose, IoBagHandle } from "react-icons/io5";
+import Link from "next/link";
 
 //internal imports
 import { getUserSession } from "@lib/auth";
@@ -11,8 +12,12 @@ import useUtilsFunction from "@hooks/useUtilsFunction";
 
 import moment from "moment";
 import useLoginSubmit from "@hooks/useLoginSubmit";
+import useGetSetting from "@hooks/useGetSetting";
 
 const Cart = () => {
+  const { showingTranslateValue } = useUtilsFunction();
+  const { storeCustomizationSetting } = useGetSetting();
+  
   const router = useRouter();
   const { isEmpty, items, cartTotal } = useCart();
   const { closeCartDrawer } = useContext(SidebarContext);
@@ -182,6 +187,18 @@ const Cart = () => {
                   </span>
                 </button>
               )}
+              
+              <Link
+                href="/"
+                className="mt-4 py-4 px-3 rounded-lg bg-gray-50 border border-indigo-100 text-center text-sm font-bold text-gray-600 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center items-center font-serif w-full"
+              >
+                  <span className="mr-2">
+                    <i className="fa-solid fa-cart-shopping"></i>
+                  </span>
+                {showingTranslateValue(
+                  storeCustomizationSetting?.checkout?.continue_button
+                )}
+              </Link>
             </div>
           )
         )}
