@@ -156,8 +156,7 @@ function MyApp({ Component, pageProps }) {
           const price = product?.prices?.price ? `${product.prices.price} AED` : "";
           finalMessage = `${pageUrl}\n${title}\n${price}\n\n${message}`;
         } else {
-          const location = "https://www.google.com/maps/@25.3372372,55.4095376,15.75z"
-          finalMessage = `${pageUrl}\n${location}\n\n${message}`;
+          finalMessage = `${pageUrl}\n\n${message}`;
         }
         
         const encodedMessage = encodeURIComponent(finalMessage);
