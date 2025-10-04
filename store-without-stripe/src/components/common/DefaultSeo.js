@@ -11,7 +11,7 @@ const DefaultSeo = () => {
     <NextSeo
       title={
         globalSetting?.meta_title ||
-        "KachaBazar - React Grocery & Organic Food Store e-commerce Template"
+        "Pharmilow - Your Digital Pharmacy Partner"
       }
       openGraph={{
         type: "website",
@@ -19,7 +19,7 @@ const DefaultSeo = () => {
         url: globalSetting?.meta_url || "https://kachabazar-store.vercel.app/",
         site_name:
           globalSetting?.meta_title ||
-          "KachaBazar - React Grocery & Organic Food Store e-commerce Template",
+          "Pharmilow - Your Digital Pharmacy Partner",
       }}
       twitter={{
         handle: "@handle",
