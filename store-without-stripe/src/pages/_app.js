@@ -126,6 +126,20 @@ function MyApp({ Component, pageProps }) {
         e.preventDefault();
         e.stopPropagation();
         
+        let product = null;
+        try {
+          let __NEXT_DATA__ = document.getElementById('__NEXT_DATA__');
+          if (__NEXT_DATA__?.textContent) {
+            const meta = JSON.parse(__NEXT_DATA__.textContent);
+            product = meta?.props?.pageProps?.product ?? null;
+          }
+        } catch (error) {
+          console.error("Error parsing __NEXT_DATA__:", error);
+          product = null;
+        }
+        
+        console.log('meta', product);
+        
         const pageUrl = window.location.href;
         const message = input?.value || "";
         if (!message) {
@@ -135,7 +149,17 @@ function MyApp({ Component, pageProps }) {
           return () => clearTimeout(timer);
         }
         
-        const finalMessage = `${pageUrl}\n\n${message}`;
+        let finalMessage;
+        
+        if (product) {
+          const title = product?.title?.en || product?.title || "";
+          const price = product?.prices?.price ? `${product.prices.price} AED` : "";
+          finalMessage = `${pageUrl}\n${title}\n${price}\n\n${message}`;
+        } else {
+          const location = "https://www.google.com/maps/@25.3372372,55.4095376,15.75z"
+          finalMessage = `${pageUrl}\n${location}\n\n${message}`;
+        }
+        
         const encodedMessage = encodeURIComponent(finalMessage);
         window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
         
@@ -215,7 +239,8 @@ function MyApp({ Component, pageProps }) {
       
       {showWhatsApp && (
         <FloatingWhatsApp
-          chatboxClassName="floatingWhatsApp"
+          chatboxClassName="floatingWhatsApp !mb-10 lg:!mb-0"
+          buttonClassName={'mb-10 lg:mb-0'}
           phoneNumber={phoneNumber}
           accountName="Support"
           statusMessage={statusMessage}
@@ -225,7 +250,6 @@ function MyApp({ Component, pageProps }) {
           notification
           notificationSound
           avatar="https://res.cloudinary.com/kachabazarcloud/image/upload/v1757099203/ptptohgyyjpoqri9rmyl.svg"
-          buttonClassName={'mb-10 lg:mb-0'}
         />
       )}
     </>
