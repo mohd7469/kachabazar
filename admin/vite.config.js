@@ -59,10 +59,10 @@ export default defineConfig({
         scope: ".",
         start_url: ".",
         id: ".",
-        short_name: "Kachabazar - E-Commerce Website",
-        name: "Kachabazar | React eCommerce Admin Dashboard",
+        short_name: "Pharmilow - E-Commerce Website",
+        name: "Pharmilow | Digital Pharmacy Store",
         description:
-          "Kachabazar : React Grocery & Organic Food Store e-commerce Admin Dashboard",
+          "Pharmilow : Your Digital Pharmacy Partner",
         icons: [
           {
             src: "favicon.ico",

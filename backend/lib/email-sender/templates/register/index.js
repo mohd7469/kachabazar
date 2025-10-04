@@ -7,7 +7,7 @@ const customerRegisterBody = (option) => {
 >
 
   <head>
-    <title>Kachabazar</title>
+    <title>Pharmilow</title>
     <!--[if !mso]><!-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!--<![endif]-->

@@ -94,7 +94,7 @@ const forgetPassword = async (req, res) => {
       to: `${req.body.verifyEmail}`,
       subject: "Password Reset",
       html: `<h2>Hello ${req.body.verifyEmail}</h2>
-      <p>A request has been received to change the password for your <strong>Kachabazar</strong> account </p>
+      <p>A request has been received to change the password for your <strong>Pharmilow</strong> account </p>
 
         <p>This link will expire in <strong> 15 minute</strong>.</p>
 
@@ -106,7 +106,7 @@ const forgetPassword = async (req, res) => {
         <p style="margin-top: 35px;">If you did not initiate this request, please contact us immediately at support@kachabazar.com</p>
 
         <p style="margin-bottom:0px;">Thank you</p>
-        <strong>Kachabazar Team</strong>
+        <strong>Pharmilow Team</strong>
              `,
     };
     const message = "Please check your email to reset password!";
