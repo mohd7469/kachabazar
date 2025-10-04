@@ -68,6 +68,12 @@ const Cart = () => {
       setLoading(false);
     }
   };
+  
+  const handleContinueShopping = async () => {
+    closeCartDrawer();
+    await router.push("/");
+  };
+  
 
   return (
     <>
@@ -159,6 +165,19 @@ const Cart = () => {
               </span>
               </button>*/}
               
+              <Link
+                href="#"
+                onClick={handleContinueShopping}
+                className="my-4 py-4 px-3 rounded-lg bg-gray-50 border border-indigo-100 text-center text-sm font-bold text-gray-600 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center items-center font-serif w-full"
+              >
+                  <span className="mr-2">
+                    <i className="fa-solid fa-cart-shopping"></i>
+                  </span>
+                {showingTranslateValue(
+                  storeCustomizationSetting?.checkout?.continue_button
+                )}
+              </Link>
+              
               {!userInfo ? (
                 <button
                   disabled={loading}
@@ -187,18 +206,6 @@ const Cart = () => {
                   </span>
                 </button>
               )}
-              
-              <Link
-                href="/"
-                className="mt-4 py-4 px-3 rounded-lg bg-gray-50 border border-indigo-100 text-center text-sm font-bold text-gray-600 hover:text-gray-800 hover:border-gray-300 transition-all flex justify-center items-center font-serif w-full"
-              >
-                  <span className="mr-2">
-                    <i className="fa-solid fa-cart-shopping"></i>
-                  </span>
-                {showingTranslateValue(
-                  storeCustomizationSetting?.checkout?.continue_button
-                )}
-              </Link>
             </div>
           )
         )}
