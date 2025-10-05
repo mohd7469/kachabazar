@@ -264,7 +264,7 @@ function MyApp({ Component, pageProps }) {
         <div className={`!bg-white !border !rounded-lg ${whatsappLoading ? 'no-control' : ''}`}>
           <FloatingWhatsApp
             chatboxClassName="floatingWhatsApp !mb-10 lg:!mb-0"
-            buttonClassName={'mb-10 lg:mb-0'}
+            buttonClassName={'mb-10 lg:mb-0 !right-3'}
             phoneNumber={phoneNumber}
             accountName="Support"
             statusMessage={statusMessage}

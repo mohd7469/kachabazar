@@ -299,7 +299,7 @@ const ProductCard = ({ product, attributes }) => {
             )}
           </div>
         </div>
-        <div className="flex flex-1 flex-col space-y-2 px-4 pt-2 pb-4">
+        <div className="flex flex-1 flex-col space-y-1 px-2 pt-2 pb-4">
           <div className="relative mb-1">
             <span className="text-gray-400 font-medium text-xs d-block mb-1">{product?.unit || ''}</span>
             <Link href={`/product/${product.slug}`} passHref
