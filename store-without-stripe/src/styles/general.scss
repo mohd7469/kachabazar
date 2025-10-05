@@ -6,6 +6,12 @@
   margin-right: 3px !important;
 }
 
+.checkoutWrapper {
+  button, input, textarea, select, .react-international-phone-dial-code-preview {
+    border-color: darkgray !important;
+  }
+}
+
 #nprogress {
   * {
     z-index: 999999 !important;

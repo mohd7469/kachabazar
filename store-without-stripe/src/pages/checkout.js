@@ -119,7 +119,7 @@ const Checkout = () => {
   return (
     <>
       <Layout title="Checkout" description="this is checkout page">
-        <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">
+        <div className="mx-auto max-w-screen-2xl px-3 sm:px-10 checkoutWrapper">
           <div className="py-10 lg:py-12 px-0 2xl:max-w-screen-2xl w-full xl:max-w-screen-xl flex flex-col md:flex-row lg:flex-row">
             <div className="md:w-full lg:w-3/5 flex h-full flex-col order-2 sm:order-1 lg:order-1">
               <div className="border p-5 lg:px-8 lg:py-8 rounded-lg bg-white mt-5 md:mt-0 md:col-span-2">
