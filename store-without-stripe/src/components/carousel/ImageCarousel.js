@@ -19,7 +19,7 @@ const ImageCarousel = ({ images, handleChangeImage }) => {
           <SwiperSlide key={i + 1}>
             <div className={`flex items-center justify-center gap-4 bg-white cursor-pointer border border-gray-50 transition-all duration-100 ease-in-out hover:border-emerald-500 ${images?.length > 3 ? 'rounded-full' : 'rounded-lg'}`}
                  onClick={() => handleChangeImage(img)}>
-              <div className="w-18 h-18 rounded-lg">
+              <div className="w-16 h-16 rounded-lg">
                 <Image
                   src={img}
                   alt="product"
