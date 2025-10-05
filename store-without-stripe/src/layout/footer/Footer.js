@@ -206,7 +206,7 @@ const Footer = ({ setDrawer, setDrawerOpen }) => {
               </ul>
             </div>
           )}
-          {storeCustomizationSetting?.footer?.block3_status ? (
+          {storeCustomizationSetting?.footer?.block3_status && (
             <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3" data-aos="fade-up">
               <h3 className="text-md lg:leading-7 font-medium mb-4 sm:mb-5 lg:mb-6 pb-0.5">
                 <CMSkeleton
@@ -294,12 +294,6 @@ const Footer = ({ setDrawer, setDrawerOpen }) => {
                   </Link>
                 </li>
               </ul>
-            </div>
-          ) : (
-            <div className="pb-3.5 sm:pb-0 col-span-1 md:col-span-2 lg:col-span-3" data-aos="fade-up">
-              <div className="flex justify-center items-center md:block" data-aos="fade-up">
-                <img src="https://cdn-icons-png.flaticon.com/512/10423/10423290.png" width={160} alt="Hurry Up!"/>
-              </div>
             </div>
           )}
           {storeCustomizationSetting?.footer?.block4_status && (
