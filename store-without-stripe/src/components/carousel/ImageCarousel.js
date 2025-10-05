@@ -13,13 +13,13 @@ const ImageCarousel = ({ images, handleChangeImage }) => {
         modules={[Autoplay, Navigation, Pagination, Controller]}
         navigation
         slidesPerView={Math.min(images?.length, 4)} // 1 → 1, 2 → 2, 3 → 3, 4 → 4 ... 5 → 4 ...
-        className="my-6"
+        className="mb-6"
       >
         {images?.map((img, i) => (
           <SwiperSlide key={i + 1}>
-            <div className={`flex items-center justify-center gap-4 bg-white cursor-pointer p-2 border border-gray-50 transition-all duration-100 ease-in-out hover:border-emerald-500 ${images?.length > 3 ? 'rounded-full' : 'rounded-lg'}`}
+            <div className={`flex items-center justify-center gap-4 bg-white cursor-pointer border border-gray-50 transition-all duration-100 ease-in-out hover:border-emerald-500 ${images?.length > 3 ? 'rounded-full' : 'rounded-lg'}`}
                  onClick={() => handleChangeImage(img)}>
-              <div className="w-8 h-8 rounded-lg">
+              <div className="w-18 h-18 rounded-lg">
                 <Image
                   src={img}
                   alt="product"
