@@ -305,7 +305,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                     )}
 
                     {product?.image?.length > 1 && (
-                      <div className="flex flex-row flex-wrap mt-4 border-t">
+                      <div className="flex flex-row flex-wrap mt-0 border-t">
                         <ImageCarousel
                           images={product.image}
                           handleChangeImage={handleChangeImage}
@@ -322,23 +322,25 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             {showingTranslateValue(product?.title)}
                           </h1>
 
-                          <p className="uppercase font-serif font-medium text-gray-500 text-sm">
+                          <p className=" font-serif font-medium text-gray-500 text-xs">
                             SKU :{" "}
                             <span className="font-bold text-gray-600">
                               {product.sku}
                             </span>
                           </p>
 
-                          <div className="relative">
-                            <Stock stock={stock} />
-                          </div>
+                          
                         </div>
-                        <Price
-                          price={price}
-                          product={product}
-                          currency={currency}
-                          originalPrice={originalPrice}
-                        />
+                        
+                        <div className="flex gap-2 relative">
+                          <Price
+                            price={price}
+                            product={product}
+                            currency={currency}
+                            originalPrice={originalPrice}
+                          />
+                          <Stock stock={stock} />
+                        </div>
 
                         <div className="mb-4">
                           {variantTitle?.map((a, i) => (
@@ -379,12 +381,12 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               : sh owingTranslateValue(product?.description)}
                             */}
                             
-                            <br />
                             {Object?.keys(product?.description)?.includes(lang)
                               ? product?.description[lang]?.length > minLength && (
                                   <span
                                     onClick={() => setIsReadMore(!isReadMore)}
-                                    className="read-or-hide"
+                                    className="ms-2 text-orange-500 cursor-pointer hover:underline"
+                                    // className="read-or-hide"
                                   >
                                     {isReadMore
                                       ? t("common:moreInfo")
@@ -394,7 +396,8 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               : product?.description?.en?.length > minLength && (
                                   <span
                                     onClick={() => setIsReadMore(!isReadMore)}
-                                    className="read-or-hide"
+                                    className="ms-2 text-orange-500 cursor-pointer hover:underline"
+                                    // className="read-or-hide"
                                   >
                                     {isReadMore
                                       ? t("common:moreInfo")
@@ -437,7 +440,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             </div>
                           </div>
 
-                          <div className="flex flex-col mt-4">
+                          {/*<div className="flex flex-col mt-4">
                             <span className="font-serif font-semibold py-1 text-sm d-block">
                               <span className="text-gray-800">
                                 {t("common:category")}:
@@ -455,7 +458,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               </Link>
                             </span>
                             <Tags product={product} />
-                          </div>
+                          </div>*/}
                           
                           <div className="mt-8">
                             <div className="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
