@@ -366,45 +366,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                         </div>
 
                         <div>
-                          <div className="text-sm leading-6 text-gray-500 md:leading-7">
-                            {parse(
-                              isReadMore
-                                ? showingTranslateValue(product?.description)?.slice(0, minLength) + " ..."
-                                : showingTranslateValue(product?.description)
-                            )}
-                            
-                            {/*
-                            {isReadMore
-                              ? showingTranslateValue(
-                                  product?.description
-                                )?.slice(0, minLength)
-                              : sh owingTranslateValue(product?.description)}
-                            */}
-                            
-                            {Object?.keys(product?.description)?.includes(lang)
-                              ? product?.description[lang]?.length > minLength && (
-                                  <span
-                                    onClick={() => setIsReadMore(!isReadMore)}
-                                    className="ms-2 text-orange-500 cursor-pointer hover:underline"
-                                    // className="read-or-hide"
-                                  >
-                                    {isReadMore
-                                      ? t("common:moreInfo")
-                                      : t("common:showLess")}
-                                  </span>
-                                )
-                              : product?.description?.en?.length > minLength && (
-                                  <span
-                                    onClick={() => setIsReadMore(!isReadMore)}
-                                    className="ms-2 text-orange-500 cursor-pointer hover:underline"
-                                    // className="read-or-hide"
-                                  >
-                                    {isReadMore
-                                      ? t("common:moreInfo")
-                                      : t("common:showLess")}
-                                  </span>
-                                )}
-                          </div>
 
                           <div className="flex items-center mt-4">
                             <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
@@ -526,6 +487,50 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 </LinkedinShareButton>
                               </li>
                             </ul>
+                          </div>
+                          
+                          <div className="mt-6 text-sm leading-6  md:leading-7">
+                            <h3 className="text-base font-semibold mb-2 font-serif">
+                              Product Description
+                            </h3>
+                            
+                            {parse(
+                              isReadMore
+                                ? showingTranslateValue(product?.description)?.slice(0, minLength) + " ..."
+                                : showingTranslateValue(product?.description)
+                            )}
+                            
+                            {/*
+                            {isReadMore
+                              ? showingTranslateValue(
+                                  product?.description
+                                )?.slice(0, minLength)
+                              : sh owingTranslateValue(product?.description)}
+                            */}
+                            
+                            {Object?.keys(product?.description)?.includes(lang)
+                              ? product?.description[lang]?.length > minLength && (
+                              <span
+                                onClick={() => setIsReadMore(!isReadMore)}
+                                className="ms-2 text-orange-500 cursor-pointer hover:underline"
+                                // className="read-or-hide"
+                              >
+                                    {isReadMore
+                                      ? t("common:moreInfo")
+                                      : t("common:showLess")}
+                                  </span>
+                            )
+                              : product?.description?.en?.length > minLength && (
+                              <span
+                                onClick={() => setIsReadMore(!isReadMore)}
+                                className="ms-2 text-orange-500 cursor-pointer hover:underline"
+                                // className="read-or-hide"
+                              >
+                                    {isReadMore
+                                      ? t("common:moreInfo")
+                                      : t("common:showLess")}
+                                  </span>
+                            )}
                           </div>
                         </div>
                       </div>
