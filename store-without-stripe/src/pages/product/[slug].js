@@ -238,7 +238,43 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
     .replace(/[^A-Z0-9]+/gi, "-");
 
   // console.log("discount", discount);
-
+  
+  const productRating = (product) => {
+    const initialStock = 1000;
+    const currentStock = product?.stock ?? initialStock;
+    const ordered = initialStock - currentStock;
+    
+    let rating = 0;
+    if (ordered > 0) {
+      const everyAfter = 5;
+      const steps = Math.floor(ordered / everyAfter);
+      const base = 4 + Math.random();
+      const raw = base + steps * 0.1;
+      rating = Math.min(everyAfter, raw);
+      rating = Math.round(rating * 10) / 10;
+    }
+    
+    return (
+      <>
+        <div className="flex items-center space-x-1">
+          <div className="flex items-center">
+            <div className="flex space-x-1">
+              <div className="text-yellow-400">
+                <i className="fa fa-star"></i>
+                {/*<i className="fa fa-star-half"></i>*/}
+                {/*<i className="fa fa-star-o"></i>*/}
+              </div>
+            </div>
+          </div>
+          <div className="text-xs ml-1 text-gray-400">
+            <span className="font-medium">{rating.toFixed(1)}</span>
+            <span> ({ordered} reviews)</span>
+          </div>
+        </div>
+      </>
+    );
+  }
+  
   return (
     <>
       {isLoading ? (
@@ -317,7 +353,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                   <div className="w-full">
                     <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row">
                       <div className="xl:pr-6 md:pr-6 md:w-2/3 w-full">
-                        <div className="mb-6">
+                        <div className="mb-4">
                           <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold font-serif text-gray-800">
                             {showingTranslateValue(product?.title)}
                           </h1>
@@ -328,8 +364,10 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               {product.sku}
                             </span>
                           </p>
-
                           
+                          <div className="flex gap-0.5 items-center">
+                            {productRating(product)}
+                          </div>
                         </div>
                         
                         <div className="flex gap-2 relative">
@@ -421,7 +459,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             <Tags product={product} />
                           </div>*/}
                           
-                          <div className="mt-8">
+                          {/*<div className="mt-8">
                             <div className="flex gap-2 items-center text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
                               <div>
                                 <i className="fa-solid fa-headphones"></i> Call Us for Order
@@ -435,10 +473,10 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 {storeCustomizationSetting?.navbar?.phone || "+971*****"}
                               </a>
                             </div>
-                          </div>
+                          </div>*/}
 
                           {/* social share */}
-                          <div className="mt-2">
+                          {/*<div className="mt-2">
                             <h3 className="text-base font-semibold mb-1 font-serif">
                               {t("common:shareYourSocial")}
                             </h3>
@@ -487,7 +525,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 </LinkedinShareButton>
                               </li>
                             </ul>
-                          </div>
+                          </div>*/}
                           
                           <div className="mt-6 text-sm leading-6  md:leading-7">
                             <h3 className="text-base font-semibold mb-2 font-serif">
