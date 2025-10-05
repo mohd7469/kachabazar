@@ -11,7 +11,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
       ) : (
         <div className={"flex items-center gap-2"}>
           <span className="inline-block text-base font-bold text-gray-900">{currency} {getNumberTwo(product?.prices?.price)} </span>
-          <span className="inline-block text-base text-xs line-through text-red-600">{currency} {getNumberTwo(originalPrice)}</span>
+          <span className="inline-block text-base text-xs line-through text-red-600">{getNumberTwo(originalPrice)}</span>
         </div>
       )}
     </>
