@@ -75,7 +75,7 @@ const FeatureCategory = () => {
                     >
                       {showingTranslateValue(category?.name)}
                     </h3>
-                    <ul className="pt-1 mt-1">
+                    {/*<ul className="pt-1 mt-1">
                       {category?.children?.slice(0, 3).map((child) => (
                         <li
                           key={child._id}
@@ -97,7 +97,7 @@ const FeatureCategory = () => {
                           </a>
                         </li>
                       ))}
-                    </ul>
+                    </ul>*/}
                   </div>
                 </div>
               </div>
