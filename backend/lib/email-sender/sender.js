@@ -1,6 +1,8 @@
 const nodemailer = require("nodemailer");
 const rateLimit = require("express-rate-limit");
 
+const attemptCounter = 10;
+
 const sendEmail = (body, res, message) => {
   const transporter = nodemailer.createTransport({
     host: process.env.HOST,
@@ -45,7 +47,7 @@ const sendEmail = (body, res, message) => {
 const minutes = 30;
 const emailVerificationLimit = rateLimit({
   windowMs: minutes * 60 * 1000,
-  max: 3,
+  max: attemptCounter,
   handler: (req, res) => {
     res.status(429).send({
       success: false,
@@ -56,7 +58,7 @@ const emailVerificationLimit = rateLimit({
 
 const passwordVerificationLimit = rateLimit({
   windowMs: minutes * 60 * 1000,
-  max: 3,
+  max: attemptCounter,
   handler: (req, res) => {
     res.status(429).send({
       success: false,
@@ -67,7 +69,7 @@ const passwordVerificationLimit = rateLimit({
 
 const supportMessageLimit = rateLimit({
   windowMs: minutes * 60 * 1000,
-  max: 5,
+  max: attemptCounter,
   handler: (req, res) => {
     res.status(429).send({
       success: false,
@@ -78,7 +80,7 @@ const supportMessageLimit = rateLimit({
 
 const phoneVerificationLimit = rateLimit({
   windowMs: minutes * 60 * 1000,
-  max: 2,
+  max: attemptCounter,
   handler: (req, res) => {
     res.status(429).send({
       success: false,
