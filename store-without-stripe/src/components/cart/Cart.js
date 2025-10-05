@@ -71,7 +71,7 @@ const Cart = () => {
   
   const handleContinueShopping = async () => {
     closeCartDrawer();
-    await router.push("/");
+    // await router.push("/");
   };
   
 
