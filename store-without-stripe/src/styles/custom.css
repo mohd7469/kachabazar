@@ -6,6 +6,11 @@
   background-image: none;
 }
 
+.floating-whatsapp-button {
+    height: 46px !important;
+    width: 46px !important;
+}
+
 .react-international-phone-country-selector-button {
     padding: 0 8px !important;
 }
