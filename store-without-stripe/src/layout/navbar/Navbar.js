@@ -156,7 +156,7 @@ const Navbar = () => {
                   {/* visible mobile only */}
                   <div className="ms-2 block lg:hidden">
                     <button onClick={toggleCategoryDrawer}>
-                      <span className="text-xl text-white">
+                      <span className="text-xl text-yellow-300">
                         <i className={"fa fa-lg fa-bars"}></i>
                       </span>
                     </button>
