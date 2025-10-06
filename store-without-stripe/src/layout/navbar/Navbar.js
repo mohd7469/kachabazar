@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -19,6 +19,34 @@ import { SidebarContext } from "@context/SidebarContext";
 import NProgress from 'nprogress';
 
 const Navbar = () => {
+  // Handle scroll direction
+  const useNavbarScroll = () => {
+    useEffect(() => {
+      let lastScrollY = window.scrollY;
+      const navbar = document.querySelector(".navbar-scroll");
+      
+      const controlNavbar = () => {
+        if (!navbar) return;
+        
+        // For mobile/tablet (<1024px) → 80px
+        // For laptop/desktop (>1024px) → 100px
+        const scrollThreshold = window.innerWidth < 1024 ? 65 : 100;
+        
+        if (window.scrollY > lastScrollY && window.scrollY > scrollThreshold) {
+          // Scroll down — hide
+          navbar.classList.add("navbar-hidden");
+        } else {
+          // Scroll up — show
+          navbar.classList.remove("navbar-hidden");
+        }
+        lastScrollY = window.scrollY;
+      };
+      
+      window.addEventListener("scroll", controlNavbar);
+      return () => window.removeEventListener("scroll", controlNavbar);
+    }, []);
+  };
+  
   const { t, lang } = useTranslation("common");
   const [searchText, setSearchText] = useState("");
   const { toggleCartDrawer, toggleCategoryDrawer } = useContext(SidebarContext);
@@ -51,13 +79,15 @@ const Navbar = () => {
   //   "storeCustomizationSetting?.navbar?.header_logo",
   //   storeCustomizationSetting?.navbar?.logo
   // );
-
+  
+  useNavbarScroll();
+  
   return (
     <>
       <CartDrawer />
-      <div className="bg-emerald-500 sticky top-0 z-20">
+      <div className="bg-emerald-500 sticky top-0 z-20 navbar-scroll">
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
-          <div className="top-bar h-16 lg:h-auto flex items-center justify-between py-4 mx-auto">
+          <div className="top-bar h-16 lg:h-auto flex items-center justify-between py-2 mx-auto">
             <Link
               href="/"
               onClick={(e) => {

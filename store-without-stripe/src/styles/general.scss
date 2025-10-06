@@ -6,6 +6,14 @@
   margin-right: 3px !important;
 }
 
+.navbar-scroll {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.navbar-scroll.navbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
 .checkoutWrapper {
   button:not([type="submit"]), input, textarea, select, .react-international-phone-dial-code-preview {
     border-color: darkgray !important;
