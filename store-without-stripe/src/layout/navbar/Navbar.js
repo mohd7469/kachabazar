@@ -205,7 +205,8 @@ const Navbar = () => {
                     href="/user/dashboard"
                     className="leading-none font-bold font-serif block"
                   >
-                    {userInfo?.name[0]}
+                    {/*{userInfo?.name[0]}*/}
+                    <FiUser className="w-6 h-6" />
                   </Link>
                 ) : (
                   <Link href="/auth/login">
