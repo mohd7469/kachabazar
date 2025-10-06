@@ -52,7 +52,7 @@ const MobileFooter = () => {
         </button>
         
         {userInfo?.name && (
-          <div className={"flex justify-between items-center"} >
+          <div className={"hidden lg:flex justify-between items-center"} >
             <TrackOrder buttonLabel={""}/>
           </div>
         )}
