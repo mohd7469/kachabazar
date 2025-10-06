@@ -15,7 +15,7 @@
 }
 
 .checkoutWrapper {
-  button:not([type="submit"]), input, textarea, select, .react-international-phone-dial-code-preview {
+  input, textarea, select, .react-international-phone-country-selector-button, .react-international-phone-dial-code-preview {
     border-color: darkgray !important;
   }
 }

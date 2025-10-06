@@ -11,3 +11,8 @@
 .bg-emerald-700 {
   background-color: #22349d !important;
 }
+
+.hover\:bg-emerald-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: #22349d !important;
+}
