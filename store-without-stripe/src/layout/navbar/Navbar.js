@@ -117,7 +117,7 @@ const Navbar = () => {
               <div className="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
                 <div className="flex mx-auto w-full items-center">
                   {/* visible mobile only */}
-                  <div className="me-2 block lg:hidden">
+                  <div className="me-2 block lg:hidden bg-amber-950 rounded-lg px-1">
                     <Link
                       href="/"
                       onClick={(e) => {
